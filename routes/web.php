@@ -35,12 +35,19 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+        Route::get('/contact-us', function () {
+            return view('backend.dashboard_pages.contact-us');
+        })->name('dashboard.contact');
+
+        Route::get('/edit/contact-us', function () {
+            return view('backend.dashboard_pages.edit-contact-us');
+        })->name('dashboard.edit.contact');
 
      });
 
     // Landing Page Navigator
     Route::get('/{page}', [App\Http\Controllers\NavController::class, 'navigate'])->name('navigate');
-    
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
