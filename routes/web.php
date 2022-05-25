@@ -35,6 +35,15 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+
+        Route::get('/history-back', function () {
+            return view('backend.dashboard_pages.history');
+        })->name('dashboard.history');
+
+        Route::get('/history-edit', function () {
+            return view('backend.dashboard_pages.history_edit');
+        })->name('dashboard.history_edit');
+
         Route::get('/mission-and-vision', function () {
             return view('backend.dashboard_pages.mission-and-vision');
         })->name('dashboard.mission-and-vision');
@@ -42,7 +51,6 @@ Auth::routes();
         Route::get('/mission-and-vision/edit', function () {
             return view('backend.dashboard_pages.mission-and-vision_edit');
         })->name('dashboard.mission-and-vision.edit');
-
 
      });
 
