@@ -65,7 +65,7 @@
                             <a class="dropdown-item" href="{{ route('dashboard.history') }}">
                                 {{ __('History') }}
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route('dashboard.board') }}">
                                 {{ __('Board') }}
                             </a>
                         </div>
