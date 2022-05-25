@@ -35,6 +35,7 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+
         Route::get('/contact-us', function () {
             return view('backend.dashboard_pages.contact-us');
         })->name('dashboard.contact');
@@ -42,6 +43,31 @@ Auth::routes();
         Route::get('/edit/contact-us', function () {
             return view('backend.dashboard_pages.edit-contact-us');
         })->name('dashboard.edit.contact');
+      
+        Route::get('/board-member', function () {
+            return view('backend.dashboard_pages.board');
+        })->name('dashboard.board');
+
+        Route::get('/show-board-member', function () {
+            return view('backend.dashboard_pages.show_board');
+        })->name('dashboard.show_board');
+
+
+        Route::get('/history-back', function () {
+            return view('backend.dashboard_pages.history');
+        })->name('dashboard.history');
+
+        Route::get('/history-edit', function () {
+            return view('backend.dashboard_pages.history_edit');
+        })->name('dashboard.history_edit');
+
+        Route::get('/mission-and-vision', function () {
+            return view('backend.dashboard_pages.mission-and-vision');
+        })->name('dashboard.mission-and-vision');
+
+        Route::get('/mission-and-vision/edit', function () {
+            return view('backend.dashboard_pages.mission-and-vision_edit');
+        })->name('dashboard.mission-and-vision.edit');
 
      });
 
