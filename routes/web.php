@@ -35,12 +35,19 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+        Route::get('/history-back', function () {
+            return view('backend.dashboard_pages.history');
+        })->name('dashboard.history');
+
+        Route::get('/history-edit', function () {
+            return view('backend.dashboard_pages.history_edit');
+        })->name('dashboard.history_edit');
 
      });
 
     // Landing Page Navigator
     Route::get('/{page}', [App\Http\Controllers\NavController::class, 'navigate'])->name('navigate');
-    
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
