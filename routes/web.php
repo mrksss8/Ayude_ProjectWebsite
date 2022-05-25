@@ -35,6 +35,15 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+
+        Route::get('/contact-us', function () {
+            return view('backend.dashboard_pages.contact-us');
+        })->name('dashboard.contact');
+
+        Route::get('/edit/contact-us', function () {
+            return view('backend.dashboard_pages.edit-contact-us');
+        })->name('dashboard.edit.contact');
+      
         Route::get('/board-member', function () {
             return view('backend.dashboard_pages.board');
         })->name('dashboard.board');
