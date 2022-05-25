@@ -35,12 +35,20 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+        Route::get('/mission-and-vision', function () {
+            return view('backend.dashboard_pages.mission-and-vision');
+        })->name('dashboard.mission-and-vision');
+
+        Route::get('/mission-and-vision/edit', function () {
+            return view('backend.dashboard_pages.mission-and-vision_edit');
+        })->name('dashboard.mission-and-vision.edit');
+
 
      });
 
     // Landing Page Navigator
     Route::get('/{page}', [App\Http\Controllers\NavController::class, 'navigate'])->name('navigate');
-    
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
