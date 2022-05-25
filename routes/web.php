@@ -35,12 +35,20 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+        Route::get('/board-member', function () {
+            return view('backend.dashboard_pages.board');
+        })->name('dashboard.board');
+
+        Route::get('/show-board-member', function () {
+            return view('backend.dashboard_pages.show_board');
+        })->name('dashboard.show_board');
+
 
      });
 
     // Landing Page Navigator
     Route::get('/{page}', [App\Http\Controllers\NavController::class, 'navigate'])->name('navigate');
-    
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
