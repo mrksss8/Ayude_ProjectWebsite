@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +37,14 @@ Auth::routes();
         })->name('dashboard.about');
 
 
-        Route::get('/contact-us', function () {
-            return view('backend.dashboard_pages.contact-us');
-        })->name('dashboard.contact');
+        Route::controller(ContactusController::class)->group(function () {
+            Route::get('/contact-us/', 'index')->name('contactus.index');
+            Route::get('/contact-us/show/{lang}', 'show')->name('contactus.show');
+            Route::get('/contact-us/edit/{lang}', 'edit')->name('contactus.edit');
+            Route::get('/contact-us/create/{lang}', 'create')->name('contactus.create');
+            Route::post('/contact-us/store/{lang}', 'store')->name('contactus.store');
+            Route::put('/contact-us/update/{lang}/{reg_id}/{gen_id}', 'update')->name('contactus.update');
+        });
 
         Route::get('/edit/contact-us', function () {
             return view('backend.dashboard_pages.edit-contact-us');
