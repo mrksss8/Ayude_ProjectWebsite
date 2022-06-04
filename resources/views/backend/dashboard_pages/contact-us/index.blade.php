@@ -12,9 +12,16 @@
           </div>
           <div class="col-auto">
             <div class="btn-list">
-                <a href="{{ route('dashboard.edit.contact') }}" class="btn d-none d-md-inline-flex btn-primary">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
-                  <!-- SVG icon code -->
+                <a href="{{ route('contactus.create', ['lang' => 1]) }}" class="btn d-none d-md-inline-flex btn-yellow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <desc>Download more icon variants from https://tabler-icons.io/i/plus</desc>
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Create
+                </a>
+                <a href="{{ route('contactus.edit', ['lang' => 1]) }}" class="btn d-none d-md-inline-flex btn-primary">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <desc>Download more icon variants from https://tabler-icons.io/i/edit</desc>
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -40,15 +47,11 @@
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <a class="dropdown-item" href="#">
-                       <span><img src="{{ asset('images/en.png') }}" alt="" class="m-2">{{ __('English') }}</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <span><img src="{{ asset('images/fr.png') }}" alt="" class="m-2">{{ __('French') }}</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <span><img src="{{ asset('images/nl.png') }}" alt="" class="m-2">{{ __('Dutch') }}</span>
-                    </a>
+                    @foreach($languages as $lang)
+                        <a class="dropdown-item" href="{{ route('contactus.show', $lang->id) }}">
+                            <span><img src="https://flagcdn.com/16x12/{{ $lang->symbol }}.png" alt="" class="m-2">{{ $lang->language }}</span>
+                        </a>
+                    @endforeach
                 </div>
             </div>
           </div>
