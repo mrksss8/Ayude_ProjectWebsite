@@ -62,7 +62,7 @@
                             <a class="dropdown-item" href="{{ route('dashboard.mission-and-vision') }}">
                                 {{ __('Mission & Vision') }}
                             </a>
-                            <a class="dropdown-item" href="{{ route('dashboard.history') }}">
+                            <a class="dropdown-item" href="{{ route('about_history.show', 1) }}">
                                 {{ __('History') }}
                             </a>
                             <a class="dropdown-item" href="#">
