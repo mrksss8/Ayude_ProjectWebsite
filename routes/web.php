@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\AboutHistoryController;
 
@@ -37,6 +38,14 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+        Route::controller(HomePageController::class)->group(function () {
+            Route::get('/home-page/', 'index')->name('homepage.index');
+            Route::get('/home-page/show/{lang}', 'show')->name('homepage.show');
+            Route::get('/home-page/create/{sec}/{lang}', 'create')->name('homepage.create');
+            Route::post('/home-page/store/{sec}/{lang}', 'store')->name('homepage.store');
+            Route::get('/home-page/edit/{sec}/{lang}/{id}', 'edit')->name('homepage.edit');
+            Route::put('/home-page/udpate/{sec}/{lang}/{id}', 'update')->name('homepage.udpate');
+        });
 
         Route::controller(ContactusController::class)->group(function () {
             Route::get('/contact-us/', 'index')->name('contactus.index');

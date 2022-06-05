@@ -12,9 +12,9 @@ class Language extends Model
 
     protected $fillable = ['language', 'symbol'];
 
-    public function contact()
+    public function home()
     {
-        return $this->hasMany(ContactUs::class);
+        return $this->hasMany(Home::class);
     }
 
     public function registeredOffice()

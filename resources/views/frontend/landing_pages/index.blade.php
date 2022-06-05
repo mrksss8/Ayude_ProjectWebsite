@@ -53,7 +53,7 @@
           <p>Make a transfer stating: “donation from + NAME + ADDRESS”</p>
           <p><a href="#" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
         </div>
-        <div class="row">
+        {{-- <div class="row">
           <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 d-flex services p-3 py-4 d-block">
               <div class="icon d-flex mb-3"><span class="flaticon-donation-1"></span></div>
@@ -81,7 +81,7 @@
               </div>
             </div>    
           </div>
-        </div>
+        </div> --}}
       </div>
     </section>
 
