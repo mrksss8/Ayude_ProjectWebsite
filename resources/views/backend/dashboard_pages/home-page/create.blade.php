@@ -80,6 +80,50 @@
 
             @if ($section == 2)
                 <h2>Section 2</h2>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card" style="border: 2px dashed grey">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Title</label>
+                                    <input type="text" class="form-control" name="data1-title" placeholder="Food Distribution">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Value</label>
+                                    <input type="number" class="form-control" name="data1-value" placeholder="10788">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card" style="border: 2px dashed grey">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Title</label>
+                                    <input type="text" class="form-control" name="data2-title" placeholder="Food Distribution">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Value</label>
+                                    <input type="number" class="form-control" name="data2-value" placeholder="10788">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card" style="border: 2px dashed grey">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Title</label>
+                                    <input type="text" class="form-control" name="data3-title" placeholder="Food Distribution">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Value</label>
+                                    <input type="number" class="form-control" name="data3-value" placeholder="10788">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
             @endif   
 
             @if ($section == 3)

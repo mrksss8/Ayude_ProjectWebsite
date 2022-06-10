@@ -5,6 +5,17 @@
 <div class="container-xl">
     <div class="page-header d-print-none">
         <div class="row align-items-center">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="col">
                 <h1 class="page-title">
                     {{ __('Home') }}
@@ -49,7 +60,7 @@
                 <h2 class="page-title">{{ empty($language->home[0]->header) ? "Section 1" : $language->home[0]->header }}</h2>
             </div>
             <div class="col-6 d-flex justify-content-end">
-                @if (empty($language->home[1]))
+                @if (empty($language->home[0]))
                     <a href="{{ route('homepage.create', ['sec' => 1, 'lang' => $language->id]) }}" class="btn d-none d-md-inline-flex btn-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <desc>Download more icon variants from https://tabler-icons.io/i/plus</desc>
@@ -82,47 +93,113 @@
 
         <div class="row mb-3">
             <div class="col-6 d-flex justify-content-start">
-                <h2>Section 2</h2>
-            </div>
-            <div class="col-6 d-flex justify-content-end">
-                <a href="{{ route('homepage.create', ['sec' => 2, 'lang' => $language->id]) }}" class="btn d-none d-md-inline-flex btn-yellow">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <desc>Download more icon variants from https://tabler-icons.io/i/plus</desc>
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                    Create
-                </a>
+                @forelse ($section2 as $data)
+                    <div class="col">
+                        <div class="page-pretitle">Header</div>
+                        <h2 class="page-title">{{ empty($data->subheader) ? 'Section 2' : $data->subheader }}</h2>
+                    </div>
+                    @if($loop->index = 1)
+                        @break
+                    @endif
+                @empty
+                    <div class="col">
+                        <div class="page-pretitle">Header</div>
+                        <h2 class="page-title">Section 2</h2>
+                    </div>
+                @endforelse
             </div>
         </div>
 
-    <div class="row">
-        <div class="col-4">
-            <div class="card" style="border: 2px dashed grey">
-                <div class="card-body">
-                    <h3 class="card-title">Food Distribution</h3>
-                    <h1>10,788</h1>
+        <div class="row">
+            @foreach ($section2 as $data)
+                <div class="col-4">
+                    <div class="card" style="border: 2px dashed grey">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ $data->header }}</h3>
+                            <h1>{{ $data->content }}</h1>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+            @if ($section2->count() < 3)
+                <div class="col-4">
+                    <div class="card py-3" style="border: 2px dashed grey">
+                        <div class="card-body">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <desc>Download more icon variants from https://tabler-icons.io/i/plus</desc>
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+        
+        <!-- Add Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @forelse ($section2 as $data)
+                            <h5 class="modal-title" id="exampleModalLabel">{{ $data->subheader  }}</h5>
+                            @if($loop->index = 1)
+                                @break
+                            @endif
+                        @empty
+                            <h5 class="modal-title" id="exampleModalLabel">Section 2</h5>
+                        @endforelse
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('homepage.store', ['sec' => 2, 'lang' => $language->id]) }}" method="POST" id="homeForm">
+                        @csrf
+                        <div class="modal-body">
+                            @forelse ($section2 as $data)
+                                <div class="mb-3">
+                                    <label class="form-label">Header</label>
+                                    <input type="text" class="form-control" name="data1-title" value="{{ $data->subheader  }}" placeholder="Food Distribution">
+                                </div>
+                                @if($loop->index = 1)
+                                    @break
+                                @endif
+                            @empty
+                                <div class="mb-3">
+                                    <label class="form-label">Header</label>
+                                    <input type="text" class="form-control" name="subheader" placeholder="Helping Children and Communities since 1994">
+                                </div>
+                            @endforelse
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" class="form-control @error('header') is-invalid @enderror" name="header" value="{{ old('header') }}" placeholder="Food Distribution">
+                                @error('header')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Value</label>
+                                <input type="number" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" placeholder="10788">
+                                 @error('content')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="card" style="border: 2px dashed grey">
-                <div class="card-body">
-                    <h3 class="card-title">Education</h3>
-                    <h1>21,777</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card" style="border: 2px dashed grey">
-                <div class="card-body">
-                    <h3 class="card-title">Health</h3>
-                    <h1>53,275</h1>
-                </div>
-            </div>
-        </div>
-    </div>        
         
         <hr>
 
