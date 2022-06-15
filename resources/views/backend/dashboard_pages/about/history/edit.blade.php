@@ -24,7 +24,7 @@
                                 <circle cx="12" cy="14" r="2"></circle>
                                 <polyline points="14 4 14 8 8 8 8 4"></polyline>
                             </svg>
-                            Save
+                            Update
                         </a>
 
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -53,6 +53,28 @@
                         @csrf
                         <div class="row g-4">
                             <div class="col-12 markdown">
+                                <div class="row mb-4">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Page Title:</label>
+                                        <input type="text" class="form-control  @error('page_title') is-invalid @enderror"
+                                            name="page_title" value=" {{ old('header', $abouthistory->page_title) }}">
+                                        @error('page_title')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Page Description:</label>
+                                        <input type="text" class="form-control  @error('page_des') is-invalid @enderror"
+                                            name="page_des" value=" {{ old('header', $abouthistory->page_des) }}">
+                                        @error('page_des')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="mb-3 col-6">
                                         <label class="form-label">Header:</label>
@@ -85,122 +107,6 @@
                     </form>
                 </div>
 
-                <div class="card-body ">
-                    <form action="{{ route('about_history.update', $abouthistory->language_id) }}" method="POST"
-                        id="aboutHistoryForm">
-                        @method('PUT')
-                        @csrf
-                        <div class="row g-4">
-                            <div class="col-12 markdown">
-                                <div class="row">
-                                    <div class="mb-3 col-6">
-                                        <label class="form-label">Header:</label>
-                                        <input type="text" class="form-control  @error('header') is-invalid @enderror" name="header"
-                                            value=" {{ old('header', $abouthistory->header) }}">
-                                        @error('header')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Paragraph</label>
-                                    <textarea class="form-control  @error('paragraph') is-invalid @enderror" data-bs-toggle="autosize" name="paragraph">{{old('paragraph', $abouthistory->paragraph) }}</textarea>
-                                    @error('paragraph')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3 col-6">
-                                        <div class="form-label">Picture / Image</div>
-                                        <input type="file" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="card-body ">
-                    <form action="{{ route('about_history.update', $abouthistory->language_id) }}" method="POST"
-                        id="aboutHistoryForm">
-                        @method('PUT')
-                        @csrf
-                        <div class="row g-4">
-                            <div class="col-12 markdown">
-                                <div class="row">
-                                    <div class="mb-3 col-6">
-                                        <label class="form-label">Header:</label>
-                                        <input type="text" class="form-control  @error('header') is-invalid @enderror" name="header"
-                                            value=" {{ old('header', $abouthistory->header) }}">
-                                        @error('header')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Paragraph</label>
-                                    <textarea class="form-control  @error('paragraph') is-invalid @enderror" data-bs-toggle="autosize" name="paragraph">{{old('paragraph', $abouthistory->paragraph) }}</textarea>
-                                    @error('paragraph')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3 col-6">
-                                        <div class="form-label">Picture / Image</div>
-                                        <input type="file" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="card-body ">
-                    <form action="{{ route('about_history.update', $abouthistory->language_id) }}" method="POST"
-                        id="aboutHistoryForm">
-                        @method('PUT')
-                        @csrf
-                        <div class="row g-4">
-                            <div class="col-12 markdown">
-                                <div class="row">
-                                    <div class="mb-3 col-6">
-                                        <label class="form-label">Header:</label>
-                                        <input type="text" class="form-control  @error('header') is-invalid @enderror" name="header"
-                                            value=" {{ old('header', $abouthistory->header) }}">
-                                        @error('header')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Paragraph</label>
-                                    <textarea class="form-control  @error('paragraph') is-invalid @enderror" data-bs-toggle="autosize" name="paragraph">{{old('paragraph', $abouthistory->paragraph) }}</textarea>
-                                    @error('paragraph')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3 col-6">
-                                        <div class="form-label">Picture / Image</div>
-                                        <input type="file" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>

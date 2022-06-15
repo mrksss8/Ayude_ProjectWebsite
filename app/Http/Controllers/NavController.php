@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Language;
+use App\Models\AboutHistory;
+use DB;
 
 class NavController extends Controller
 {
@@ -53,8 +56,15 @@ class NavController extends Controller
                 return view('frontend.landing_pages.board');
                 break;
             case('history'):
-                return view('frontend.landing_pages.history');
+
+                $active_lang = DB::table('active_languages')->select('lang_id')->first();
+
+                $abouthistory = AboutHistory::where('language_id',$active_lang->lang_id)->with('language')->first();
+                $languages = language::all();
+        
+                return view('frontend.landing_pages.history',compact('abouthistory','languages'));
                 break;
+                
         }
     }
 }

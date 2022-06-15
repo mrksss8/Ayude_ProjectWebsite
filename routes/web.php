@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\AboutHistoryController;
+use App\Http\Controllers\ActiveLanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,10 @@ Auth::routes();
             Route::get('/about-history/edit/{lang_id}', 'edit')->name('about_history.edit');
             Route::put('/about-history/update/{lang_id}', 'update')->name('about_history.update');
             Route::post('/about-history/store', 'store')->name('about_history.store');
+        });
+
+        Route::controller(ActiveLanguageController::class)->group(function () {
+            Route::get('/active-language/update/{lang_id}', 'update')->name('active_language.update');
         });
 
         Route::get('/edit/contact-us', function () {

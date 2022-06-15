@@ -15,6 +15,8 @@ class CreateAboutHistoriesTable extends Migration
     {
         Schema::create('about_histories', function (Blueprint $table) {
             $table->id();
+            $table->string('page_title');
+            $table->string('page_des');
             $table->string('header');
             $table->longtext('paragraph', );
             $table->unsignedBigInteger('language_id');

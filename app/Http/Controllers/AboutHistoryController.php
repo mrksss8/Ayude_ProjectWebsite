@@ -33,10 +33,14 @@ class AboutHistoryController extends Controller
         $request->validate([
             'header' => 'required',
             'paragraph' => 'required',
+            'page_title' => 'required',
+            'page_des' => 'required',
           
         ]);
         
         AboutHistory::where('language_id', $lang_id)->update([
+            'page_title'       => $request->page_title,
+            'page_des'         => $request->page_des,
             'header'           => $request->header,
             'paragraph'        => $request->paragraph,
         ]);
@@ -59,13 +63,17 @@ class AboutHistoryController extends Controller
         $request->validate([
             'header' => 'required',
             'paragraph' => 'required',
+            'page_title' => 'required',
+            'page_des' => 'required',
           
         ]);
         
         AboutHistory::create([
+            'page_title'       => $request->page_title,
+            'page_des'         => $request->page_des,
             'header'           => $request->header,
             'paragraph'        => $request->paragraph,
-            'language_id'       => $request->lang_id,
+            'language_id'      => $request->lang_id,
 
         ]);
 
