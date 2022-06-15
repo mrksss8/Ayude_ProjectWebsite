@@ -19,8 +19,8 @@ Auth::routes();
 
 
     Route::get('/', function () {
-        return view('frontend.landing_pages.index');
-    });
+        return redirect()->route('navigate', ['page' => 'index', 'lang' => 1]);
+    })->name('welcome');
 
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -96,7 +96,7 @@ Auth::routes();
      });
 
     // Landing Page Navigator
-    Route::get('/{page}', [App\Http\Controllers\NavController::class, 'navigate'])->name('navigate');
+    Route::get('/{page}/{lang}', [App\Http\Controllers\NavController::class, 'navigate'])->name('navigate');
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
