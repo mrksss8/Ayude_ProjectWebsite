@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container" style="">
-        <a class="navbar-brand text-primary" href="index.html">Ayude <sup style="font-size: 12px;">For A New
+        <a class="navbar-brand text-primary" href="{{ route('frontend.home', ['lang' => $item->id]) }}">Ayude <sup style="font-size: 12px;">For A New
                 Day</sup></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,8 +40,11 @@
                 </li>
                 <li class="nav-item"><a href="{{ route('navigate', ['page' => 'help_us', 'lang' => $item->id]) }}" class="nav-link">Help
                         Us</a></li>
-                <li class="nav-item"><a href="{{ route('navigate', ['page' => 'contact', 'lang' => $item->id]) }}" class="nav-link">Contact
-                        Us</a></li>
+                <li class="nav-item">
+                    <a href="{{ route('frontend.contact', ['lang' => $item->id]) }}" class="nav-link">
+                        Contact Us
+                    </a>
+                </li>
 
                 <x-language-nav />
 

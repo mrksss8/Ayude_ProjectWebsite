@@ -25,45 +25,41 @@
                 <div class="col-6">
 
                     <div class="col-md-12 mb-4">
-                        <h2 class="h4">Registered Office: Ayude for A New Day VZW</h2>
+                        <h2 class="h4">{{ $item->registeredOffice[0]->header }}</h2>
                     </div>
                     <div class="w-100"></div>
                     <div class="col-md-12">
-                        <p><span>Address:</span> Daalstraat 71 <br>
-                            1790 Affligem, Belgium</p>
+                        <p><span>Address:</span>{{ $item->registeredOffice[0]->address }}</p>
                     </div>
                     <div class="col-md-12">
-                        <p><span>Company No.:</span> 452924672</p>
+                        <p><span>Company No.:</span> {{ $item->registeredOffice[0]->companyNumber }}</p>
                     </div>
                     <div class="col-md-12">
-                        <p><span>Tel:</span> 053 68 21 50</p>
+                        <p><span>Tel:</span> {{ $item->registeredOffice[0]->tel }}</p>
                     </div>
                     <div class="col-md-12">
-                        <p><span>Email:</span> <a href="mailto:ayude4anewday@gmail.com">ayude4anewday@gmail.com</a></p>
+                        <p><span>Email:</span> <a href="{{ "mailto:".$item->registeredOffice[0]->email }}">{{ $item->registeredOffice[0]->email }}</a></p>
                     </div>
                     <div class="col-md-12">
-                        <p>IBAN BE63 7805 7850 7508, BIC: GKCCBEBB</p>
+                        <p>{{ $item->registeredOffice[0]->bank }}</p>
                     </div>
                 </div>
                 <div class="col-6">
 
 
                     <div class="col-md-12 mb-4">
-                        <h2 class="h4">General Secretariat: Ayude for A New Day</h2>
+                        <h2 class="h4">{{ $item->generalSecretariat[0]->header }}</h2>
                     </div>
                     <div class="w-100"></div>
                     <div class="col-md-12">
-                        <p> Martine Verschueren</p>
+                        <p> {{ $item->generalSecretariat[0]->name }}</p>
                     </div>
                     <div class="col-md-12">
-                        <p>Ten Bos 5</p>
-                    </div>
-                    <div class="col-md-12">
-                        <p>9420 Burst</p>
+                        <p>{{ $item->generalSecretariat[0]->address }}</p>
                     </div>
 
                     <div class="col-md-12">
-                        <p>GSM: 0475 237 285</p>
+                        <p>GSM: {{ $item->generalSecretariat[0]->gsm }}</p>
                     </div>
 
                 </div>

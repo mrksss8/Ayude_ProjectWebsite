@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Validator;
 
 class HomePageController extends Controller
 {
-    public function index()
+    public function index($lang)
     {
-        $languages = Language::all();
-        return view('backend.dashboard_pages.home-page.index', compact('languages'));
+        $item = Language::where('id','=',$lang)->with(['home' => function ($query) {
+            $query->where('section_no','=',1)->orWhere('section_no','=',3);
+        }])->first();
+        $section2 = Home::where([['language_id','=',$lang],['section_no','=',2]])->get();
+        return view('frontend.landing_pages.index', compact('section2', 'item'));
     }
 
     public function create($sec, $lang)

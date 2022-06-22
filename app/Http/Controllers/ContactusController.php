@@ -10,10 +10,10 @@ use App\Models\GeneralSecretariat;
 
 class ContactusController extends Controller
 {
-    public function index()
+    public function index($lang)
     {
-        $languages = Language::with('registeredOffice','generalSecretariat')->get();
-        return view('backend.dashboard_pages.contact-us.index', compact('languages'));
+        $item = Language::where('id','=',$lang)->with('registeredOffice','generalSecretariat')->first();
+        return view('frontend.landing_pages.contact', compact('item'));
     }
 
     public function create($lang)
