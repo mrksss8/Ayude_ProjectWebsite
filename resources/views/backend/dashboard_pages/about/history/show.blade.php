@@ -86,6 +86,8 @@
                     <div class="card-body ">
                         <div class="row g-4">
                             <div class="col-12 markdown">
+                                <h1 class = "text-center">{{ $abouthistory->page_title }}</h1>
+                                <p class = "text-center mb-5">{{ $abouthistory->page_des }}</p>
                                 <h1>{{ $abouthistory->header }}</h1>
                                 <p>
                                     {{ $abouthistory->paragraph }}

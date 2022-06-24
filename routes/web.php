@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\AboutHistoryController;
+use App\Http\Controllers\ActiveLanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +18,14 @@ use App\Http\Controllers\AboutHistoryController;
 */
 Auth::routes();
 
+    
+    Route::get('/homepage/{lang}', [App\Http\Controllers\HomePageController::class, 'index'])->name('frontend.home'); //Home
+    Route::get('/contact-us/{lang}', [App\Http\Controllers\ContactusController::class, 'index'])->name('frontend.contact'); //Contact Us
+    Route::get('/about-history/{lang}', [App\Http\Controllers\AboutHistoryController::class, 'index'])->name('frontend.about-history'); //About History
 
     Route::get('/', function () {
-        return view('frontend.landing_pages.index');
-    });
+        return redirect()->route('frontend.home', ['lang' => 1]);
+    })->name('welcome');
 
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -37,9 +43,15 @@ Auth::routes();
             return view('backend.dashboard_pages.about');
         })->name('dashboard.about');
 
+        Route::controller(HomePageController::class)->group(function () {
+            Route::get('/home-page/show/{lang}', 'show')->name('homepage.show');
+            Route::get('/home-page/create/{sec}/{lang}', 'create')->name('homepage.create');
+            Route::post('/home-page/store/{sec}/{lang}', 'store')->name('homepage.store');
+            Route::get('/home-page/edit/{sec}/{lang}/{id}', 'edit')->name('homepage.edit');
+            Route::put('/home-page/udpate/{sec}/{lang}/{id}', 'update')->name('homepage.udpate');
+        });
 
         Route::controller(ContactusController::class)->group(function () {
-            Route::get('/contact-us/', 'index')->name('contactus.index');
             Route::get('/contact-us/show/{lang}', 'show')->name('contactus.show');
             Route::get('/contact-us/edit/{lang}', 'edit')->name('contactus.edit');
             Route::get('/contact-us/create/{lang}', 'create')->name('contactus.create');
@@ -55,10 +67,6 @@ Auth::routes();
             Route::post('/about-history/store', 'store')->name('about_history.store');
         });
 
-        Route::get('/edit/contact-us', function () {
-            return view('backend.dashboard_pages.edit-contact-us');
-        })->name('dashboard.edit.contact');
-      
         Route::get('/board-member', function () {
             return view('backend.dashboard_pages.board');
         })->name('dashboard.board');
@@ -84,10 +92,7 @@ Auth::routes();
             return view('backend.dashboard_pages.mission-and-vision_edit');
         })->name('dashboard.mission-and-vision.edit');
 
-     });
-
-    // Landing Page Navigator
-    Route::get('/{page}', [App\Http\Controllers\NavController::class, 'navigate'])->name('navigate');
+    });
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,4 +103,4 @@ Auth::routes();
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-});
+    });

@@ -53,6 +53,9 @@
 
 <div class="page-body">
     <div class="container-xl">
+        <div class="row">
+            <h3 class="text-muted"><em>{{ $language->language }} </em><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png"></h3>
+        </div>
         <form action="{{ route('contactus.update', ['lang' => $language->id, 'reg_id' => $language->registeredOffice[0]->id, 'gen_id' => $language->generalSecretariat[0]->id]) }}" method="POST" id="contactUsForm">
             @method('PUT')
             @csrf
