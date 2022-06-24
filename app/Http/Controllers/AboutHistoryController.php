@@ -8,6 +8,14 @@ use App\Models\AboutHistory;
 
 class AboutHistoryController extends Controller
 {
+
+    public function index($lang)
+    {
+        
+        $item = Language::where('id','=',$lang)->with('aboutHistory')->first();
+        return view('frontend.landing_pages.history', compact('item'));
+    }
+
     public function show($lang_id)
     {
       

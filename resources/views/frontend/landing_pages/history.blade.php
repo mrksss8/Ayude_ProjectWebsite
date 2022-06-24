@@ -7,8 +7,8 @@
           <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-10 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                {{-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p> --}}
-              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $abouthistory->page_title }}</h1>
-              <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $abouthistory->page_des }} </p>
+              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutHistory->page_title }}</h1>
+              <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutHistory->page_des }} </p>
             </div>
           </div>
         </div>
@@ -18,9 +18,9 @@
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-12 heading-section ftco-animate text-center">
-                    <h2 class="mb-4">{{ $abouthistory->header }}</h2>
+                    <h2 class="mb-4">{{ $item->aboutHistory->header }}</h2>
                     <p>
-                        {{ $abouthistory->paragraph }}
+                        {{ $item->aboutHistory->paragraph }}
                     </p>
                 </div>
             </div>
