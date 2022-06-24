@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\AboutHistoryController;
+use App\Http\Controllers\ActiveLanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Auth::routes();
     
     Route::get('/homepage/{lang}', [App\Http\Controllers\HomePageController::class, 'index'])->name('frontend.home'); //Home
     Route::get('/contact-us/{lang}', [App\Http\Controllers\ContactusController::class, 'index'])->name('frontend.contact'); //Contact Us
+    Route::get('/about-history/{lang}', [App\Http\Controllers\AboutHistoryController::class, 'index'])->name('frontend.about-history'); //About History
 
     Route::get('/', function () {
         return redirect()->route('frontend.home', ['lang' => 1]);
@@ -91,10 +93,6 @@ Auth::routes();
         })->name('dashboard.mission-and-vision.edit');
 
     });
-
-    // Landing Page Navigator
-    Route::get('/{page}/{lang}', [App\Http\Controllers\NavController::class, 'navigate'])->name('navigate');
-
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////

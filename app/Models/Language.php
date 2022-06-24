@@ -17,6 +17,11 @@ class Language extends Model
         return $this->hasMany(Home::class);
     }
 
+    public function aboutHistory()
+    {
+        return $this->hasOne(AboutHistory::class);
+    }
+
     public function registeredOffice()
     {
         return $this->hasMany(RegisteredOffice::class);

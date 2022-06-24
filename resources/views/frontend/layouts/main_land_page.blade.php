@@ -30,8 +30,7 @@
 
     </head>
     <body>
-    
-
+        
         @include('frontend.layouts.land_nav')
           
         @yield('content')
