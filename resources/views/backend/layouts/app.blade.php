@@ -24,7 +24,9 @@
 					</button>
 					<h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
 						<a href=".">
-						<img src="{{ url('img/logo.svg') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+
+							<img src="https://www.ayude.be/wp-content/uploads/2021/04/logo1.png" alt="logo" class="navbar-brand-image">
+						{{-- <img src="{{ url('...\public\images\ayude-logo-cropped.png') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image"> --}}
 						</a>
 					</h1>
 					<div class="navbar-nav flex-row order-md-last">
