@@ -22,6 +22,11 @@ class Language extends Model
         return $this->hasOne(AboutHistory::class);
     }
 
+    public function aboutMissionVision()
+    {
+        return $this->hasOne(aboutMissionVision::class);
+    }
+
     public function registeredOffice()
     {
         return $this->hasMany(RegisteredOffice::class);

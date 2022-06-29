@@ -78,7 +78,7 @@
                             </span>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('dashboard.mission-and-vision') }}">
+                            <a class="dropdown-item" href="{{ route('about_mission_vision.show', 1) }}">
                                 {{ __('Mission & Vision') }}
                             </a>
                             <a class="dropdown-item" href="{{ route('about_history.show', 1) }}">
