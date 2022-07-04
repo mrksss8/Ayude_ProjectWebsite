@@ -1,14 +1,16 @@
 @extends('frontend.layouts.main_land_page')
 
 @section('content')
-    <div class="hero-wrap" style="background-image: url('images/bg_7.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" style="background-image: url({{ asset('images/bg_7.jpg') }});" data-stellar-background-ratio="0.5">
+        
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-10 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <h1 class = "text-danger">{{ $item->aboutMissionVision->page_title }}</h1>
                {{-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p> --}}
-              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Mission & Vision</h1>
-              <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">The key mission of Ayude is to provide for the poorest of the poor – more specifically the numerous (street) children in less-developed countries. We try to improve the pitiful life circumstances of these children and their families by meeting their physical, mental and spiritual needs. </p>
+              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutMissionVision->page_title }}</h1>
+              <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutMissionVision->page_des}}</p>
             </div>
           </div>
         </div>
@@ -24,19 +26,19 @@
 
                 </div>
                 <div class="col-md-6 pl-md-5 ftco-animate">
-                    <h2 class="mb-4">Our Mission</h2>
+                    <h2 class="mb-4">{{ $item->aboutMissionVision->header_one }}</h2>
                     <p>
-                        1. Ayude supports local projects against structural poverty in southern less-developed countries.
+                        {{ $item->aboutMissionVision->header_one_des1 }}
                         <br>
                         <span>
                             <ul>
-                                <li>Ayude, with the cooperation of partner organisations in third world countries,fights for improvement of life circumstances of (street) children by addressing the fundamental causes and consequences of poverty.</li>
-                                <li>We accompany local partners in their endeavors when setting up durable livelihood projects, e.g. such as granting microcredit, alternative learning methods for unskilled adults and parents etcetera…</li>
-                                <li>The partner organisations of Ayude provide help to street- and underprivileged children and their communities, without making any distinction in religion, race, gender, age or political beliefs.</li>
+                                <li>{{ $item->aboutMissionVision->list_1}}</li>
+                                <li>{{ $item->aboutMissionVision->list_2 }}</li>
+                                <li>{{ $item->aboutMissionVision->list_3 }}</li>
                             </ul>
                         </span>
                         <br>
-                        2. We try to sensitize the people in Belgium and the West as much as possible for the North-South divide and to raise funds for projects aimed at relieving the plight of poor (street) children in the less-developed countries.
+                        {{ $item->aboutMissionVision->header_one_des2 }}
                     </p>
                 </div>
             </div>
@@ -47,12 +49,12 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 pl-md-5 ftco-animate">
-                    <h2 class="mb-4">Our Vision</h2>
+                    <h2 class="mb-4">{{ $item->aboutMissionVision->two }}</h2>
                     <p>
-                        Ayude has as its vision to show as much as possible to underprivileged and less fortunate street children in this world that they too are important. Driven by our Christian world view we do not make a distinction in race, religion or political belief. For Ayude every child is unique and priceless in its worth.                     
+                        {{ $item->aboutMissionVision->header_one_des1 }}                     
                         <br>
                         <br>
-                        Through our programs we prevent that children, who are usually underprivileged and neglected, often leave their families out of necessity and consequently end up along the streets of the city into criminal environments like child prostitution and drug trafficking. We believe that sustainable development education is the key to get these children out of the vicious cycle of poverty and consequently to develop their self-esteem and self-confidence. Principally we are working towards a sustainable improvement of living circumstances and conditions for themselves, their families and communities. Hereby they can, with renewed hope and zest for life, provide in their own livelihood and learn to take responsibility inside the micro society (community) around them.
+                        {{ $item->aboutMissionVision->header_one_des2 }}    
                     </p>
                 </div>
                 <div class="col-md-6 d-flex ftco-animate">
@@ -66,9 +68,10 @@
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-12 heading-section ftco-animate text-center">
-                  <p>After 20 years we can say that our approach is paying off! Today the children of 1995 who have been helped are working as certified accountants, psychologists, social workers etc. And many of them are now in turn actively involved in our projects because they experience the value and fruit of the help they have experienced themselves before. , want to pass on to the street children in their own living environment. The commitment of professional and well-trained people (teachers, doctor (s), dentists, nurses, etc.) is combined from the outset with the active commitment of all those directly involved, the children, their parents and all members of the communities.</p>
+                  <p>{{ $item->aboutMissionVision->community_des }}    </p>
                 </div>
             </div>
+            
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
                     <div class="staff p-5">
