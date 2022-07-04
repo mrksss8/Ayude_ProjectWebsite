@@ -21,7 +21,7 @@
                         <a class="dropdown-item" href="{{ route('frontend.about-mision-vision', $item->id) }}">Mission &
                             Vision</a>
                         <a class="dropdown-item" href="{{ route('frontend.about-history', $item->id) }}">History</a>
-                        <a class="dropdown-item" href="">Board</a>
+                        <a class="dropdown-item" href="{{ route('frontend.about-board', $item->id) }}">Board</a>
                     </div>
                 </li>
 

@@ -21,6 +21,10 @@ class Language extends Model
     {
         return $this->hasOne(AboutHistory::class);
     }
+    public function aboutBoard()
+    {
+        return $this->hasOne(AboutBoard::class);
+    }
 
     public function aboutMissionVision()
     {
