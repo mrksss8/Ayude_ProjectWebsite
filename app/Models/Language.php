@@ -45,4 +45,11 @@ class Language extends Model
     {
         return $this->hasMany(GeneralSecretariat::class);
     }
+
+    public function mainNavs()
+    {
+        return $this->hasMany(MainNav::class, 'language_id');
+    }
+
+
 }

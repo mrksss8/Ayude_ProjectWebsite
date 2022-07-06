@@ -1,0 +1,32 @@
+[
+    {
+        "language_id" : 1,
+        "main_nav_id" : 2,
+        "nav_name" : "Mission & Vision",
+        "route_name": "missionvision"
+    },
+    {
+        "language_id" : 1,
+        "main_nav_id" : 2,
+        "nav_name" : "History",
+        "route_name": "history"
+    },
+    {
+        "language_id" : 1,
+        "main_nav_id" : 2,
+        "nav_name" : "Board",
+        "route_name": "board"
+    },
+    {
+        "language_id" : 1,
+        "main_nav_id" : 3,
+        "nav_name" : "Financing & Tageted Areas",
+        "route_name": "financing"
+    },
+    {
+        "language_id" : 1,
+        "main_nav_id" : 3,
+        "nav_name" : "Projects",
+        "route_name": "projects"
+    }
+]
