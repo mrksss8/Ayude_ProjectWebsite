@@ -31,6 +31,11 @@ class Language extends Model
         return $this->hasOne(aboutMissionVision::class);
     }
 
+    public function project()
+    {
+        return $this->hasOne(Project::class);
+    }
+
     public function registeredOffice()
     {
         return $this->hasMany(RegisteredOffice::class);

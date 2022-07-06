@@ -109,7 +109,7 @@
                             <a class="dropdown-item" href="#">
                                 {{ __('Financing & Target Areas') }}
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route('project.show', 1) }}">
                                 {{ __('Projects') }}
                             </a>
                             {{-- <div class="dropend">
