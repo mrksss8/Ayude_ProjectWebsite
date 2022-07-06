@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class HomePageController extends Controller
 {
+    // Frontend
     public function index($lang)
     {
         $item = Language::where('id','=',$lang)->with(['home' => function ($query) {
