@@ -5,6 +5,8 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\AboutHistoryController;
 use App\Http\Controllers\AboutMissionVisionController;
+use App\Http\Controllers\AboutBoardController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,8 @@ Auth::routes();
     Route::get('/contact-us/{lang}', [App\Http\Controllers\ContactusController::class, 'index'])->name('frontend.contact'); //Contact Us
     Route::get('/about-history/{lang}', [App\Http\Controllers\AboutHistoryController::class, 'index'])->name('frontend.about-history'); //About History
     Route::get('/about-mission-vision/{lang}', [App\Http\Controllers\AboutMissionVisionController::class, 'index'])->name('frontend.about-mision-vision'); //About Mission Vision
+    Route::get('/about-board/{lang}', [App\Http\Controllers\AboutBoardController::class, 'index'])->name('frontend.about-board'); //About Mission Vision
+    Route::get('/project/{lang}', [App\Http\Controllers\ProjectController::class, 'index'])->name('frontend.Project'); //About Mission Vision
 
     Route::get('/', function () {
         return redirect()->route('frontend.home', ['lang' => 1]);
@@ -74,6 +78,22 @@ Auth::routes();
             Route::get('/about-mission-vision/edit/{lang_id}', 'edit')->name('about_mission_vision.edit');
             Route::put('/about-mission-vision/update/{lang_id}', 'update')->name('about_mission_vision.update');
             Route::post('/about-mission-vision/store', 'store')->name('about_mission_vision.store');
+        });
+        
+        Route::controller(AboutBoardController::class)->group(function () {
+            Route::get('/about-board/show/{lang_id}', 'show')->name('about_board.show');
+            Route::get('/about-board/create/{lang_id}', 'create')->name('about_board.create');
+            Route::get('/about-board/edit/{lang_id}', 'edit')->name('about_board.edit');
+            Route::put('/about-board/update/{lang_id}', 'update')->name('about_board.update');
+            Route::post('/about-board/store', 'store')->name('about_board.store');
+        });
+
+        Route::controller(ProjectController::class)->group(function () {
+            Route::get('/project/show/{lang_id}', 'show')->name('project.show');
+            Route::get('/project/create/{lang_id}', 'create')->name('project.create');
+            Route::get('/project/edit/{lang_id}', 'edit')->name('project.edit');
+            Route::put('/project/update/{lang_id}', 'update')->name('project.update');
+            Route::post('/project/store', 'store')->name('project.store');
         });
 
         Route::get('/board-member', function () {

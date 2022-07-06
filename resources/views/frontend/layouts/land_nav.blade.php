@@ -17,7 +17,7 @@
                         <a class="dropdown-item" href="{{ route('frontend.about-mision-vision', $item->id) }}">Mission &
                             Vision</a>
                         <a class="dropdown-item" href="{{ route('frontend.about-history', $item->id) }}">History</a>
-                        <a class="dropdown-item" href="">Board</a>
+                        <a class="dropdown-item" href="{{ route('frontend.about-board', $item->id) }}">Board</a>
                     </div>
                 </li>
                 <li class="nav-item btn-group">
@@ -25,7 +25,7 @@
                         aria-expanded="false">Project Operation</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="">Financing & Targeted Areas</a>
-                        <a class="dropdown-item" href="">Projects</a>
+                        <a class="dropdown-item" href="{{ route('frontend.Project', $item->id) }}">Projects</a>
                     </div>
                 </li>
                 <li class="nav-item"><a href="" class="nav-link">Gallery</a></li>
