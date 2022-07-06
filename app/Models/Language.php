@@ -21,6 +21,20 @@ class Language extends Model
     {
         return $this->hasOne(AboutHistory::class);
     }
+    public function aboutBoard()
+    {
+        return $this->hasOne(AboutBoard::class);
+    }
+
+    public function aboutMissionVision()
+    {
+        return $this->hasOne(aboutMissionVision::class);
+    }
+
+    public function project()
+    {
+        return $this->hasOne(Project::class);
+    }
 
     public function registeredOffice()
     {
