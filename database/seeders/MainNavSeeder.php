@@ -22,6 +22,7 @@ class MainNavSeeder extends Seeder
         {
             MainNav::create([
                 'language_id' => 1,
+                'position' => $nav->position,
                 'nav_name' => $nav->nav_name,
                 'route_name' => $nav->route_name
             ]); 

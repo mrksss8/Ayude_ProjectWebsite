@@ -17,6 +17,7 @@ class CreateSubNavsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('language_id');
             $table->foreign('language_id')->references('id')->on('languages');
+            $table->integer('position');
             $table->unsignedBigInteger('main_nav_id');
             $table->foreign('main_nav_id')->references('id')->on('main_navs');
             $table->string('nav_name');

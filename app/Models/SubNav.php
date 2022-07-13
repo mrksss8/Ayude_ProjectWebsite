@@ -9,7 +9,7 @@ class SubNav extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['language_id','main_nav_id','nav_name','route_name'];
+    protected $fillable = ['language_id','position','main_nav_id','nav_name','route_name'];
 
     public function language()
     {
@@ -18,7 +18,7 @@ class SubNav extends Model
 
     public function mainNav()
     {
-        return $this->belongsTo(MainNav::class, 'main_nav_id');
+        return $this->belongsTo(MainNav::class, 'main_nav_id')->orderBy('position');
     }
 
     public function symbol($lang_id)
@@ -35,9 +35,21 @@ class SubNav extends Model
         return $language;
     }
 
-    public function subNav($page_id)
+    public function nav($main_nav_id, $lang_id)
     {
-        $sub_navs = $this->where('page_id','=',$page_id)->get();
-        return $sub_navs;
+        $sub_nav = $this->where([['main_nav_id','=',$main_nav_id],['language_id','=',$lang_id]])->first();
+        return $sub_nav;
+    }
+
+    public function main($id, $lang_id)
+    {
+        $nav = MainNav::where([['id','=',$id], ['language_id','=',$lang_id]])->first();
+        return $nav;
+    }
+
+    public function isNotTranslated($lang_id, $pos)
+    {
+        $nav = $this->where([['language_id','=',$lang_id],['position','=',$pos]])->get();
+        return $nav->isEmpty() ? true : false;
     }
 }

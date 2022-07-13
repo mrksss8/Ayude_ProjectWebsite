@@ -1,31 +1,37 @@
 [
     {
         "language_id" : 1,
+        "position": 1,
         "nav_name" : "Home",
         "route_name": "homepage"
     },
     {
         "language_id" : 1,
+        "position": 2,
         "nav_name" : "About",
         "route_name": "about"
     },
     {
         "language_id" : 1,
+        "position": 3,
         "nav_name" : "Project Operation",
         "route_name": "operation"
     },
     {
         "language_id" : 1,
+        "position": 4,
         "nav_name" : "News",
         "route_name": "news"
     },
     {
         "language_id" : 1,
+        "position": 5,
         "nav_name" : "Help Us",
         "route_name": "helpus"
     },
     {
         "language_id" : 1,
+        "position": 6,
         "nav_name" : "Contact Us",
         "route_name": "contactus"
     }

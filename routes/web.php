@@ -29,7 +29,8 @@ Auth::routes();
     Route::get('/about-mission-vision/{lang}', [App\Http\Controllers\AboutMissionVisionController::class, 'index'])->name('missionvision'); //About Mission Vision
     Route::get('/about-board/{lang}', [App\Http\Controllers\AboutBoardController::class, 'index'])->name('board'); //About Mission Vision
     Route::get('/project/{lang}', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects'); //About Mission Vision
-
+    Route::get('/gallery/{lang}', [App\Http\Controllers\GalleryController::class, 'index'])->name('gellery'); //Gallery
+    
     // These routes are reserved for the frontend navigation of the follwing pages to be made
     // Kindly add the proper Controller Name class the Controller Name class given are just a filler 
     // Don't change the route name bevause these are the reserved routename that is present on the database
@@ -108,8 +109,11 @@ Auth::routes();
         // Navigations
         Route::controller(NavigationsController::class)->prefix('navigations')->group(function(){
             Route::get('/index', 'index')->name('navigation.index');
+            Route::get('/create/{id}/{lang}/{type}', 'create')->name('navigation.create');
+            Route::post('/store/{id}/{subnav}/{type}', 'translate')->name('navigation.translate');
+            Route::get('/show/{id}', 'show')->name('navigation.show');
             Route::put('/update/{nav}/{id}', 'update')->name('navigation.udpate');
-            Route::put('/translate/{nav}/{id}/{navid}', 'translate')->name('navigation.translate');
+            // Route::put('/translate/{nav}/{id}/{navid}', 'translate')->name('navigation.translate');
         });
 
         Route::get('/board-member', function () {

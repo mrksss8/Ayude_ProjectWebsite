@@ -22,6 +22,7 @@ class SubNavSeeder extends Seeder
         {
             SubNav::create([
                 'language_id' => $nav->language_id,
+                'position' => $nav->position,
                 'main_nav_id' => $nav->main_nav_id,
                 'nav_name' => $nav->nav_name,
                 'route_name' => $nav->route_name

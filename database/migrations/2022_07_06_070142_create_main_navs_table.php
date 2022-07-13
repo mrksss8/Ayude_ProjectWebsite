@@ -17,6 +17,7 @@ class CreateMainNavsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('language_id');
             $table->foreign('language_id')->references('id')->on('languages');
+            $table->integer('position');
             $table->string('nav_name');
             $table->string('route_name');
             $table->timestamps();

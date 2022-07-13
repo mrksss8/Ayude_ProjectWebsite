@@ -14,8 +14,10 @@ class HomePageController extends Controller
     {
         $item = Language::where('id','=',$lang)->with(['home' => function ($query) {
             $query->where('section_no','=',1)->orWhere('section_no','=',3);
-        }, 'mainNavs.subNavs'])->first();
-        dd($item->mainNavs);
+        }, 'mainNavs.subNavs' => function($query) use($lang) {
+            $query->where('language_id','=',$lang);
+        }])->first();
+        // dd($item);
         $section2 = Home::where([['language_id','=',$lang],['section_no','=',2]])->get();
         return view('frontend.landing_pages.index', compact('section2', 'item'));
     }

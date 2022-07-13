@@ -25,7 +25,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                         @foreach($languages as $lang)
-                            <a class="dropdown-item" href="{{ route('contactus.show', $lang->id) }}">
+                            <a class="dropdown-item" href="{{ route('navigation.show', $lang->id) }}">
                                 <span><img src="https://flagcdn.com/16x12/{{ $lang->symbol }}.png" alt="" class="m-2">{{ $lang->language }}</span>
                             </a>
                         @endforeach
@@ -63,7 +63,7 @@
                                         data-language="{{ $lang->language }}"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modal-report">Edit</a>
-                                        <a class="btn btn-primary translate" 
+                                        <a class="btn btn-primary" 
                                         data-title="Translate"
                                         data-nav="mainnav"
                                         data-id="{{ $mainNav->id }}"
@@ -71,8 +71,10 @@
                                         data-navigation="{{ $mainNav->nav_name }}"
                                         data-language="{{ $lang->language }}"
                                         data-langid="{{ $lang->id }}"
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#modal-report">Translate</a>
+                                        {{-- data-bs-toggle="modal"  --}}
+                                        {{-- data-bs-target="#modal-report" --}}
+                                        href="{{ route('navigation.create', ['current_lang' => $mainNav->language_id, 'type' => 0]) }}"
+                                        >Translate</a>
                                     </td>
                                 </tr>
                                 @foreach ($mainNav->subNavs as $subnav)
@@ -88,16 +90,18 @@
                                             data-language="{{ $lang->language }}"
                                             data-bs-toggle="modal" 
                                             data-bs-target="#modal-report">Edit</a>
-                                            <a class="btn btn-primary translate"  
+                                            <a class="btn btn-primary"  
                                             data-title="Translate"
                                             data-nav="subnav"
                                             data-id="{{ $subnav->id }}"
-                                            data-mainnavid="{{ $subnav->main_nav_id }}"
+                                            data-mainnavid="{{ $mainNav->id }}"
                                             data-navigation="{{ $subnav->nav_name }}"
                                             data-language="{{ $lang->language }}"
                                             data-langid="{{ $lang->id }}"
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#modal-report">Translate</a>
+                                            {{-- data-bs-toggle="modal"  --}}
+                                            {{-- data-bs-target="#modal-report" --}}
+                                            href="{{ route('navigation.create', ['current_lang' => $mainNav->language_id, 'type' => 0]) }}"
+                                            >Translate</a>
                                     </tr>
                                 @endforeach
                             @endforeach

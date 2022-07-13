@@ -9,12 +9,12 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 @foreach ($item->mainNavs as $nav)
-                    <li class="nav-item {{ $nav->subNavs->isNotEmpty() ? 'btn-group' : '' }}">
-                        <a class="nav-link {{ $nav->subNavs->isNotEmpty() ? 'dropdown-toggle' : '' }}" id="{{ "nav".$nav->id }}" 
-                            {{ $nav->subNavs->isNotEmpty() ?  'type=button data-toggle=dropdown
-                            aria-expanded=false' : ''}} href={{ $nav->subNavs->isNotEmpty() ? '' : route($nav->route_name, $item->id) }}   
+                    <li class="nav-item {{ $nav->subnavCount($nav->id) != 0 ? 'btn-group' : '' }}">
+                        <a class="nav-link {{$nav->subnavCount($nav->id) != 0 ? 'dropdown-toggle' : '' }}" id="{{ "nav".$nav->id }}" 
+                            {{ $nav->subnavCount($nav->id) != 0 ?  'type=button data-toggle=dropdown
+                            aria-expanded=false' : ''}}  
                         >{{ $nav->nav_name }}</a>
-                        @if($nav->subNavs->isNotEmpty())
+                        @if($nav->subnavCount($nav->id) != 0)
                             <div class="dropdown-menu" aria-labelledby="{{ "nav".$nav->id }}">
                                 @foreach ($nav->subNavs as $subnav)
                                     <a class="dropdown-item" href="{{ route($subnav->route_name, $item->id) }}">

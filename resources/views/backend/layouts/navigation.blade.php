@@ -211,8 +211,8 @@
                         </a>
                     </li>
 
-                    <li class="nav-item @if (request()->routeIs('navigation.index')) active @endif">
-                        <a class="nav-link" href="{{ route('navigation.index') }}">
+                    <li class="nav-item @if (request()->routeIs('navigation.show')) active @endif">
+                        <a class="nav-link" href="{{ route('navigation.show', ['id'=>1]) }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

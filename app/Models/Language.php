@@ -48,8 +48,11 @@ class Language extends Model
 
     public function mainNavs()
     {
-        return $this->hasMany(MainNav::class, 'language_id');
+        return $this->hasMany(MainNav::class, 'language_id')->orderBy('position');
     }
 
-
+    public function subNavs()
+    {
+        return $this->hasMany(SubNav::class, 'language_id')->orderBy('position');
+    }
 }
