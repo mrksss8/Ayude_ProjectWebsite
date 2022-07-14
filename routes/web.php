@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutHistoryController;
 use App\Http\Controllers\AboutMissionVisionController;
 use App\Http\Controllers\AboutBoardController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\HelpUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Auth::routes();
     Route::get('/about-mission-vision/{lang}', [App\Http\Controllers\AboutMissionVisionController::class, 'index'])->name('frontend.about-mision-vision'); //About Mission Vision
     Route::get('/about-board/{lang}', [App\Http\Controllers\AboutBoardController::class, 'index'])->name('frontend.about-board'); //About Mission Vision
     Route::get('/project/{lang}', [App\Http\Controllers\ProjectController::class, 'index'])->name('frontend.Project'); //About Mission Vision
+    // Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('frontend.help-us'); //Help Us
 
     Route::get('/', function () {
         return redirect()->route('frontend.home', ['lang' => 1]);
@@ -94,6 +96,14 @@ Auth::routes();
             Route::get('/project/edit/{lang_id}', 'edit')->name('project.edit');
             Route::put('/project/update/{lang_id}', 'update')->name('project.update');
             Route::post('/project/store', 'store')->name('project.store');
+        });
+
+        Route::controller(HelpUsController::class)->group(function () {
+            Route::get('/help-us/show/{lang_id}', 'show')->name('help-us.show');
+            Route::get('/help-us/create/{lang_id}', 'create')->name('help-us.create');
+            Route::post('/help-us/store', 'store')->name('help-us.store');
+            Route::get('/help-us/edit/{lang_id}', 'edit')->name('help-us.edit');
+            Route::put('/help-us/update/{lang_id}', 'update')->name('help-us.update');
         });
 
         Route::get('/board-member', function () {

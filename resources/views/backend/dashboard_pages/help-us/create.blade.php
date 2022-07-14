@@ -11,10 +11,8 @@
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
-                        {{-- <a href="#" class="btn d-none d-md-inline-flex btn-success"
-                            onclick="document.getElementById('aboutHistoryForm').submit()"> --}}
-
-                            <a href="#" class="btn d-none d-md-inline-flex btn-success">
+                        <a href="#" class="btn d-none d-md-inline-flex btn-success"
+                            onclick="document.getElementById('helpUsForm').submit()">
                             <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                             <!-- SVG icon code -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy"
@@ -31,9 +29,8 @@
 
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-title">
-                                Language
-                                {{-- <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
-                                        class="m-2">{{ $language->language }}</span> --}}
+                                <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
+                                        class="m-2">{{ $language->language }}</span>
                             </span>
                         </a>
 
@@ -48,15 +45,14 @@
             <div class="card card-lg">
                 <div class="card-header d-flex align-items-center justify-content-center">
 
-                    {{-- <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
-                            class="m-2">{{ $language->language }} Language (Create)</span> --}}
+                    <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
+                            class="m-2">{{ $language->language }} Language (Create)</span>
 
-                            Language (Create)
                 </div>
                 <div class="card-body ">
-                    {{-- <form action="{{ route('about_history.store') }}" method="POST" id="aboutHistoryForm">
-                        @csrf --}}
-                        {{-- <input type="text" value="{{ $language->id }}" name="lang_id" hidden> --}}
+                    <form action="{{ route('help-us.store') }}" method="POST" id="helpUsForm">
+                        @csrf
+                        <input type="text" value="{{ $language->id }}" name="lang_id" hidden>
                         <div class="row g-4">
                             <div class="col-12 markdown">
                                 <div class="row mb-4 flex justify-content-center">
@@ -74,9 +70,9 @@
                                 <div class="row">
                                     <div class="mb-3 col-6">
                                         <label class="form-label">Subheader 1:</label>
-                                        <input type="text" class="form-control  @error('page_des') is-invalid @enderror"
-                                            name="page_des">
-                                        @error('page_des')
+                                        <input type="text" class="form-control  @error('sub_header1') is-invalid @enderror"
+                                            name="sub_header1">
+                                        @error('sub_header1')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -84,9 +80,9 @@
                                     </div>
                                     <div class="mb-3 col-6">
                                         <label class="form-label">Subheader 2:</label>
-                                        <input type="text" class="form-control  @error('page_des') is-invalid @enderror"
-                                            name="page_des">
-                                        @error('page_des')
+                                        <input type="text" class="form-control  @error('sub_header2') is-invalid @enderror"
+                                            name="sub_header2">
+                                        @error('sub_header2')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -95,9 +91,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Paragraph</label>
-                                    <textarea class="form-control  @error('paragraph') is-invalid @enderror" data-bs-toggle="autosize"
-                                        name="paragraph"></textarea>
-                                    @error('paragraph')
+                                    <textarea class="form-control  @error('paragraph1') is-invalid @enderror" data-bs-toggle="autosize"
+                                        name="paragraph1"></textarea>
+                                    @error('paragraph1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -107,9 +103,9 @@
                                 <div class="row">
                                     <div class="mb-3 col-6">
                                         <label class="form-label">Card Head:</label>
-                                        <input type="text" class="form-control  @error('page_des') is-invalid @enderror"
-                                            name="page_des">
-                                        @error('page_des')
+                                        <input type="text" class="form-control  @error('card_header') is-invalid @enderror"
+                                            name="card_header">
+                                        @error('card_header')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -117,9 +113,9 @@
                                     </div>
                                     <div class="mb-3 col-6">
                                         <label class="form-label">Card Description:</label>
-                                    <textarea class="form-control  @error('paragraph') is-invalid @enderror" data-bs-toggle="autosize"
-                                        name="paragraph"></textarea>
-                                    @error('paragraph')
+                                    <textarea class="form-control  @error('card_des') is-invalid @enderror" data-bs-toggle="autosize"
+                                        name="card_des"></textarea>
+                                    @error('card_des')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -130,9 +126,9 @@
                                 <div class="row mb-4 flex justify-content-center">
                                     <div class="mb-3 col-6">
                                         <label class="form-label">Page Second Title:</label>
-                                        <input type="text" class="form-control  @error('page_title') is-invalid @enderror"
-                                            name="page_title">
-                                        @error('page_title')
+                                        <input type="text" class="form-control  @error('page_second_title') is-invalid @enderror"
+                                            name="page_second_title">
+                                        @error('page_second_title')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -141,9 +137,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Paragraph</label>
-                                    <textarea class="form-control  @error('paragraph') is-invalid @enderror" data-bs-toggle="autosize"
-                                        name="paragraph"></textarea>
-                                    @error('paragraph')
+                                    <textarea class="form-control  @error('paragraph2') is-invalid @enderror" data-bs-toggle="autosize"
+                                        name="paragraph2"></textarea>
+                                    @error('paragraph2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -152,7 +148,7 @@
 
                             </div>
                         </div>
-                    {{-- </form> --}}
+                    </form> 
                 </div>
             </div>
         </div>

@@ -29,7 +29,6 @@
 
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-title">
-
                                 <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
                                         class="m-2">{{ $language->language }}</span>
                             </span>
