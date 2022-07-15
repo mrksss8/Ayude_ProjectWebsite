@@ -5,9 +5,7 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="page-title">
-                        {{ __('History') }}
-                    </h1>
+
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
@@ -26,38 +24,11 @@
                             </svg>
                             Save
                         </a>
+                        <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
 
-                        <a class="btn nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
-                            data-bs-auto-close="outside" role="button" aria-expanded="false">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/select -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <rect x="4" y="4" width="16" height="16" rx="2" />
-                                    <path d="M9 11l3 3l3 -3" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                {{ __('Languages') }}
-                            </span>
+                            <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt=""
+                                    class="m-2">{{ $language->language }}</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/en.png') }}" alt=""
-                                        class="m-2">{{ __('English') }}</span>
-
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/fr.png') }}" alt=""
-                                        class="m-2">{{ __('French') }}</span>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/nl.png') }}" alt=""
-                                        class="m-2">{{ __('Dutch') }}</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -67,11 +38,15 @@
         @csrf
         <input type="text" value="{{ $language->id }}" name="language_id" hidden>
         <input type="text" value="team" name="team" hidden>
+
         <div class="page-body">
             <div class="container-xl">
                 <div class="card card-md">
+                    <div class="card-header  d-flex align-items-center justify-content-center">
+                        <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt=""
+                                class="m-2">{{ $language->language }} Language (Create)</span>
+                    </div>
                     <div class="card-body">
-
                         <div class="row g-4">
                             <div class="col-12 markdown">
                                 <div class="row">
