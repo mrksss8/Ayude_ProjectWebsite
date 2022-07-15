@@ -29,10 +29,9 @@
 
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-title">
-
-                                <span><img src="{{ asset('images/' . $boardTitle->language->symbol . '.png') }}"
-                                        alt="" class="m-2">{{ $boardTitle->language->language }}</span>
-                            </span>
+                                <img src="https://flagcdn.com/16x12/{{ $boardTitle->language->symbol }}.png" alt=""
+                                class="m-2">{{ $boardTitle->language->language }}
+                            </span> 
                         </a>
 
                     </div>
@@ -45,9 +44,12 @@
         <div class="container-xl">
             <div class="card card-lg">
                 <div class="card-header d-flex align-items-center justify-content-center">
-
-                    <span><img src="{{ asset('images/' . $boardTitle->language->symbol . '.png') }}" alt=""
-                            class="m-2">{{ $boardTitle->language->language }} Language (Create)</span>
+                    <span class="nav-link-title">
+                        <img src="https://flagcdn.com/16x12/{{ $boardTitle->language->symbol }}.png" alt=""
+                        class="m-2">{{ $boardTitle->language->language }}
+                    </span> 
+                    {{-- <span><img src="{{ asset('images/' . $boardTitle->language->symbol . '.png') }}" alt=""
+                            class="m-2">{{ $boardTitle->language->language }} Language (Create)</span> --}}
                 </div>
                 <div class="card-body ">
                     <form action="{{ route('about_board.update', $boardTitle->language->id) }}" method="POST"
