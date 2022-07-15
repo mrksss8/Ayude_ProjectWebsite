@@ -21,8 +21,9 @@ class AboutHistoryController extends Controller
       
         $abouthistory = AboutHistory::where('language_id',$lang_id)->with('language')->first();
         $languages = language::all();
+        $current_language = language::where('id',$lang_id)->first();
         
-        return view('backend.dashboard_pages.about.history.show',compact('abouthistory','languages', 'lang_id'));
+        return view('backend.dashboard_pages.about.history.show',compact('abouthistory','languages', 'current_language'));
 
     }
 
