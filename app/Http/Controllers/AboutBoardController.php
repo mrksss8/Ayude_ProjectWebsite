@@ -23,8 +23,9 @@ class AboutBoardController extends Controller
         $boardTitle =  AboutBoard::where('language_id',$lang_id)->where('board_member',null)->with('language')->first();
         $boardPersons = AboutBoard::where('language_id',$lang_id)->where('board_member','board_member')->with('language')->get();
         $languages = language::all();
+        $current_language = language::where('id',$lang_id)->first();
 
-        return view('backend.dashboard_pages.about.board.show', compact('languages','boardPersons','boardTitle','lang_id'));
+        return view('backend.dashboard_pages.about.board.show', compact('languages','boardPersons','boardTitle','current_language'));
 
     }
 

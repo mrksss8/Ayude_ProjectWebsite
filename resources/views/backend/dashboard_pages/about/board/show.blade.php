@@ -5,14 +5,12 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="page-title">
-                        {{ __('Board') }}
-                    </h1>
+                    
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
                         @if ($boardTitle != null)
-                            <a href="{{ route('about_board.edit', $boardTitle->language_id) }}"
+                            <a href="{{ route('about_board.edit', $current_language->id) }}"
                                 class="btn d-none d-md-inline-flex btn-primary">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                                 <!-- SVG icon code -->
@@ -28,17 +26,6 @@
                                 Edit
                             </a>
                         @else
-                            <a href="{{ route('about_board.create', $lang_id) }}"
-                                class="btn d-none d-md-inline-flex btn-yellow">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus"
-                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <desc>Download more icon variants from https://tabler-icons.io/i/plus</desc>
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                                Create
                         @endif
 
                         <a class="btn nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
@@ -61,7 +48,7 @@
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                             @foreach ($languages as $language)
                                 <a class="dropdown-item" href="{{ route('about_board.show', $language->id) }}">
-                                    <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
+                                    <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt=""
                                             class="m-2">{{ $language->language }}</span>
 
                                 </a>
@@ -81,8 +68,9 @@
                 @endcomponent
                 <div class="card card-lg">
                     <div class="card-header d-flex align-items-center justify-content-center">
-                        <span><img src="{{ asset('images/' . $boardTitle->language->symbol . '.png') }}" alt=""
-                                class="m-2">{{ $boardTitle->language->language }} Language</span>
+                        <span><img src="https://flagcdn.com/16x12/{{ $boardTitle->language->symbol }}.png" alt=""
+                            class="m-2">{{ $boardTitle->language->language }}</span>
+                       
                     </div>
                     <div class="card-body ">
                         <div class="row g-4">
@@ -104,6 +92,42 @@
                                 @endforeach
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else
+        <div class="page-body">
+            <div class="container-xl">
+                @component('backend.components.alert')
+                @endcomponent
+                <div class="card card-lg">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h1 class="page-title">
+                            {{ __('Board') }}
+                        </h1>
+                        <span><img src="https://flagcdn.com/16x12/{{ $current_language->symbol }}.png" alt=""
+                            class="m-2">{{ $current_language->language }}</span>
+                        
+                    </div>
+                    <div class="card-body ">
+                        <div class="row g-4">
+                            <div class="col-12 markdown">
+                                <div class="row mb-4">
+                                    <div class="mb-3 col-12 text-center">
+                                        <h3 class="text-warning">No {{ $current_language->language }} Content /
+                                            Translation has been added yet. </h3>
+                                        <h3 class="text-warning">Click <a
+                                                href="{{ route('about_board.create', $current_language->id) }}"
+                                                class="btn d-none d-md-inline-flex btn-yellow">
+                                                Create
+                                            </a> to add content/translation.</h3>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
