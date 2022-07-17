@@ -110,10 +110,10 @@ Auth::routes();
         Route::controller(NavigationsController::class)->prefix('navigations')->group(function(){
             Route::get('/index', 'index')->name('navigation.index');
             Route::get('/create/{id}/{lang}/{type}', 'create')->name('navigation.create');
-            Route::post('/store/{id}/{subnav}/{type}', 'translate')->name('navigation.translate');
+            Route::post('/store/{id}/{type}', 'translate')->name('navigation.translate');
             Route::get('/show/{id}', 'show')->name('navigation.show');
-            Route::put('/update/{nav}/{id}', 'update')->name('navigation.udpate');
-            // Route::put('/translate/{nav}/{id}/{navid}', 'translate')->name('navigation.translate');
+            Route::get('/edit/{id}/{type}', 'edit')->name('navigation.edit');
+            Route::put('/update/{id}/{type}', 'update')->name('navigation.udpate');
         });
 
         Route::get('/board-member', function () {

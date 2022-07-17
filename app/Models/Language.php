@@ -55,4 +55,14 @@ class Language extends Model
     {
         return $this->hasMany(SubNav::class, 'language_id')->orderBy('position');
     }
+
+    public function translateTo($data)
+    {
+        // $data = $this->where('id','!=',$id)->get();
+        foreach($data as $item)
+        {
+            $translateTo = $this->where('id','!=',$item->language_id)->get();
+            dd($translateTo);
+        }
+    }
 }

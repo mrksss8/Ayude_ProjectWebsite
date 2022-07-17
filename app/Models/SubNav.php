@@ -31,8 +31,7 @@ class SubNav extends Model
     public function lang($lang_id)
     {
         $lang = Language::where('id','=',$lang_id)->first();
-        $language = $lang->language;
-        return $language;
+        return $lang;
     }
 
     public function nav($main_nav_id, $lang_id)
@@ -47,9 +46,12 @@ class SubNav extends Model
         return $nav;
     }
 
-    public function isNotTranslated($lang_id, $pos)
+    public function isNotTranslatedTo($pos)
     {
-        $nav = $this->where([['language_id','=',$lang_id],['position','=',$pos]])->get();
-        return $nav->isEmpty() ? true : false;
+        $data = $this->where('position','=',$pos)->pluck('language_id')->toArray();
+        $language = Language::all();
+        $languages = $language->except($data);
+
+        return $languages;
     }
 }

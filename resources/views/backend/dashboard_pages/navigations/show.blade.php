@@ -54,7 +54,7 @@
                             @foreach ($lang->mainNavs as $mainNav)
                                 <tr>
                                     <td>{{ $mainNav->nav_name }}</td>
-                                    <td><span><img src="https://flagcdn.com/16x12/{{ $mainNav->symbol($mainNav->language_id) }}.png" alt="" class="m-2">{{ $mainNav->lang($mainNav->language_id) }}</span></td>
+                                    <td><span><img src="https://flagcdn.com/16x12/{{ $mainNav->symbol($mainNav->language_id) }}.png" alt="" class="m-2">{{ $mainNav->lang($mainNav->language_id)->language }}</span></td>
                                     <td>
                                         <div class="btn-list">
                                             <a class="btn nav-link dropdown-toggle ml-2" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -70,33 +70,25 @@
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                @foreach($languages as $lang)
-                                                    @if ($mainNav->isNotTranslated($lang->id, $mainNav->position))
-                                                        <a class="dropdown-item" href="{{ route('navigation.create', ['id' => $mainNav->id, 'lang' => $lang->id, 'type' => 0]) }}">
-                                                            <span><img src="https://flagcdn.com/16x12/{{ $lang->symbol }}.png" alt="" class="m-2">{{ $lang->language }}</span>
-                                                        </a>
-                                                    @endif
-
-                                                    @foreach ($mainNav->isNotTranslated($lang->id, $mainNav->position) as $navs)
-                                                        <a class="dropdown-item" href="{{ route('navigation.create', ['id' => $mainNav->id, 'lang' => $lang->id, 'type' => 0]) }}">
-                                                            <span><img src="https://flagcdn.com/16x12/{{ $lang->symbol }}.png" alt="" class="m-2">{{ $lang->language }}</span>
-                                                        </a>
-                                                    @endforeach
+                                                @foreach ($mainNav->isNotTranslatedTo($mainNav->position) as $language)
+                                                    <a class="dropdown-item" href="{{ route('navigation.create', ['id' => $mainNav->id, 'lang' => $language->id, 'type' => 0]) }}">
+                                                        <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt="" class="m-2">{{ $language->language }}</span>
+                                                    </a>
                                                 @endforeach
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="btn btn-light">Edit</a>
+                                        <a class="btn btn-light" href="{{ route('navigation.edit', ['id' => $mainNav->id, 'type' => 0]) }}">Edit</a>
                                     </td>
                                 </tr>
                                 @foreach ($mainNav->subNavs as $subnav)
                                     <tr>
                                         <td>{{ $subnav->nav_name }}</td>
-                                        <td><span><img src="https://flagcdn.com/16x12/{{ $subnav->symbol($subnav->language_id) }}.png" alt="" class="m-2">{{ $subnav->lang($subnav->language_id) }}</span></td>
+                                        <td><span><img src="https://flagcdn.com/16x12/{{ $subnav->symbol($subnav->language_id) }}.png" alt="" class="m-2">{{ $subnav->lang($subnav->language_id)->language }}</span></td>
                                         <td>
                                             <div class="btn-list">
-                                                <a class="btn nav-link dropdown-toggle ml-2"" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                                <a class="btn nav-link dropdown-toggle ml-2" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -109,18 +101,16 @@
                                                     </span>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                    @foreach($languages as $lang)
-                                                    @if ($mainNav->isNotTranslated($lang->id, $subnav->position))
-                                                        <a class="dropdown-item" href="{{ route('navigation.create', ['id' => $mainNav->id, 'lang' => $lang->id, 'type' => 0]) }}">
-                                                            <span><img src="https://flagcdn.com/16x12/{{ $lang->symbol }}.png" alt="" class="m-2">{{ $lang->language }}</span>
+                                                    @foreach ($subnav->isNotTranslatedTo($subnav->position) as $language)
+                                                        <a class="dropdown-item" href="{{ route('navigation.create', ['id' => $subnav->id, 'lang' => $language->id, 'type' => 1]) }}">
+                                                            <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt="" class="m-2">{{ $language->language }}</span>
                                                         </a>
-                                                    @endif
                                                     @endforeach
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="d-flex">
-                                            <a class="btn btn-light ml-5">Edit</a>
+                                            <a class="btn btn-light ml-5" href="{{ route('navigation.edit', ['id' => $subnav->id, 'type' => 1]) }}">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach
