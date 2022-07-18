@@ -28,8 +28,8 @@
 </div>
 
 <div class="container-xl">
-    <form action="{{ route('navigation.update', ['id' => $nav->id, 'type' => $type]) }}" method="post" id="modalReportForm">
-        {{-- @method('PUT') --}}
+    <form action="{{ route('navigation.udpate', ['id' => $nav->id, 'type' => $type]) }}" method="post" id="modalReportForm">
+        @method('PUT')
         @csrf
         <div class="mb-3">
             <label class="form-label">Name</label>

@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <form action="{{ route('navigation.translate', ['id' => $nav->id, 'type' => $type]) }}" method="post" id="modalReportForm">
+    <form action="{{ route('navigation.translate', ['mainnav' => $mainnavId, 'subnav' => $subnavId, 'type' => $type]) }}" method="post" id="modalReportForm">
         {{-- @method('PUT') --}}
         @csrf
         <div class="mb-3">

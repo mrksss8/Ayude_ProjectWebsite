@@ -6,6 +6,7 @@ use App\Models\SubNav;
 use App\Models\MainNav;
 use App\Models\Language;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class NavigationsController extends Controller
 {
@@ -22,16 +23,26 @@ class NavigationsController extends Controller
 
         switch ($type) {
             case 1:
-                $nav = SubNav::find($id);
+                $nav = SubNav::where('id','=',$id)->with('mainNav')->first();
+                $mainnavId = $nav->mainNav->navByLang($lang, $nav->mainNav->position)->id;
+                // dd($mainnavId);
+                $subnavId = $nav->id;
+                if($subnavId == null){
+                    Session::flash('modalAlert');
+                    $message = "You have to translate ".$nav->mainNav->nav_name." navigation first";
+                    return redirect()->back()->with(['message' => $message, 'id' => $nav->mainNav->id, 'language' => $lang]);
+                } 
                 break;
                 
             default:
                 $nav = MainNav::find($id);
+                $mainnavId = $nav->id;
+                $subnavId = 0;
                 break;
         }
     
-        // dd($nav);
-        return view('backend.dashboard_pages.navigations.create', compact('language', 'nav', 'type'));
+        // dd($subnavId->id);
+        return view('backend.dashboard_pages.navigations.create', compact('language', 'nav', 'type', 'mainnavId', 'subnavId'));
     }
 
     public function show($id)
@@ -61,51 +72,49 @@ class NavigationsController extends Controller
 
     public function update(Request $request, $id, $type)
     {
-        switch ($variable) {
+        switch ($type) {
             case 1:
-                SubNav::find($id)->update([
+                $nav = SubNav::find($id)->update([
                     'nav_name' => $request->nav_name
                 ]);
                 break;
             
             default:
-                MainNav::find($id)->update([
+                $nav = MainNav::find($id)->update([
                     'nav_name' => $request->nav_name
                 ]);
                 break;
         }
-
-        return redirect()->back()->with('success', 'Data updated successfully');
+        return redirect()->route('navigation.show', $request->language)->with('success', 'Data updated successfully');
     }
 
-    public function translate(Request $request, $id, $type)
+    public function translate(Request $request, $mainnav, $subnav, $type)
     {   
-        $mainnav = MainNav::find($id);
-        $subnav = SubNav::find($id);
+        $mainNav = MainNav::where('id','=',$mainnav)->first();
+        $subNav = SubNav::where('id','=',$subnav)->first();
         if($type == 0)
         {
             MainNav::create([
                 'language_id' => $request->language,
-                'position' => $mainnav->position,
+                'position' => $mainNav->position,
                 'nav_name' => $request->nav_name,
-                'route_name' => $mainnav->route_name
+                'route_name' => $mainNav->route_name
             ]);
-            return redirect()->route('navigation.show', $mainnav->language_id)->with('success', 'Data translated successfully');
+            return redirect()->route('navigation.show', $mainNav->language_id)->with('success', 'Data translated successfully');
         } 
 
         if($type == 1) 
         {
-             
+            
             SubNav::create([
                 'language_id' => $request->language,
-                'position' => $subnav->position,
-                'main_nav_id' => $mainnav->id,
+                'position' => $subNav->position,
+                'main_nav_id' => $mainNav->id,
                 'nav_name' => $request->nav_name,
-                'route_name' => $subnav->route_name
+                'route_name' => $subNav->route_name
             ]);
 
-            dd($mainnav->id);
-            return redirect()->route('navigation.show', $subnav->language_id)->with('success', 'Data translated successfully');
+            return redirect()->route('navigation.show', $subNav->language_id)->with('success', 'Data translated successfully');
         }
     }
 }

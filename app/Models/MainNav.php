@@ -59,4 +59,10 @@ class MainNav extends Model
 
         return $languages;
     }
+
+    public function navByLang($lang, $pos)
+    {
+        $nav = $this->where([['language_id','=',$lang],['position','=',$pos]])->first();
+        return $nav;
+    }
 }

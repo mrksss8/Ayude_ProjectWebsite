@@ -110,7 +110,7 @@ Auth::routes();
         Route::controller(NavigationsController::class)->prefix('navigations')->group(function(){
             Route::get('/index', 'index')->name('navigation.index');
             Route::get('/create/{id}/{lang}/{type}', 'create')->name('navigation.create');
-            Route::post('/store/{id}/{type}', 'translate')->name('navigation.translate');
+            Route::post('/store/{mainnav}/{subnav}/{type}', 'translate')->name('navigation.translate');
             Route::get('/show/{id}', 'show')->name('navigation.show');
             Route::get('/edit/{id}/{type}', 'edit')->name('navigation.edit');
             Route::put('/update/{id}/{type}', 'update')->name('navigation.udpate');
