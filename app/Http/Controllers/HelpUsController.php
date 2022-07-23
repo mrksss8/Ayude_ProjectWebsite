@@ -12,8 +12,9 @@ class HelpUsController extends Controller
 
         $helpUs = HelpUs::where('language_id',$lang_id)->with('language')->first();
         $languages = language::all();
+        $current_language = language::where('id',$lang_id)->first();
 
-        return view('backend.dashboard_pages.help-us.show',compact('languages','helpUs','lang_id'));
+        return view('backend.dashboard_pages.help-us.show',compact('languages','helpUs','lang_id','current_language'));
     }
 
 
