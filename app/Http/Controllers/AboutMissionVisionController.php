@@ -22,8 +22,9 @@ class AboutMissionVisionController extends Controller
       
         $about_mission_vision = AboutMissionVision::where('language_id',$lang_id)->with('language')->first();
         $languages = language::all();
+        $current_language = language::where('id',$lang_id)->first();
 
-        return view('backend.dashboard_pages.about.mission_vision.show', compact('languages','about_mission_vision','lang_id'));
+        return view('backend.dashboard_pages.about.mission_vision.show', compact('languages','about_mission_vision','current_language'));
 
     }
 
@@ -38,7 +39,7 @@ class AboutMissionVisionController extends Controller
 
     public function store(Request $request){
 
-        AboutMissionVision::create($request->all());
+        AboutMissionVision::create([$request->all()]);
 
         return redirect()->route('about_mission_vision.show', $request->language_id);
     }

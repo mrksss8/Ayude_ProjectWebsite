@@ -5,9 +5,7 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="page-title">
-                        {{ __('Project') }}
-                    </h1>
+                   
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
@@ -30,8 +28,8 @@
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-title">
 
-                                <span><img src="{{ asset('images/' . $project->language->symbol . '.png') }}" alt=""
-                                        class="m-2">{{ $project->language->language }}</span>
+                                <span><img src="https://flagcdn.com/16x12/{{ $project->language->symbol }}.png" alt=""
+                                    class="m-2">{{$project->language->language }}</span>
                             </span>
                         </a>
 
@@ -45,9 +43,10 @@
         <div class="container-xl">
             <div class="card card-lg">
                 <div class="card-header d-flex align-items-center justify-content-center">
-
-                    <span><img src="{{ asset('images/' . $project->language->symbol . '.png') }}" alt=""
-                            class="m-2">{{ $project->language->language }} Language (Create)</span>
+                    <h1 class="page-title">
+                        {{ __('Project') }}
+                    </h1>
+               
                 </div>
                 <div class="card-body ">
                     <form action="{{ route('project.update', $project->language->id) }}" method="POST" id="aboutBoardForm"

@@ -27,37 +27,12 @@
                             Update
                         </a>
 
-                        <a class="btn nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
-                            data-bs-auto-close="outside" role="button" aria-expanded="false">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/select -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <rect x="4" y="4" width="16" height="16" rx="2" />
-                                    <path d="M9 11l3 3l3 -3" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                {{ __('Languages') }}
-                            </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/en.png') }}" alt=""
-                                        class="m-2">{{ __('English') }}</span>
+                        <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
 
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/fr.png') }}" alt=""
-                                        class="m-2">{{ __('French') }}</span>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/nl.png') }}" alt=""
-                                        class="m-2">{{ __('Dutch') }}</span>
-                            </a>
-                        </div>
+                            <span><img src="https://flagcdn.com/16x12/{{ $about_mission_vision->language->symbol}}.png" alt=""
+                                    class="m-2">{{ $about_mission_vision->language->language}}</span>
+                        </a>
+                       
                     </div>
                 </div>
             </div>
@@ -67,13 +42,13 @@
         id="aboutMissionVisionSubmit">
         @method('PUT')
         @csrf
+       
         <div class="page-body">
             <div class="container-xl">
                 <div class="card card-md">
                     <div class="card-header d-flex align-items-center justify-content-center">
-                        <span><img src="{{ asset('images/' . $about_mission_vision->language->symbol . '.png') }}"
-                                alt="" class="m-2">{{ $about_mission_vision->language->language }}
-                            Language</span>
+                        <span><img src="https://flagcdn.com/16x12/{{ $about_mission_vision->language->symbol}}.png" alt=""
+                            class="m-2">{{ $about_mission_vision->language->language}}</span>
                     </div>
                     <div class="card-body">
 
