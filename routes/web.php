@@ -8,6 +8,9 @@ use App\Http\Controllers\AboutMissionVisionController;
 use App\Http\Controllers\AboutBoardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\HelpUsController;
+use App\Http\Controllers\FinancingController;
+
+use App\Models\Language;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +32,8 @@ Auth::routes();
     Route::get('/about-board/{lang}', [App\Http\Controllers\AboutBoardController::class, 'index'])->name('frontend.about-board'); //About Mission Vision
     Route::get('/project/{lang}', [App\Http\Controllers\ProjectController::class, 'index'])->name('frontend.Project'); //About Mission Vision
     // Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('frontend.help-us'); //Help Us
-
+    Route::get('/financing/{lang}', [App\Http\Controllers\FinancingController::class, 'index'])->name('frontend.financing'); 
+    
     Route::get('/', function () {
         return redirect()->route('frontend.home', ['lang' => 1]);
     })->name('welcome');
@@ -106,6 +110,14 @@ Auth::routes();
             Route::put('/help-us/update/{lang_id}', 'update')->name('help-us.update');
         });
 
+        Route::controller(FinancingController::class)->group(function () {
+            Route::get('/financing/show/{lang_id}', 'show')->name('financing.show');
+            Route::get('/financing/create/{lang_id}', 'create')->name('financing.create');
+            Route::post('/financing/store', 'store')->name('financing.store');
+            // Route::get('/financing/edit/{lang_id}', 'edit')->name('financing.edit');
+            // Route::put('/financing/update/{lang_id}', 'update')->name('financing.update');
+        });
+
         Route::get('/board-member', function () {
             return view('backend.dashboard_pages.board');
         })->name('dashboard.board');
@@ -132,6 +144,8 @@ Auth::routes();
         })->name('dashboard.mission-and-vision.edit');
 
     });
+
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////

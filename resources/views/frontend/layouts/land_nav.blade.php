@@ -30,7 +30,7 @@
                     <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-expanded="false">Project Operation</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="">Financing & Targeted Areas</a>
+                        <a class="dropdown-item" href="{{ route('frontend.financing',$item->id) }}">Financing & Targeted Areas</a>
                         <a class="dropdown-item" href="{{ route('frontend.Project', $item->id) }}">Projects</a>
                     </div>
                 </li>
