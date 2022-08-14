@@ -5,9 +5,7 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="page-title">
-                        {{ __('Help Us') }}
-                    </h1>
+                   
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
@@ -24,7 +22,7 @@
                                 <circle cx="12" cy="14" r="2"></circle>
                                 <polyline points="14 4 14 8 8 8 8 4"></polyline>
                             </svg>
-                            Save
+                            Update
                         </a>
 
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -43,11 +41,13 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
+                <div class="card-header d-flex align-items-center justify-content-between">
 
-                    <span><img src="{{ asset('images/' . $helpUs->language->symbol . '.png') }}" alt=""
-                            class="m-2">{{ $helpUs->language->language }} Language (Create)</span>
-
+                    <h1 class="page-title">
+                       Edit
+                    <h1 class="page-title">
+                        {{ __('Help Us') }}
+                    </h1>
                 </div>
                 <div class="card-body ">
                     <form action="{{ route('help-us.update', $helpUs->language->id) }}" method="POST"

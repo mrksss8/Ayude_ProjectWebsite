@@ -42,7 +42,7 @@
                                 </svg>
                             </span>
                             <span class="nav-link-title">
-                                Choose {{ __('Languages') }}
+                                {{ __('Languages') }}
                             </span>
                         </a>
 

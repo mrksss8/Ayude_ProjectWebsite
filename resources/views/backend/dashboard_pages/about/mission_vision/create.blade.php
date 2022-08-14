@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <form action="{{ route('about_mission_vision.store') }}" method="POST" id="aboutMissionVisionSubmit">
+    <form action="{{ route('about_mission_vision.store') }}" method="POST" id="aboutMissionVisionSubmit" enctype='multipart/form-data'>
         @csrf
         <input type="text" value="{{ $language->id }}" name="language_id" hidden>
         <input type="text" value="team" name="team" hidden>
@@ -42,9 +42,13 @@
         <div class="page-body">
             <div class="container-xl">
                 <div class="card card-md">
-                    <div class="card-header  d-flex align-items-center justify-content-center">
-                        <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt=""
-                                class="m-2">{{ $language->language }} Language (Create)</span>
+                    <div class="card-header  d-flex align-items-center justify-content-between">
+                        <h1 class="page-title">
+                            Create
+                        </h1>
+                        <h1 class="page-title">
+                            {{ __('Mission Vision') }}
+                        </h1>
                     </div>
                     <div class="card-body">
                         <div class="row g-4">
@@ -99,7 +103,7 @@
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <div class="form-label">Picture / Image</div>
-                                                <input type="file" class="form-control">
+                                                <input type="file" class="form-control" name = "mission_image">
                                             </div>
                                         </div>
                                         <div class="mb-3">
@@ -148,7 +152,7 @@
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <div class="form-label">Picture / Image</div>
-                                                <input type="file" class="form-control">
+                                                <input type="file" class="form-control" name = "vision_image">
                                             </div>
                                         </div>
                                         <div class="mb-3">

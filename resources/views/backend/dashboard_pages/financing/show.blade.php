@@ -12,7 +12,7 @@
                 <div class="col-auto">
                     <div class="btn-list">
                         @if ($financing != null)
-                            <a href="{{ route('about_history.edit', $financing->language_id) }}"
+                            <a href="#"
                                 class="btn d-none d-md-inline-flex btn-primary">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                                 <!-- SVG icon code -->
@@ -81,9 +81,12 @@
                 @component('backend.components.alert')
                 @endcomponent
                 <div class="card card-lg">
-                    <div class="card-header d-flex align-items-center justify-content-center">
-                        <span><img src="https://flagcdn.com/16x12/{{ $financing->language->symbol }}.png" alt=""
-                                class="m-2">{{ $financing->language->language }}</span>
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h1 class="page-title">
+                            {{ __('Financing and Target Areas') }}
+                        </h1>
+                        <span><img src="https://flagcdn.com/16x12/{{ $current_language->symbol }}.png" alt=""
+                                class="m-2">{{ $current_language->language }}</span>
 
                     </div>
                     <div class="card-body ">

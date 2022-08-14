@@ -79,8 +79,7 @@
                             <div class="col-md-6 markdown">
                                 <h2>Photo / Image</h2>
                                 <div class="row" style="width: 50%">
-                                    <img src="https://www.ayude.be/wp-content/uploads/2021/05/FB_IMG_1620086337227_edit_349678056188307-1.jpg"
-                                        alt="" srcset="">
+                                    <img src="{{ url('storage/'.$about_mission_vision->mission_image_path) }}" alt="mission Image">
                                 </div>
                             </div>
                             <div class="col-md-6 markdown">
@@ -102,8 +101,7 @@
                             <div class="col-md-6 markdown">
                                 <h2>Photo / Image</h2>
                                 <div class="row" style="width: 50%">
-                                    <img src="https://www.ayude.be/wp-content/uploads/2021/02/FB_IMG_1613202447687_edit_89341461518658-2-450x600.jpg"
-                                        alt="" srcset="">
+                                    <img src="{{ url('storage/'.$about_mission_vision->vision_image_path) }}" alt="Vision Image">
                                 </div>
                             </div>
                             <hr>

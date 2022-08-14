@@ -5,9 +5,7 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="page-title">
-                        {{ __('History') }}
-                    </h1>
+                 
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
@@ -30,8 +28,8 @@
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-title">
                                 
-                                <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
-                                        class="m-2">{{ $language->language }}</span>
+                                <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png"
+                                    alt="" class="m-2">{{ $language->language }}</span>
                             </span>
                         </a>
 
@@ -44,10 +42,15 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
-
-                    <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
-                            class="m-2">{{ $language->language }} Language (Create)</span>
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h1 class="page-title">
+                        Create
+                    </h1>
+                    <h1 class="page-title">
+                        {{ __('History') }}
+                    </h1>
+                   
+                    
                 </div>
                 <div class="card-body ">
                     <form action="{{ route('about_history.store') }}" method="POST" id="aboutHistoryForm">

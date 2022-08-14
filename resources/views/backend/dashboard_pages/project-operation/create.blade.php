@@ -40,10 +40,13 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
+                <div class="card-header d-flex align-items-center justify-content-between">
 
                     <h1 class="page-title">
-                        {{ __('Board') }} (Create)
+                        Create
+                    </h1>
+                    <h1 class="page-title">
+                        {{ __('Board') }}
                     </h1>
                 </div>
                 <div class="card-body ">

@@ -43,7 +43,10 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h1 class="page-title">
+                        Edit
+                    </h1>
                     <h1 class="page-title">
                         {{ __('History') }}
                     </h1>
