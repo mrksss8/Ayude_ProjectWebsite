@@ -103,7 +103,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Card Head:</label>
+                                        <label class="form-label">Card 1 Head:</label>
                                         <input type="text" class="form-control  @error('card_header') is-invalid @enderror"
                                             name="card_header">
                                         @error('card_header')
@@ -113,7 +113,7 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Card Description:</label>
+                                        <label class="form-label">Card 1 Description:</label>
                                     <textarea class="form-control  @error('card_des') is-invalid @enderror" data-bs-toggle="autosize"
                                         name="card_des"></textarea>
                                     @error('card_des')
@@ -121,6 +121,44 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 Head:</label>
+                                        <input type="text" class="form-control  @error('card_header2') is-invalid @enderror"
+                                            name="card_header2">
+                                        @error('card_header2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 Description:</label>
+                                    <textarea class="form-control  @error('card_des2') is-invalid @enderror" data-bs-toggle="autosize"
+                                        name="card_des2"></textarea>
+                                    @error('card_des2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 List 1:</label>
+                                        <input type="text" class="form-control"
+                                            name="card2list1">
+                                        
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 List 2:</label>
+                                        <input type="text" class="form-control"
+                                        name="card2list2">
+                                    
                                     </div>
                                 </div>
                                 <hr>

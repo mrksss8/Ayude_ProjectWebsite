@@ -56,7 +56,7 @@
 
                 </div>
                 <div class="card-body ">
-                    <form action="{{ route('financing.store') }}" method="POST" id="financingForm">
+                    <form action="{{ route('financing.store') }}" method="POST" id="financingForm" enctype="multipart/form-data">
                         @csrf
                         <input type="text" value="{{ $language->id }}" name="language_id" hidden>
                         <input type="text" value="page_title_1_list" name="page_title_1_list" hidden>

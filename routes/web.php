@@ -33,6 +33,7 @@ Auth::routes();
     Route::get('/project/{lang}', [App\Http\Controllers\ProjectController::class, 'index'])->name('frontend.Project'); //About Mission Vision
     // Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('frontend.help-us'); //Help Us
     Route::get('/financing/{lang}', [App\Http\Controllers\FinancingController::class, 'index'])->name('frontend.financing'); 
+    Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('frontend.help_us'); 
     
     Route::get('/', function () {
         return redirect()->route('frontend.home', ['lang' => 1]);

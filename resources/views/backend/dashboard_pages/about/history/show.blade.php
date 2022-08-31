@@ -86,7 +86,7 @@
                                 </p>
                             </div>
                             <div class="row justify-content-center mb-5 pb-3">
-                                <img src="https://www.ayude.be/wp-content/uploads/2021/05/History-3.png" alt=""
+                                <img src="{{ url('storage/history/' . $abouthistory->image) }}" alt=""
                                     srcset="">
                             </div>
                         </div>

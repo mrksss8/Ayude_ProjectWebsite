@@ -38,8 +38,10 @@
                 <li class="nav-item"><a href="" class="nav-link">Gallery</a></li>
                 <li class="nav-item"><a href="" class="nav-link">News</a>
                 </li>
-                <li class="nav-item"><a href="" class="nav-link">Help
+                <li class="nav-item"><a href="{{ route('frontend.help_us', ['lang' => $item->id]) }}" class="nav-link">Help
                         Us</a></li>
+
+                        
                 <li class="nav-item">
                     <a href="{{ route('frontend.contact', ['lang' => $item->id]) }}" class="nav-link">
                         Contact Us

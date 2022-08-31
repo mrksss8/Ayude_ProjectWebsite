@@ -53,7 +53,8 @@
                     
                 </div>
                 <div class="card-body ">
-                    <form action="{{ route('about_history.store') }}" method="POST" id="aboutHistoryForm">
+                    <form action="{{ route('about_history.store') }}" method="POST" id="aboutHistoryForm"
+                    enctype="multipart/form-data">
                         @csrf
                         <input type="text" value="{{ $language->id }}" name="lang_id" hidden>
                         <div class="row g-4">
@@ -105,7 +106,7 @@
                                 <div class="row">
                                     <div class="mb-3 col-6">
                                         <div class="form-label">Picture / Image</div>
-                                        <input type="file" class="form-control">
+                                        <input type="file" class="form-control" name = "image">
                                     </div>
                                 </div>
                             </div>

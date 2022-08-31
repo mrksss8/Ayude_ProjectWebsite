@@ -76,7 +76,7 @@
                     @foreach ($cards as $card)
                     <div class="card">
                         <img class="card-img-top"
-                            src="https://www.ayude.be/wp-content/uploads/2021/02/WhatsApp-Image-2021-02-14-at-12.09.39-PM-1.jpeg"
+                            src="{{ url('storage/financing/' . $card->page_title_2_sub_header1_card_image) }}"
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{$card->page_title_2_sub_header1_card_head }}</h5>
