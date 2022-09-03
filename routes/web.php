@@ -116,6 +116,11 @@ Auth::routes();
             Route::put('/update/{id}/{type}', 'update')->name('navigation.udpate');
         });
 
+        // News
+        Route::controller(NewsController::class)->prefix('news')->group(function(){
+          Route::get('/{lang}', 'index')->name('news.index');
+        });
+
         Route::get('/board-member', function () {
             return view('backend.dashboard_pages.board');
         })->name('dashboard.board');
@@ -123,7 +128,6 @@ Auth::routes();
         Route::get('/show-board-member', function () {
             return view('backend.dashboard_pages.show_board');
         })->name('dashboard.show_board');
-
 
         Route::get('/history-back', function () {
             return view('backend.dashboard_pages.history');

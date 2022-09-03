@@ -7,7 +7,7 @@
         <div class="row align-items-center">
             <div class="col">
                 <h1 class="page-title">
-                    {{ __('Home') }}
+                    {{ __('News') }}
                 </h1>
             </div>
             <div class="col-auto">
@@ -41,3 +41,4 @@
     <div class="container-xl">
     </div>
 </div>
+@endsection

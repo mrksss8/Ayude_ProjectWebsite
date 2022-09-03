@@ -56,6 +56,11 @@ class Language extends Model
         return $this->hasMany(SubNav::class, 'language_id')->orderBy('position');
     }
 
+    public function posts()
+    {
+      return $this->hasMany(Post::class, 'language_id');
+    }
+
     public function translateTo($data)
     {
         // $data = $this->where('id','!=',$id)->get();
