@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         Language::create([
             'language' => 'English',
-            'symbol' => 'en'
+            'symbol' => 'gb'
         ]);
         Language::create([
             'language' => 'French',
@@ -38,6 +38,10 @@ class DatabaseSeeder extends Seeder
             'language_id'   => 1,
         ]);
 
+        $this->call([
+          MainNavSeeder::class,
+          SubNavSeeder::class
+        ]);
 
     }
 }
