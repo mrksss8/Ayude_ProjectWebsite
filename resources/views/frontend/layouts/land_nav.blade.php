@@ -13,6 +13,7 @@
                         <a class="nav-link {{$nav->subnavCount($nav->id) != 0 ? 'dropdown-toggle' : '' }}" id="{{ "nav".$nav->id }}" 
                             {{ $nav->subnavCount($nav->id) != 0 ?  'type=button data-toggle=dropdown
                             aria-expanded=false' : ''}}  
+                            style="cursor: pointer" href="{{ route($nav->route_name, $item->id) }}"
                         >{{ $nav->nav_name }}</a>
                         @if($nav->subnavCount($nav->id) != 0)
                             <div class="dropdown-menu" aria-labelledby="{{ "nav".$nav->id }}">
@@ -26,7 +27,7 @@
                     </li>
                 @endforeach
 
-                <x-language-nav />
+                <x-language-nav id="{{ \Request::route()->getName() == 'news.blog' ? $item->posts[0]->id : '' }}"/>
             </ul>
         </div>
 

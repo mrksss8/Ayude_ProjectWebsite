@@ -32,4 +32,10 @@ class Comment extends Model
       $commenter = $this->guest()->where('id','=',$id)->first();
       return $commenter;
     }
+
+    public function getCommenter($id)
+    {
+      $commenter = $this->guest()->where('id','=',$id)->first();
+      return $commenter;
+    }
 }

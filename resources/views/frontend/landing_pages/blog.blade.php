@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main_land_page')
 
 @section('content')
-    <div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" style="background-image: url({{ asset('images/bg_2.jpg') }});" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -17,97 +17,26 @@
     <section class="ftco-section">
       <div class="container">
         <div class="row d-flex">
+          @forelse ($item->posts as $post)
           <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-              <a href="{{ route('navigate', 'blog-single') }}" class="block-20" style="background-image: url('images/image_1.jpg');">
-              </a>
+            <div class="blog-entry align-self-stretch">
+              <a href="{{ route('news.blog', ['lang' => $item->id, 'id' => $post->id]) }}" class="block-20" style="background-image: url({{ asset('storage/news-images/'.$post->image) }});"></a>
               <div class="text p-4 d-block">
-                  <div class="meta mb-3">
+                <div class="meta mb-3">
                   <div><a href="#">Sept 10, 2018</a></div>
                   <div><a href="#">Admin</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                 </div>
-                <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <h3 class="heading mt-3"><a href="#">{{ $post->title }}</a></h3>
+                <p>{{ $post->body }}</p>
               </div>
             </div>
           </div>
-          <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-              <a href="{{ route('navigate', 'blog-single') }}" class="block-20" style="background-image: url('images/image_2.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-                  <div class="meta mb-3">
-                  <div><a href="#">Sept 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-              <a href="{{ route('navigate', 'blog-single') }}" class="block-20" style="background-image: url('images/image_3.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-                  <div class="meta mb-3">
-                  <div><a href="#">Sept 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-              <a href="{{ route('navigate', 'blog-single') }}" class="block-20" style="background-image: url('images/image_4.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-                  <div class="meta mb-3">
-                  <div><a href="#">Sept 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-              <a href="{{ route('navigate', 'blog-single') }}" class="block-20" style="background-image: url('images/image_5.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-                  <div class="meta mb-3">
-                  <div><a href="#">Sept 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-              <div class="blog-entry align-self-stretch">
-              <a href="{{ route('navigate', 'blog-single') }}" class="block-20" style="background-image: url('images/image_6.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-                  <div class="meta mb-3">
-                  <div><a href="#">Sept 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
+          @empty
+            
+          @endforelse
         </div>
+
         <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">

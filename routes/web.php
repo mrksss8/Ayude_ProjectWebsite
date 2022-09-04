@@ -34,9 +34,14 @@ Auth::routes();
     // These routes are reserved for the frontend navigation of the follwing pages to be made
     // Kindly add the proper Controller Name class the Controller Name class given are just a filler 
     // Don't change the route name bevause these are the reserved routename that is present on the database
-    Route::get('/news/{lang}', [NewsController::class, 'index'])->name('news'); //News
+    Route::get('/news/{lang}', [NewsController::class, 'frontend'])->name('news'); //News
+    Route::get('/news/blog/{lang}/{id}', [NewsController::class, 'blog'])->name('news.blog'); //News
     Route::get('/help-us/{lang}', [HelpController::class, 'index'])->name('helpus'); //Help Us
     Route::get('/financing/{lang}', [FinancingpController::class, 'index'])->name('financing'); //News
+    Route::get('/operation/{lang}', [FinancingpController::class, 'create'])->name('operation'); //News
+
+    //News Comments
+    Route::post('/comment/{id}', [NewsController::class, 'comment'])->name('news.blog.comment');
 
     Route::get('/', function () {
         return redirect()->route('homepage', ['lang' => 1]);
@@ -118,7 +123,11 @@ Auth::routes();
 
         // News
         Route::controller(NewsController::class)->prefix('news')->group(function(){
-          Route::get('/{lang}', 'index')->name('news.index');
+          Route::get('/index/{lang}', 'index')->name('news.index');
+          Route::get('/crate/{lang}', 'create')->name('news.create');
+          Route::post('/{lang}', 'store')->name('news.store');
+          Route::get('/{lang}/{id}', 'edit')->name('news.edit');
+          Route::put('/{lang}/{id}', 'update')->name('news.update');
         });
 
         Route::get('/board-member', function () {
