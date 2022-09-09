@@ -17,15 +17,15 @@
     <section class="ftco-section">
       <div class="container">
         <div class="row d-flex">
-          @forelse ($item->posts as $post)
+          @forelse ($posts as $post)
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="{{ route('news.blog', ['lang' => $item->id, 'id' => $post->id]) }}" class="block-20" style="background-image: url({{ asset('storage/news-images/'.$post->image) }});"></a>
+              <a href="{{ route('news.blog', ['lang' => $lang, 'id' => $post->id]) }}" class="block-20" style="background-image: url({{ asset('storage/news-images/'.$post->image) }});"></a>
               <div class="text p-4 d-flex flex-column" style="width: 300px">
                 <div class="meta mb-3">
-                  <div><a href="#">Sept 10, 2018</a></div>
+                  <div><a href="#">{{ $post->updated_at }}</a></div>
                   <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> {{ $post->commentsCount($post->id) }}</a></div>
                 </div>
                 <h3 class="heading mt-3"><a href="#">{{ $post->title }}</a></h3>
                 <p class="text-truncate">{{ $post->body }}</p>
@@ -39,17 +39,7 @@
 
         <div class="row mt-5">
           <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
+            {{ $posts->links() }}
           </div>
         </div>
       </div>

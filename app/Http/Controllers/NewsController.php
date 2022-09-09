@@ -14,8 +14,9 @@ class NewsController extends Controller
 {
     public function frontend($lang)
     {
-      $item = Language::where('id','=',$lang)->with('posts')->first();
-      return view('frontend.landing_pages.blog', compact('item'));
+      $item = Language::where('id','=',$lang)->first();
+      $posts = Post::where('language_id','=',$lang)->paginate(6);
+      return view('frontend.landing_pages.blog', compact('posts', 'lang', 'item'));
     }
 
     public function blog($lang, $id)

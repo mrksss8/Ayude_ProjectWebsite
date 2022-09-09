@@ -20,6 +20,13 @@
               <p>
                 <img src="{{ asset('storage/news-images/'.$item->posts[0]->image) }}" alt="" class="img-fluid">
               </p>
+              <div class="text d-flex" style="width: 350px">
+                <div class="meta mb-3 d-flex" >
+                  <div><a href="#">{{ $item->posts[0]->updated_at }}</a></div>
+                  <div><a href="#" class="mx-3">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> {{ $item->posts[0]->commentsCount($item->posts[0]->id) }}</a></div>
+                </div>
+              </div>
               <h2 class="mb-3 mt-5">{{ $item->posts[0]->title }}</h2>
               <p>{{ $item->posts[0]->body }}</p>
 
@@ -29,7 +36,7 @@
                   @forelse ($item->posts[0]->getComments($item->posts[0]->id) as $comment)
                     <li class="comment">
                       <div class="comment">
-                        <h4>{{ $comment->getCommenter($comment->guest_id)->name }}</h4>
+                        <h4>{{ $comment->getCommenter($comment->guest_id) }}</h4>
                         <div class="meta">{{ $comment->updated_at }}</div>
                         <p>{{ $comment->comment }}</p>
                       </div>
