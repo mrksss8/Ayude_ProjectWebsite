@@ -7,12 +7,12 @@
         <div class="row align-items-center">
             <div class="col">
                 <h1 class="page-title">
-                    {{ __('News') }}
+                    {{ __('Home') }}
                 </h1>
             </div>
             <div class="col-auto">
                 <div class="btn-list">
-                    <a href="#" class="btn d-none d-md-inline-flex btn-success" onclick="document.getElementById('newsForm').submit()">
+                    <a href="#" class="btn d-none d-md-inline-flex btn-success" onclick="document.getElementById('homeFormUpdate').submit()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <desc>Download more icon variants from https://tabler-icons.io/i/device-floppy</desc>
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -49,21 +49,23 @@
 
 <div class="page-body">
     <div class="container-xl">
-        <form action="{{ route('news.store', ['lang' => $lang_id, 'id' => 0]) }}" method="POST" id="newsForm" enctype="multipart/form-data">
+        <div class="row mb-3">
+            <h3 class="text-muted"><em>{{ $language->language }} </em><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png"></h3>
+        </div>
+        <div class="row">
+          <form action="{{ route('homepage.udpate', ['sec' => 2, 'lang' => $language->id, 'id' => $data->id]) }}" method="POST" id="homeFormUpdate">
             @csrf
+            @method('PUT')
             <div class="mb-3">
               <label class="form-label">Title</label>
-              <input type="text" class="form-control" name="title" placeholder="Input placeholder">
+              <input type="text" class="form-control" name="header" value="{{ $data->header }}" placeholder="Food Distribution">
             </div>
             <div class="mb-3">
-              <label class="form-label">Body</label>
-              <textarea class="form-control" name="body" rows="6" placeholder="Content.."></textarea>
+              <label class="form-label">Value</label>
+              <input type="number" class="form-control" name="content" value="{{ $data->content }}" placeholder="10788">
             </div>
-            <div class="mb-3">
-              <div class="form-label">Image</div>
-              <input type="file" class="form-control" name="image">
-            </div>
-        </form>
+          </form>
+        </div>
     </div>
 </div>
 @endsection

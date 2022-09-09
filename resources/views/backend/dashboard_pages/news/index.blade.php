@@ -80,10 +80,40 @@
                     <div class="text-truncate">{{ $post->body }}</div>
                   </td>
                   <td>{{ $post->commentsCount($post->id) }}</td>
-                  <td>{{ $post->created_at }}</td>
                   <td>
-                    <a href="" class="btn btn-danger">Delete</a>
-                    <a href="" class="btn btn-primary">Edit</a>
+                    <div class="btn-list">
+                      <a class="btn nav-link dropdown-toggle ml-2" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                          <span class="nav-link-icon d-md-none d-lg-inline-block">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                              <rect x="4" y="4" width="16" height="16" rx="2" />
+                              <path d="M9 11l3 3l3 -3" />
+                              </svg>
+                          </span>
+                          <span class="nav-link-title">
+                              {{ __('Languages') }}
+                          </span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                          @foreach ($toTranslate as $language)
+                            @if($lang_id == 1)
+                              <a class="dropdown-item" href="{{ route('news.translate', ['lang' => $language->id, 'id' => $post->id]) }}">
+                                <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt="" class="m-2">{{ $language->language }}</span>
+                              </a>
+                            @else
+                              <a class="dropdown-item" href="{{ route('news.translate', ['lang' => $language->id, 'id' => $post->post_id]) }}">
+                                <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt="" class="m-2">{{ $language->language }}</span>
+                              </a>
+                            @endif
+                          @endforeach
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="{{ route('news.show', ['lang' => $post->language_id, 'id' => $lang_id != 1 ? $post->post_id : $post->id]) }}" class="btn btn-success">View</a>
+                    <a href="{{ route('news.edit', ['lang' => $post->language_id, 'id' => $post->id]) }}" class="btn btn-primary">Edit</a>
+                    <a onclick="document.getElementById('{{ 'postDelete'.$post->id }}').submit()" class="btn btn-danger">Delete</a>
+                    <form hidden action="{{ route('news.delete', ['lang' => $lang, 'id' => $post->id]) }}" method="POST" id="postDelete{{ $post->id }}">@method('DELETE')@csrf</form>
                   </td>
                 </tr>
               @empty
@@ -95,25 +125,9 @@
         <div class="card-footer d-flex align-items-center">
           <p class="m-0 text-muted">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
           <ul class="pagination m-0 ms-auto">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="15 6 9 12 15 18"></polyline></svg>
-                prev
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 6 15 12 9 18"></polyline></svg>
-              </a>
-            </li>
+            {{ $posts->links() }}
           </ul>
+          
         </div>
       </div>
     </div>

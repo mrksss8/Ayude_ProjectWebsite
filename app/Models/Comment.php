@@ -23,19 +23,20 @@ class Comment extends Model
 
     public function replies($id)
     {
-      $replies = $this->where('id','=',$id)->get();
+      $replies = $this->where('comment_id','=',$id)->get();
       return $replies;
-    }
-
-    public function commenter($id)
-    {
-      $commenter = $this->guest()->where('id','=',$id)->first();
-      return $commenter;
     }
 
     public function getCommenter($id)
     {
-      $commenter = $this->guest()->where('id','=',$id)->first();
+      $commenter = $this->guest()->where('id','=',$id)->pluck('name')->first();
       return $commenter;
+    }
+
+    // Format updated_at
+    public function getUpdatedAtAttribute()
+    {
+      $date = \Carbon\Carbon::parse($this->created_at)->format('F d, Y');
+      return $date;
     }
 }

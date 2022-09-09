@@ -70,4 +70,9 @@ class Language extends Model
             dd($translateTo);
         }
     }
+
+    public function scopeWhereNot($query, $lang)
+    {
+      return $query->where('id','!=',$lang);
+    }
 }

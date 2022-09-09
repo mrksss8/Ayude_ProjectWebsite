@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProjectController;
@@ -42,6 +43,7 @@ Auth::routes();
 
     //News Comments
     Route::post('/comment/{id}', [NewsController::class, 'comment'])->name('news.blog.comment');
+    Route::post('/reply/{post_id}/{comment_id}', [NewsController::class, 'reply'])->name('news.blog.reply');
 
     Route::get('/', function () {
         return redirect()->route('homepage', ['lang' => 1]);
@@ -55,7 +57,8 @@ Auth::routes();
     Route::middleware('auth')->group(function () {
 
         Route::get('/dashboard', function () {
-            return view('backend.dashboard_pages.home');
+          $news = Post::where('language_id','=',1)->get();
+          return view('backend.dashboard_pages.home', compact('news'));
         })->name('dashboard.home');
 
 
@@ -69,6 +72,7 @@ Auth::routes();
             Route::post('/home-page/store/{sec}/{lang}', 'store')->name('homepage.store');
             Route::get('/home-page/edit/{sec}/{lang}/{id}', 'edit')->name('homepage.edit');
             Route::put('/home-page/udpate/{sec}/{lang}/{id}', 'update')->name('homepage.udpate');
+            Route::get('home-page/edit-card/{lang}/{id}', 'editSec2')->name('homepage.sec2.edit');
         });
 
         Route::controller(ContactusController::class)->group(function () {
@@ -125,9 +129,12 @@ Auth::routes();
         Route::controller(NewsController::class)->prefix('news')->group(function(){
           Route::get('/index/{lang}', 'index')->name('news.index');
           Route::get('/crate/{lang}', 'create')->name('news.create');
-          Route::post('/{lang}', 'store')->name('news.store');
-          Route::get('/{lang}/{id}', 'edit')->name('news.edit');
-          Route::put('/{lang}/{id}', 'update')->name('news.update');
+          Route::get('/translate/{lang}/{id}', 'translate')->name('news.translate');
+          Route::post('/store/{lang}/{id}', 'store')->name('news.store');
+          Route::get('/edit/{lang}/{id}', 'edit')->name('news.edit');
+          Route::put('/update/{lang}/{id}', 'update')->name('news.update');
+          Route::delete('/delete/{lang}/{id}', 'delete')->name('news.delete');
+          Route::get('/show/{lang}/{id}', 'show')->name('news.show');
         });
 
         Route::get('/board-member', function () {

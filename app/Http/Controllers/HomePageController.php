@@ -84,4 +84,13 @@ class HomePageController extends Controller
 
         return redirect()->route('homepage.show', $lang)->with('success', 'Record saved successfully!');
     }
+    
+    public function editSec2($lang, $id)
+    {
+      $language = Language::where('id','=',$lang)->first();
+      $lang_id = $lang;
+      $data = Home::where('id','=',$id)->first();
+      $languages = Language::all();
+      return view('backend.dashboard_pages.home-page.edit-sec2', compact('data', 'language', 'languages', 'lang_id'));
+    }
 }

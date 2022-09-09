@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['language_id','user_id','title','body','image'];
+    protected $fillable = ['language_id','user_id', 'post_id', 'title','body','image'];
 
     public function language()
     {
@@ -30,6 +31,12 @@ class Post extends Model
     {
       return $this->all();
     }
+    // Get all post by language
+    public function getPosts($lang)
+    {
+      $posts = $this->where('language_id','=',$lang)->get();
+      return $posts;
+    }
     // Get specific post
     public function getPost($lang, $id)
     {
@@ -39,7 +46,7 @@ class Post extends Model
     // Get Comments
     public function getComments($id)
     {
-      $post = $this->comments()->where('post_id','=',$id)->get();
+      $post = $this->comments()->where([['comment_id','=',0], ['post_id','=',$id]])->get();
       return $post;
     }
     // Count comments
@@ -47,5 +54,17 @@ class Post extends Model
     {
       $count = $this->getComments($id)->count();
       return $count;
+    }
+    // Get user who post the specific news
+    public function postedBy($id)
+    {
+      $user = User::where('id','=',$id)->pluck('name')->first();
+      return $user;
+    }
+    // Format updated_at
+    public function getUpdatedAtAttribute()
+    {
+      $date = \Carbon\Carbon::parse($this->created_at)->format('F d, Y');
+      return $date;
     }
 }

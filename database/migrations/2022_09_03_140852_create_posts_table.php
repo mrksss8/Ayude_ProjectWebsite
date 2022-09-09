@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('post_id')->nullable();
             $table->string('title');
             $table->longText('body');
             $table->mediumText('image');

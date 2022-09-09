@@ -49,21 +49,34 @@
 
 <div class="page-body">
     <div class="container-xl">
-        <form action="{{ route('news.store', ['lang' => $lang_id, 'id' => 0]) }}" method="POST" id="newsForm" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-              <label class="form-label">Title</label>
-              <input type="text" class="form-control" name="title" placeholder="Input placeholder">
+      <div class="card mb-3">
+        <div class="row row-0">
+          <div class="col-3">
+            <img src="{{ asset('storage/news-images/'.$post->image) }}" class="w-100 h-100 object-cover" alt="Card side image">
+          </div>
+          <div class="col">
+            <div class="card-body">
+              <h3 class="card-title h2">{{ $post->title }}</h3>
+              <p class="text-muted">{{ $post->body }}</p>
             </div>
-            <div class="mb-3">
-              <label class="form-label">Body</label>
-              <textarea class="form-control" name="body" rows="6" placeholder="Content.."></textarea>
-            </div>
-            <div class="mb-3">
-              <div class="form-label">Image</div>
-              <input type="file" class="form-control" name="image">
-            </div>
-        </form>
+          </div>
+        </div>
+      </div>
+
+      <form action="{{ route('news.store', ['lang' => $lang_id, 'id' => $post->id]) }}" method="POST" id="newsForm" enctype="multipart/form-data">
+          @csrf
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Input placeholder">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Body</label>
+            <textarea class="form-control" name="body" rows="6" placeholder="Content.."></textarea>
+          </div>
+          <div class="mb-3">
+            <input hidden type="text" class="form-control" name="image" value="{{ $post->image }}">
+          </div>
+      </form>
     </div>
 </div>
 @endsection
