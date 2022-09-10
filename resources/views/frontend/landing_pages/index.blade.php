@@ -1,3 +1,19 @@
+<?php
+require_once __DIR__. '/../../../vendor/autoload.php';
+\Stripe\Stripe::setApiKey(env('STRIPE_API_KEY'));
+$session = \Stripe\Checkout\Session::create([
+    'submit_type' => 'donate',
+    'line_items' => [[
+    'price' => 'price_1LeJECCx5e49mrnBUEn4CZqc',
+    'quantity' => 1,
+  ]],
+    'mode' => 'payment',
+    'success_url' => 'https://httplocalhost.sharedwithexpose.com/success',
+    'cancel_url' => 'https://httplocalhost.sharedwithexpose.com/cancel',
+  ]);
+?>
+
+
 @extends('frontend.layouts.main_land_page')
 
 @section('content')
@@ -42,40 +58,25 @@
         <div class="col-md-7 heading-section ftco-animate text-center mb-5">
           <h2 class="mb-4">{{ $item->home[1]->header }}</h2>
           <p>{{ $item->home[1]->content }}</p>
-          <p><a href="#" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
+          <p>Or</p>
+          <button type="button" class="btn btn-success" id="donation-btn">Donate Now</button>
         </div>
-        {{-- <div class="row">
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 d-flex services p-3 py-4 d-block">
-              <div class="icon d-flex mb-3"><span class="flaticon-donation-1"></span></div>
-              <div class="media-body pl-4">
-                <h3 class="heading">Make Donation</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 d-flex services p-3 py-4 d-block">
-              <div class="icon d-flex mb-3"><span class="flaticon-charity"></span></div>
-              <div class="media-body pl-4">
-                <h3 class="heading">Become A Volunteer</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 d-flex services p-3 py-4 d-block">
-              <div class="icon d-flex mb-3"><span class="flaticon-donation"></span></div>
-              <div class="media-body pl-4">
-                <h3 class="heading">Sponsorship</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>    
-          </div>
-        </div> --}}
       </div>
     </section>
 
+@section('scripts')
 
-      
-   
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+const stripe = Stripe('pk_test_51LM11DCx5e49mrnBSS6rIt308P5hNxK2xdgj2wK87a4HKZW9a0gtbZ51kYLgWbwFchBRTs9oNATcs1gG3h9yVbKn009txQs5J8')
+ const btn = document.getElementById('donation-btn')
+ btn.addEventListener('click', function(e){
+    e.preventDefault();
+    stripe.redirectToCheckout({
+        sessionId: '<?php echo $session->id ?>'
+    })
+ })
+</script>
+
+@endsection
+
