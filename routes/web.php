@@ -24,7 +24,7 @@ use App\Models\Language;
 */
 Auth::routes();
 
-    
+
     Route::get('/homepage/{lang}', [App\Http\Controllers\HomePageController::class, 'index'])->name('frontend.home'); //Home
     Route::get('/contact-us/{lang}', [App\Http\Controllers\ContactusController::class, 'index'])->name('frontend.contact'); //Contact Us
     Route::get('/about-history/{lang}', [App\Http\Controllers\AboutHistoryController::class, 'index'])->name('frontend.about-history'); //About History
@@ -32,22 +32,22 @@ Auth::routes();
     Route::get('/about-board/{lang}', [App\Http\Controllers\AboutBoardController::class, 'index'])->name('frontend.about-board'); //About Mission Vision
     Route::get('/project/{lang}', [App\Http\Controllers\ProjectController::class, 'index'])->name('frontend.Project'); //About Mission Vision
     // Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('frontend.help-us'); //Help Us
-    Route::get('/financing/{lang}', [App\Http\Controllers\FinancingController::class, 'index'])->name('frontend.financing'); 
-    
+    Route::get('/financing/{lang}', [App\Http\Controllers\FinancingController::class, 'index'])->name('frontend.financing');
+
     Route::get('/', function () {
         return redirect()->route('frontend.home', ['lang' => 1]);
     })->name('welcome');
 
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard.home');
 
 
     //dahboard
     Route::middleware('auth')->group(function () {
 
-        Route::get('/dashboard', function () {
-            return view('backend.dashboard_pages.home');
-        })->name('dashboard.home');
+        // Route::get('/dashboard', function () {
+        //     return view('backend.dashboard_pages.home');
+        // })->name('dashboard.home');
 
 
         Route::get('/about', function () {
@@ -85,7 +85,7 @@ Auth::routes();
             Route::put('/about-mission-vision/update/{lang_id}', 'update')->name('about_mission_vision.update');
             Route::post('/about-mission-vision/store', 'store')->name('about_mission_vision.store');
         });
-        
+
         Route::controller(AboutBoardController::class)->group(function () {
             Route::get('/about-board/show/{lang_id}', 'show')->name('about_board.show');
             Route::get('/about-board/create/{lang_id}', 'create')->name('about_board.create');
@@ -149,7 +149,7 @@ Auth::routes();
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    Route::post('donation', [App\Http\Controllers\DonationController::class, 'stripePost']);
 
     Route::middleware('auth')->group(function () {
     // Route::view('about', 'backend.dashboard_pages.about')->name('about');
@@ -157,3 +157,12 @@ Auth::routes();
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     });
+
+
+    Route::get('/success', function () {
+        return redirect()->route('frontend.home', ['lang' => 1]);
+     })->name('welcome');
+
+    Route::get('/cancel', function () {
+        return redirect()->route('frontend.home', ['lang' => 1]);
+    })->name('welcome');
