@@ -39,10 +39,10 @@
                   <div class="d-flex align-items-center">
                     <div class="subheader">Donated Today</div>
                   </div>
-                  <div class="h1 mb-3">$143</div>
-                  <div class="d-flex justify-content-end">
+                  <div class="h1 mb-3"> € {{number_format($daily, 2)  }}</div>
+                  {{-- <div class="d-flex justify-content-end">
                         <button class="btn btn-primary btn-pill">View</button>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>
@@ -53,17 +53,17 @@
                       <div class="subheader">Donated This Week</div>
                     </div>
                     <div class="d-flex align-items-baseline">
-                        <div class="h1 mb-3 me-2">$1,200</div>
+                        <div class="h1 mb-3 me-2"> € {{number_format($weekly, 2)  }}</div>
                         <div class="me-auto">
-                          <span class="text-green d-inline-flex align-items-center lh-1">
+                          {{-- <span class="text-green d-inline-flex align-items-center lh-1">
                             8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="3 17 9 11 13 15 21 7" /><polyline points="14 7 21 7 21 14" /></svg>
-                          </span>
+                          </span> --}}
                         </div>
                       </div>
-                    <div class="d-flex justify-content-end">
+                    {{-- <div class="d-flex justify-content-end">
                           <button class="btn btn-primary btn-pill">View</button>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
             </div>
@@ -74,17 +74,17 @@
                       <div class="subheader">Donated This Month</div>
                     </div>
                     <div class="d-flex align-items-baseline">
-                        <div class="h1 mb-3 me-2">$4,300</div>
+                        <div class="h1 mb-3 me-2"> € {{number_format($monthly, 2)  }}</div>
                         <div class="me-auto">
-                          <span class="text-green d-inline-flex align-items-center lh-1">
+                          {{-- <span class="text-green d-inline-flex align-items-center lh-1">
                             8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="3 17 9 11 13 15 21 7" /><polyline points="14 7 21 7 21 14" /></svg>
-                          </span>
+                          </span> --}}
                         </div>
                       </div>
-                    <div class="d-flex justify-content-end">
+                    {{-- <div class="d-flex justify-content-end">
                           <button class="btn btn-primary btn-pill">View</button>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                   </div>
                   <div class="card-body">
                     <h3 class="card-title">Total Donations</h3>
-                    <div class="h1 mb-3 me-2">$4,300</div>
+                    <div class="h1 mb-3 me-2">€ {{number_format($total, 2)  }}</div>
                   </div>
                 </div>
             </div>
