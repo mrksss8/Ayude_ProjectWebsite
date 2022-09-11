@@ -5,9 +5,7 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="page-title">
-                        {{ __('Help Us') }}
-                    </h1>
+                   
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
@@ -24,7 +22,7 @@
                                 <circle cx="12" cy="14" r="2"></circle>
                                 <polyline points="14 4 14 8 8 8 8 4"></polyline>
                             </svg>
-                            Save
+                            Update
                         </a>
 
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -43,11 +41,13 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
+                <div class="card-header d-flex align-items-center justify-content-between">
 
-                    <span><img src="{{ asset('images/' . $helpUs->language->symbol . '.png') }}" alt=""
-                            class="m-2">{{ $helpUs->language->language }} Language (Create)</span>
-
+                    <h1 class="page-title">
+                       Edit
+                    <h1 class="page-title">
+                        {{ __('Help Us') }}
+                    </h1>
                 </div>
                 <div class="card-body ">
                     <form action="{{ route('help-us.update', $helpUs->language->id) }}" method="POST"
@@ -122,6 +122,43 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 Head:</label>
+                                        <input type="text" class="form-control  @error('card_header2') is-invalid @enderror"
+                                            name="card_header2" value=" {{ old('card_header2', $helpUs->card_header2) }}">
+                                        @error('card_header2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 Description:</label>
+                                    <textarea class="form-control  @error('card_des2') is-invalid @enderror" data-bs-toggle="autosize"
+                                        name="card_des2">{{ old('card_des2', $helpUs->card_des2) }}</textarea>
+                                    @error('card_des2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 List 1:</label>
+                                        <input type="text" class="form-control"
+                                            name="card2list1" value=" {{ old('card2list1', $helpUs->card2_list1) }}">
+                                        
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 List 2:</label>
+                                        <input type="text" class="form-control"
+                                        name="card2list2" value=" {{ old('card2list2', $helpUs->card2_list2) }}">
                                     </div>
                                 </div>
                                 <hr>

@@ -44,14 +44,19 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
-
-                    <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt=""
-                            class="m-2">{{ $language->language }}</span> (Create)
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    
+                    <h1 class="page-title">
+                        Create
+                    </h1>
+                    <h1 class="page-title">
+                        {{ __('Financing and Target Areas') }}
+                    </h1>
+                    
 
                 </div>
                 <div class="card-body ">
-                    <form action="{{ route('financing.store') }}" method="POST" id="financingForm">
+                    <form action="{{ route('financing.store') }}" method="POST" id="financingForm" enctype="multipart/form-data">
                         @csrf
                         <input type="text" value="{{ $language->id }}" name="language_id" hidden>
                         <input type="text" value="page_title_1_list" name="page_title_1_list" hidden>

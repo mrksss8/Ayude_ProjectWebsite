@@ -40,6 +40,13 @@ class Language extends Model
         return $this->hasOne(Project::class);
     }
 
+    public function helpUs()
+    {
+        return $this->hasOne(HelpUs::class);
+    }
+
+
+
     public function registeredOffice()
     {
         return $this->hasMany(RegisteredOffice::class);

@@ -71,9 +71,13 @@
                 @component('backend.components.alert')
                 @endcomponent
                 <div class="card card-lg">
-                    <div class="card-header d-flex align-items-center justify-content-center">
-                        <span><img src="{{ asset('images/' . $helpUs->language->symbol . '.png') }}" alt=""
-                                class="m-2">{{ $helpUs->language->language }} Language</span>
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h1 class="page-title">
+                            {{ __('Help Us') }}
+                        </h1>
+                        <span><img src="https://flagcdn.com/16x12/{{ $current_language->symbol }}.png" alt=""
+                                class="m-2">{{ $current_language->language }}</span>
+
                     </div>
                     <!-- Under First Title -->
                     <div class="card-body ">
@@ -99,17 +103,12 @@
                                     <div class="card">
 
                                         <div class="card-body">
-                                            <h4 class="card-title">One-time donations: these are of course also very
-                                                welcome.
+                                            <h4 class="card-title">{{ $helpUs->card_header2 }}
                                             </h4>
-                                            <p class="card-text">Some examples:</p>
+                                            <p class="card-text">{{ $helpUs->card_des2 }}</p>
                                             <ul>
-                                                <li>€ 40 is already sufficient for a complete treatment against the still
-                                                    fatal
-                                                    ailment tuberculosis, with an almost certain cure as a result.</li>
-                                                <li>For only half a euro you can sponsor a meal for the malnourished
-                                                    children.
-                                                </li>
+                                                <li>{{ $helpUs->card2_list1 }}</li>
+                                                <li>{{ $helpUs->card2_list2 }}</li>
                                             </ul>
                                         </div>
                                     </div>

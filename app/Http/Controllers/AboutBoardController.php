@@ -16,6 +16,7 @@ class AboutBoardController extends Controller
         $boardPersons = AboutBoard::where('language_id',$lang)->where('board_member','board_member')->with('language')->get();
        
         return view('frontend.landing_pages.board', compact('item','boardPersons'));
+        
     }
 
     public function show($lang_id)
@@ -39,7 +40,6 @@ class AboutBoardController extends Controller
     }
     
     public function store(Request $request){
-        
         
         AboutBoard::create([
             'page_title' => $request->page_title,

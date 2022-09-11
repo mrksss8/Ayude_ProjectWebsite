@@ -8,6 +8,12 @@ use App\Models\HelpUs;
 
 class HelpUsController extends Controller
 {
+
+    public function index($lang){
+        $item = Language::where('id',$lang)->with('helpUs')->first(); 
+
+        return view('frontend.landing_pages.help_us', compact('item'));
+    }
     public function show($lang_id){
 
         $helpUs = HelpUs::where('language_id',$lang_id)->with('language')->first();
@@ -37,6 +43,11 @@ class HelpUsController extends Controller
             
             'card_header' => $request->card_header,
             'card_des' => $request->card_des,
+
+            'card_header2' => $request->card_header2,
+            'card_des2' => $request->card_des2,
+            'card2_list1' => $request->card2list1,
+            'card2_list2' => $request->card2list2,
             
             'page_second_title' => $request->page_second_title,
             'paragraph2' => $request->paragraph2,
@@ -69,6 +80,11 @@ class HelpUsController extends Controller
             
             'card_header' => $request->card_header,
             'card_des' => $request->card_des,
+
+            'card_header2' => $request->card_header2,
+            'card_des2' => $request->card_des2,
+            'card2_list1' => $request->card2list1,
+            'card2_list2' => $request->card2list2,
             
             'page_second_title' => $request->page_second_title,
             'paragraph2' => $request->paragraph2,

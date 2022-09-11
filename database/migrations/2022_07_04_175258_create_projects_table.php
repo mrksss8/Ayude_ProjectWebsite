@@ -16,8 +16,8 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('page_title');
-            $table->string('page_des')->nullable();
-            $table->string('paragraph');
+            $table->longtext('page_des')->nullable();
+            $table->longtext('paragraph');
           
             $table->unsignedBigInteger('language_id');
             $table->foreign('language_id')->references('id')->on('languages');

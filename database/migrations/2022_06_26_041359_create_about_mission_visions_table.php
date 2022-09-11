@@ -18,7 +18,7 @@ class CreateAboutMissionVisionsTable extends Migration
             
             $table->id();
             $table->string('page_title');
-            $table->string('page_des');
+            $table->longText('page_des');
 
             $table->string('header_one');
             $table->longText('header_one_des1');
@@ -39,6 +39,10 @@ class CreateAboutMissionVisionsTable extends Migration
             $table->string('position');
             $table->string('email');
             $table->string('image')->nullable();
+            $table->string('mission_image');
+            $table->string('mission_image_path');
+            $table->string('vision_image');
+            $table->string('vision_image_path');
 
             $table->unsignedBigInteger('language_id');
             $table->foreign('language_id')->references('id')->on('languages');

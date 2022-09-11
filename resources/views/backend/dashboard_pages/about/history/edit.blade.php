@@ -43,14 +43,16 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h1 class="page-title">
+                        Edit
+                    </h1>
                     <h1 class="page-title">
                         {{ __('History') }}
                     </h1>
                 </div>
                 <div class="card-body ">
-                    <form action="{{ route('about_history.update', $abouthistory->language_id) }}" method="POST"
-                        id="aboutHistoryForm">
+                    <form action="{{ route('about_history.update', $abouthistory->language_id) }}" method="POST" id="aboutHistoryForm" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="row g-4">
@@ -101,7 +103,7 @@
                                 <div class="row">
                                     <div class="mb-3 col-6">
                                         <div class="form-label">Picture / Image</div>
-                                        <input type="file" class="form-control">
+                                        <input type="file" class="form-control" name = "image"
                                     </div>
                                 </div>
                             </div>

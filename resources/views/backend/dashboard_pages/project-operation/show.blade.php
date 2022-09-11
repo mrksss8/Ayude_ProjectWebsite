@@ -67,10 +67,13 @@
                 @component('backend.components.alert')
                 @endcomponent
                 <div class="card card-lg">
-                    <div class="card-header d-flex align-items-center justify-content-center">
+                    <div class="card-header d-flex align-items-center justify-content-between">
                         <h1 class="page-title">
                             {{ __('Project') }}
                         </h1>
+                        <span><img src="https://flagcdn.com/16x12/{{ $current_language->symbol }}.png" alt=""
+                            class="m-2">{{ $current_language->language }}</span>
+                        
                     </div>
                     <div class="card-body ">
                         <div class="row g-4">
