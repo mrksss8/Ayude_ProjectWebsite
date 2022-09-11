@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <div class="form-label">Picture / Image</div>
-                                                <input type="file" class="form-control" name = "mission_image">
+                                                <input type="file" class="form-control" name = "mission_image" required>
                                             </div>
                                         </div>
                                         <div class="mb-3">
@@ -152,7 +152,7 @@
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <div class="form-label">Picture / Image</div>
-                                                <input type="file" class="form-control" name = "vision_image">
+                                                <input type="file" class="form-control" name = "vision_image" required>
                                             </div>
                                         </div>
                                         <div class="mb-3">

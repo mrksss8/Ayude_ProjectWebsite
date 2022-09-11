@@ -106,7 +106,7 @@
                                 <div class="row">
                                     <div class="mb-3 col-6">
                                         <div class="form-label">Picture / Image</div>
-                                        <input type="file" class="form-control" name = "image">
+                                        <input type="file" class="form-control" name = "image" required>
                                     </div>
                                 </div>
                             </div>

@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="row justify-content-center mb-5 pb-3">
-                <img src="https://www.ayude.be/wp-content/uploads/2021/05/History-3.png" alt="" srcset="">
+                <img src="{{ asset('storage/history/'.$item->aboutHistory->image) }}" alt="" srcset="">
             </div>
 
         </div>

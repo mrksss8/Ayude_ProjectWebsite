@@ -124,6 +124,43 @@
                                     @enderror
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 Head:</label>
+                                        <input type="text" class="form-control  @error('card_header2') is-invalid @enderror"
+                                            name="card_header2" value=" {{ old('card_header2', $helpUs->card_header2) }}">
+                                        @error('card_header2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 Description:</label>
+                                    <textarea class="form-control  @error('card_des2') is-invalid @enderror" data-bs-toggle="autosize"
+                                        name="card_des2">{{ old('card_des2', $helpUs->card_des2) }}</textarea>
+                                    @error('card_des2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 List 1:</label>
+                                        <input type="text" class="form-control"
+                                            name="card2list1" value=" {{ old('card2list1', $helpUs->card2_list1) }}">
+                                        
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Card 2 List 2:</label>
+                                        <input type="text" class="form-control"
+                                        name="card2list2" value=" {{ old('card2list2', $helpUs->card2_list2) }}">
+                                    </div>
+                                </div>
                                 <hr>
                                 <div class="row mb-4 flex justify-content-center">
                                     <div class="mb-3 col-6">

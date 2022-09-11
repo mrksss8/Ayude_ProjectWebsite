@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Language;
 use App\Models\AboutHistory;
 use Illuminate\Database\Seeder;
+use DB;
+use Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +29,12 @@ class DatabaseSeeder extends Seeder
         Language::create([
             'language' => 'Dutch',
             'symbol' => 'nl'
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('password'),
         ]);
 
     }

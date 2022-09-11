@@ -103,17 +103,12 @@
                                     <div class="card">
 
                                         <div class="card-body">
-                                            <h4 class="card-title">One-time donations: these are of course also very
-                                                welcome.
+                                            <h4 class="card-title">{{ $helpUs->card_header2 }}
                                             </h4>
-                                            <p class="card-text">Some examples:</p>
+                                            <p class="card-text">{{ $helpUs->card_des2 }}</p>
                                             <ul>
-                                                <li>€ 40 is already sufficient for a complete treatment against the still
-                                                    fatal
-                                                    ailment tuberculosis, with an almost certain cure as a result.</li>
-                                                <li>For only half a euro you can sponsor a meal for the malnourished
-                                                    children.
-                                                </li>
+                                                <li>{{ $helpUs->card2_list1 }}</li>
+                                                <li>{{ $helpUs->card2_list2 }}</li>
                                             </ul>
                                         </div>
                                     </div>
