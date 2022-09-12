@@ -34,8 +34,6 @@
                   <x-language-nav id="{{ \Request::route()->getName() == 'news.blog' ? $item->posts[0]->id : '' }}"/>
                 @endif
 
-                <x-language-nav />
-
 
                 {{-- <li class="nav-item"><a href="{{ route('navigate', 'causes') }}" class="nav-link">Causes</a></li> --}}
                 {{-- <li class="nav-item"><a href="{{ route('navigate', 'donation') }}" class="nav-link">Donate</a></li> --}}
