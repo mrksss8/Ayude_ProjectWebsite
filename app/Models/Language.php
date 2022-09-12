@@ -31,10 +31,21 @@ class Language extends Model
         return $this->hasOne(aboutMissionVision::class);
     }
 
+    public function financing()
+    {
+        return $this->hasOne(Financing::class);
+    }
     public function project()
     {
         return $this->hasOne(Project::class);
     }
+
+    public function helpUs()
+    {
+        return $this->hasOne(HelpUs::class);
+    }
+
+
 
     public function registeredOffice()
     {

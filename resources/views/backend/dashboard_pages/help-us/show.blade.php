@@ -5,12 +5,14 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    
+                    {{-- <h1 class="page-title">
+                        {{ __('Help Us') }}
+                    </h1> --}}
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
-                        @if ($boardTitle != null)
-                            <a href="{{ route('about_board.edit', $current_language->id) }}"
+                        @if ($helpUs != null)
+                            <a href="{{ route('help-us.edit', $helpUs->language_id) }}"
                                 class="btn d-none d-md-inline-flex btn-primary">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                                 <!-- SVG icon code -->
@@ -28,6 +30,7 @@
                         @else
                         @endif
 
+
                         <a class="btn nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -41,13 +44,14 @@
                                 </svg>
                             </span>
                             <span class="nav-link-title">
-                                {{ __('Languages') }}
+                                {{-- {{ __('Languages') }} --}}
+                                Languages
                             </span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                             @foreach ($languages as $language)
-                                <a class="dropdown-item" href="{{ route('about_board.show', $language->id) }}">
+                                <a class="dropdown-item" href="{{ route('help-us.show', $language->id) }}">
                                     <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt=""
                                             class="m-2">{{ $language->language }}</span>
 
@@ -61,7 +65,7 @@
         </div>
     </div>
 
-    @if ($boardTitle != null)
+    @if ($helpUs != null)
         <div class="page-body">
             <div class="container-xl">
                 @component('backend.components.alert')
@@ -69,31 +73,51 @@
                 <div class="card card-lg">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <h1 class="page-title">
-                            {{ __('Board') }}
+                            {{ __('Help Us') }}
                         </h1>
-                        <span><img src="https://flagcdn.com/16x12/{{ $boardTitle->language->symbol }}.png" alt=""
-                            class="m-2">{{ $boardTitle->language->language }}</span>
-                       
+                        <span><img src="https://flagcdn.com/16x12/{{ $current_language->symbol }}.png" alt=""
+                                class="m-2">{{ $current_language->language }}</span>
+
                     </div>
+                    <!-- Under First Title -->
                     <div class="card-body ">
                         <div class="row g-4">
                             <div class="col-12 markdown">
-                                <h1 class="text-center">{{ $boardTitle->page_title }}</h1>
-                                <p class="text-center mb-5">{{ $boardTitle->page_des }}</p>
+                                <h1 class="text-center">{{ $helpUs->page_title }}</h1>
+                                <h3>{{ $helpUs->sub_header1 }}</h3>
+                                <br>
+                                <h3 class="mt-4">{{ $helpUs->sub_header2 }}</h3>
+                                <p class="mt-4">{{ $helpUs->paragraph1 }}</p>
                             </div>
-                            <div class="row">
-                                @foreach ($boardPersons as $boardPerson)
-                                    <div class="col-4">
-                                        <div class="text-center p-3 border rounded">
-
-                                            <img src="{{ url('storage/' . $boardPerson->image_path) }}" alt="Board Image"
-                                                style="width: 200px; height:auto;">
-                                            <p class="pt-3 m-0">{{ $boardPerson->name }}</p>
-
+                            <!--Card-->
+                            <div class="col-12 markdown">
+                                <div class="card-group mt-4">
+                                    <div class="card">
+                                        <!-- For each here -->
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ $helpUs->card_header }}</h4>
+                                            <p class="card-text">{{ $helpUs->card_des }}
+                                            </p>
                                         </div>
                                     </div>
-                                @endforeach
+                                    <div class="card">
+
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ $helpUs->card_header2 }}
+                                            </h4>
+                                            <p class="card-text">{{ $helpUs->card_des2 }}</p>
+                                            <ul>
+                                                <li>{{ $helpUs->card2_list1 }}</li>
+                                                <li>{{ $helpUs->card2_list2 }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- Second Title -->
+                            <h1 class="text-center">{{ $helpUs->page_second_title }}</h1>
+                            <p>{{ $helpUs->paragraph2 }}</p>
+
                         </div>
                     </div>
                 </div>
@@ -107,11 +131,11 @@
                 <div class="card card-lg">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <h1 class="page-title">
-                            {{ __('Board') }}
+                            {{ __('Help Us') }}
                         </h1>
                         <span><img src="https://flagcdn.com/16x12/{{ $current_language->symbol }}.png" alt=""
-                            class="m-2">{{ $current_language->language }}</span>
-                        
+                                class="m-2">{{ $current_language->language }}</span>
+
                     </div>
                     <div class="card-body ">
                         <div class="row g-4">
@@ -121,7 +145,7 @@
                                         <h3 class="text-warning">No {{ $current_language->language }} Content /
                                             Translation has been added yet. </h3>
                                         <h3 class="text-warning">Click <a
-                                                href="{{ route('about_board.create', $current_language->id) }}"
+                                                href="{{ route('help-us.create', $lang_id) }}"
                                                 class="btn d-none d-md-inline-flex btn-yellow">
                                                 Create
                                             </a> to add content/translation.</h3>
@@ -136,6 +160,4 @@
             </div>
         </div>
     @endif
-
-
 @endsection

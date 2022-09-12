@@ -5,9 +5,7 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="page-title">
-                        {{ __('Board') }}
-                    </h1>
+        
                 </div>
                 <div class="col-auto">
                     <div class="btn-list">
@@ -24,15 +22,14 @@
                                 <circle cx="12" cy="14" r="2"></circle>
                                 <polyline points="14 4 14 8 8 8 8 4"></polyline>
                             </svg>
-                            Save
+                            Update
                         </a>
 
                         <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-title">
-
-                                <span><img src="{{ asset('images/' . $boardTitle->language->symbol . '.png') }}"
-                                        alt="" class="m-2">{{ $boardTitle->language->language }}</span>
-                            </span>
+                                <img src="https://flagcdn.com/16x12/{{ $boardTitle->language->symbol }}.png" alt=""
+                                class="m-2">{{ $boardTitle->language->language }}
+                            </span> 
                         </a>
 
                     </div>
@@ -44,10 +41,13 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
-
-                    <span><img src="{{ asset('images/' . $boardTitle->language->symbol . '.png') }}" alt=""
-                            class="m-2">{{ $boardTitle->language->language }} Language (Create)</span>
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h1 class="page-title">
+                        Edit
+                </h1>
+                  <h1 class="page-title">
+                        {{ __('Board') }}
+                </h1>
                 </div>
                 <div class="card-body ">
                     <form action="{{ route('about_board.update', $boardTitle->language->id) }}" method="POST"

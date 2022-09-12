@@ -27,53 +27,28 @@
                             Update
                         </a>
 
-                        <a class="btn nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
-                            data-bs-auto-close="outside" role="button" aria-expanded="false">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/select -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <rect x="4" y="4" width="16" height="16" rx="2" />
-                                    <path d="M9 11l3 3l3 -3" />
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                {{ __('Languages') }}
-                            </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/en.png') }}" alt=""
-                                        class="m-2">{{ __('English') }}</span>
+                        <a class="btn" data-bs-auto-close="outside" role="button" aria-expanded="false">
 
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/fr.png') }}" alt=""
-                                        class="m-2">{{ __('French') }}</span>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <span><img src="{{ asset('images/nl.png') }}" alt=""
-                                        class="m-2">{{ __('Dutch') }}</span>
-                            </a>
-                        </div>
+                            <span><img src="https://flagcdn.com/16x12/{{ $about_mission_vision->language->symbol }}.png"
+                                    alt="" class="m-2">{{ $about_mission_vision->language->language }}</span>
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <form action="{{ route('about_mission_vision.update', $about_mission_vision->language_id) }}" method="POST"
-        id="aboutMissionVisionSubmit">
+        id="aboutMissionVisionSubmit" enctype='multipart/form-data'>
         @method('PUT')
         @csrf
+
         <div class="page-body">
             <div class="container-xl">
                 <div class="card card-md">
                     <div class="card-header d-flex align-items-center justify-content-center">
-                        <span><img src="{{ asset('images/' . $about_mission_vision->language->symbol . '.png') }}"
-                                alt="" class="m-2">{{ $about_mission_vision->language->language }}
-                            Language</span>
+                        <span><img src="https://flagcdn.com/16x12/{{ $about_mission_vision->language->symbol }}.png"
+                                alt="" class="m-2">{{ $about_mission_vision->language->language }}</span>
                     </div>
                     <div class="card-body">
 
@@ -124,12 +99,11 @@
 
                                                 <label class="form-label">Header One:</label>
                                                 <input type="text" class="form-control" name="header_one"
-                                                    value=" {{ old('header_one', $about_mission_vision->header_one) }}"
-                                                    </div>
-                                                <div class="mb-3 col-6">
-                                                    <div class="form-label">Picture / Image</div>
-                                                    <input type="file" class="form-control">
-                                                </div>
+                                                    value=" {{ old('header_one', $about_mission_vision->header_one) }}">
+                                            </div>
+                                            <div class="mb-3 col-6">
+                                                <div class="form-label">Picture / Image</div>
+                                                <input type="file" class="form-control" name = "mission_image">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Paragraph</label>
@@ -173,7 +147,7 @@
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <div class="form-label">Picture / Image</div>
-                                                <input type="file" class="form-control">
+                                                <input type="file" class="form-control" name = "vision_image">
                                             </div>
                                         </div>
                                         <div class="mb-3">
@@ -219,7 +193,8 @@
                                                         <div class="mb-3 col-9">
 
                                                             <label class="form-label">Full Name:</label>
-                                                            <input type="text" class="form-control" name="full_name" value=" {{ old('header_two', $about_mission_vision->full_name) }}">
+                                                            <input type="text" class="form-control" name="full_name"
+                                                                value=" {{ old('header_two', $about_mission_vision->full_name) }}">
                                                         </div>
                                                         <div class="mb-3 col-3">
                                                             <div class="form-label">Picture / Image</div>
@@ -231,17 +206,20 @@
                                                         <div class="mb-3 col-4">
 
                                                             <label class="form-label">Company:</label>
-                                                            <input type="text" class="form-control" name="company" value=" {{ old('header_two', $about_mission_vision->company) }}">
+                                                            <input type="text" class="form-control" name="company"
+                                                                value=" {{ old('header_two', $about_mission_vision->company) }}">
                                                         </div>
                                                         <div class="mb-3 col-4">
 
                                                             <label class="form-label">Position:</label>
-                                                            <input type="text" class="form-control" name="position" value=" {{ old('header_two', $about_mission_vision->position) }}">
+                                                            <input type="text" class="form-control" name="position"
+                                                                value=" {{ old('header_two', $about_mission_vision->position) }}">
                                                         </div>
                                                         <div class="mb-3 col-4">
 
                                                             <label class="form-label">E-mail:</label>
-                                                            <input type="text" class="form-control" name="email" value=" {{ old('header_two', $about_mission_vision->email) }}">
+                                                            <input type="text" class="form-control" name="email"
+                                                                value=" {{ old('header_two', $about_mission_vision->email) }}">
                                                         </div>
 
                                                     </div>

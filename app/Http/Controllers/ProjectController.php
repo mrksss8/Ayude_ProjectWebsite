@@ -20,8 +20,9 @@ class ProjectController extends Controller
     {
         $project =  Project::where('language_id',$lang_id)->with('language')->first();
         $languages = language::all();
+        $current_language = language::where('id',$lang_id)->first();
 
-        return view('backend.dashboard_pages.project-operation.show', compact('languages','project','lang_id'));
+        return view('backend.dashboard_pages.project-operation.show', compact('languages','project','current_language'));
 
     }
 

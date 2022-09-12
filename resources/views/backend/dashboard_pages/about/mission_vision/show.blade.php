@@ -5,14 +5,13 @@
         <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="page-title">
-                        {{ __('Mission Vission') }}
-                    </h1>
+
                 </div>
                 <div class="col-auto">
-                    <div class="btn-list">
+                    <div class="d-flex align-items-center" style="gap:8px;">
                         @if ($about_mission_vision != null)
-                            <a href="{{ route('about_mission_vision.edit', $lang_id) }}" class="btn d-none d-md-inline-flex btn-primary">
+                            <a href="{{ route('about_mission_vision.edit', $current_language->id) }}"
+                                class="btn d-none d-md-inline-flex btn-primary">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                                 <!-- SVG icon code -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
@@ -27,16 +26,6 @@
                                 Edit
                             </a>
                         @else
-                            <a href="{{ route('about_mission_vision.create', $lang_id) }}" class="btn d-none d-md-inline-flex btn-yellow">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus"
-                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <desc>Download more icon variants from https://tabler-icons.io/i/plus</desc>
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                                Create
                         @endif
 
                         <a class="btn nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
@@ -58,12 +47,11 @@
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                             @foreach ($languages as $language)
                                 <a class="dropdown-item" href="{{ route('about_mission_vision.show', $language->id) }}">
-                                    <span><img src="{{ asset('images/' . $language->symbol . '.png') }}" alt=""
+                                    <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt=""
                                             class="m-2">{{ $language->language }}</span>
 
                                 </a>
                             @endforeach
-
                         </div>
                     </div>
                 </div>
@@ -72,89 +60,89 @@
     </div>
 
     @if ($about_mission_vision != null)
-    <div class="page-body">
-        <div class="container-xl">
-            @component('backend.components.alert')
-            @endcomponent
-            <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
-                    <span><img src="{{ asset('images/' . $about_mission_vision->language->symbol . '.png') }}" alt=""
-                            class="m-2">{{ $about_mission_vision->language->language }} Language</span>
-                </div>
-                <div class="card-body">
-                    <div class="row g-4">
-                        <div class="col-12 markdown">
-                            <h1>{{ $about_mission_vision->page_title }}</h1>
-                            <p>{{ $about_mission_vision->page_des }}</p>
-                        </div>
-                        <hr>
-                        <div class="col-md-6 markdown">
-                            <h2>Photo / Image</h2>
-                            <div class="row" style="width: 50%">
-                                <img src="https://www.ayude.be/wp-content/uploads/2021/05/FB_IMG_1620086337227_edit_349678056188307-1.jpg"
-                                    alt="" srcset="">
+        <div class="page-body">
+            <div class="container-xl">
+                @component('backend.components.alert')
+                @endcomponent
+                <div class="card card-lg">
+                    <div class="card-header d-flex align-items-center justify-content-center">
+                        <span><img src="https://flagcdn.com/16x12/{{ $about_mission_vision->language->symbol }}.png"
+                                alt="" class="m-2">{{ $about_mission_vision->language->language }}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-12 markdown">
+                                <h1>{{ $about_mission_vision->page_title }}</h1>
+                                <p>{{ $about_mission_vision->page_des }}</p>
                             </div>
-                        </div>
-                        <div class="col-md-6 markdown">
-                            <h2>{{ $about_mission_vision->header_one }}</h2>
-                            <p> {{ $about_mission_vision->header_one_des1 }}</p>
-                            <ul>
-                                <li>{{ $about_mission_vision->list_1 }}</li>
-                                <li>{{ $about_mission_vision->list_2 }}</li>
-                                <li>{{ $about_mission_vision->list_3 }}</li>
-                            </ul>
-                            <p>{{ $about_mission_vision->header_one_des2 }}</p>
-                        </div>
-                        <div class="col-md-6 markdown">
-                            <h2>{{ $about_mission_vision->header_two }}</h2>
-                            <p>{{ $about_mission_vision->header_two_des1 }}</p>
+                            <hr>
+                            <div class="col-md-6 markdown">
+                                <h2>Photo / Image</h2>
+                                <div class="row" style="width: 50%">
+                                    <img src="{{ url('storage/'.$about_mission_vision->mission_image_path) }}" alt="mission Image">
+                                </div>
+                            </div>
+                            <div class="col-md-6 markdown">
+                                <h2>{{ $about_mission_vision->header_one }}</h2>
+                                <p> {{ $about_mission_vision->header_one_des1 }}</p>
+                                <ul>
+                                    <li>{{ $about_mission_vision->list_1 }}</li>
+                                    <li>{{ $about_mission_vision->list_2 }}</li>
+                                    <li>{{ $about_mission_vision->list_3 }}</li>
+                                </ul>
+                                <p>{{ $about_mission_vision->header_one_des2 }}</p>
+                            </div>
+                            <div class="col-md-6 markdown">
+                                <h2>{{ $about_mission_vision->header_two }}</h2>
+                                <p>{{ $about_mission_vision->header_two_des1 }}</p>
 
-                            <p>{{ $about_mission_vision->header_two_des2 }}</p>
-                        </div>
-                        <div class="col-md-6 markdown">
-                            <h2>Photo / Image</h2>
-                            <div class="row" style="width: 50%">
-                                <img src="https://www.ayude.be/wp-content/uploads/2021/02/FB_IMG_1613202447687_edit_89341461518658-2-450x600.jpg"
-                                    alt="" srcset="">
+                                <p>{{ $about_mission_vision->header_two_des2 }}</p>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="col-md-12 markdown">
-                            <p>{{ $about_mission_vision->community_des }}</p>
-                        </div>
-                        <div class="col-md-12 markdown">
-                            <div class="card">
-                                <div class="table-responsive">
-                                    <table class="table table-vcenter card-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Title</th>
-                                                <th class="w-1"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex py-1 align-items-center">
-                                                        <span class="avatar me-2"
-                                                            style="background-image: url(./static/avatars/006m.jpg)"></span>
-                                                        <div class="flex-fill">
-                                                            <div class="font-weight-medium">
-                                                                {{ $about_mission_vision->full_name }}</div>
-                                                            <div class="text-muted"><a href="#"
-                                                                    class="text-reset">{{ $about_mission_vision->email }}</a>
+                            <div class="col-md-6 markdown">
+                                <h2>Photo / Image</h2>
+                                <div class="row" style="width: 50%">
+                                    <img src="{{ url('storage/'.$about_mission_vision->vision_image_path) }}" alt="Vision Image">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="col-md-12 markdown">
+                                <p>{{ $about_mission_vision->community_des }}</p>
+                            </div>
+                            <div class="col-md-12 markdown">
+                                <div class="card">
+                                    <div class="table-responsive">
+                                        <table class="table table-vcenter card-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Title</th>
+                                                    <th class="w-1"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex py-1 align-items-center">
+                                                            <span class="avatar me-2"
+                                                                style="background-image: url(./static/avatars/006m.jpg)"></span>
+                                                            <div class="flex-fill">
+                                                                <div class="font-weight-medium">
+                                                                    {{ $about_mission_vision->full_name }}</div>
+                                                                <div class="text-muted"><a href="#"
+                                                                        class="text-reset">{{ $about_mission_vision->email }}</a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div>{{ $about_mission_vision->company }}</div>
-                                                    <div class="text-muted">{{ $about_mission_vision->position }}</div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                    </td>
+                                                    <td>
+                                                        <div>{{ $about_mission_vision->company }}</div>
+                                                        <div class="text-muted">{{ $about_mission_vision->position }}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -162,6 +150,41 @@
                 </div>
             </div>
         </div>
-    </div>
+    @else
+        <div class="page-body">
+            <div class="container-xl">
+                @component('backend.components.alert')
+                @endcomponent
+                <div class="card card-lg">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h1 class="page-title">
+                            {{ __('Mission Vission') }}
+                        </h1>
+                        <span><img src="https://flagcdn.com/16x12/{{ $current_language->symbol}}.png" alt=""
+                            class="m-2">{{ $current_language->language}}</span>
+                    </div>
+                    <div class="card-body ">
+                        <div class="row g-4">
+                            <div class="col-12 markdown">
+                                <div class="row mb-4">
+                                    <div class="mb-3 col-12 text-center">
+                                        <h3 class="text-warning">No {{ $current_language->language }} Content /
+                                            Translation has been added yet. </h3>
+                                        <h3 class="text-warning">Click <a
+                                                href="{{ route('about_mission_vision.create', $current_language->id) }}"
+                                                class="btn d-none d-md-inline-flex btn-yellow">
+                                                Create
+                                            </a> to add content/translation.</h3>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
-        @endsection
+@endsection
