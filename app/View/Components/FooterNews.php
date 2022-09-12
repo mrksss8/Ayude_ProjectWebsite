@@ -2,21 +2,21 @@
 
 namespace App\View\Components;
 
-use App\Models\Language;
+use App\Models\Post;
 use Illuminate\View\Component;
 
-class LanguageNav extends Component
+class FooterNews extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
+    public $language;
 
-    public $id;
-    public function __construct($id)
+    public function __construct($language)
     {
-      $this->id = $id;
+      $this->language = $language;
     }
 
     /**
@@ -26,7 +26,7 @@ class LanguageNav extends Component
      */
     public function render()
     {
-        $languages = Language::all();
-        return view('components.language-nav', compact('languages'));
+      $news = Post::where('language_id','=',$this->language)->orderBy('updated_at', 'desc')->limit(2)->get();
+      return view('components.footer-news', compact('news'));
     }
 }

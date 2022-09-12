@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\Validator;
 
 class HomePageController extends Controller
 {
+    // Frontend
     public function index($lang)
     {
         $item = Language::where('id','=',$lang)->with(['home' => function ($query) {
             $query->where('section_no','=',1)->orWhere('section_no','=',3);
+        }, 'mainNavs.subNavs' => function($query) use($lang) {
+            $query->where('language_id','=',$lang);
         }])->first();
+        // dd($item);
         $section2 = Home::where([['language_id','=',$lang],['section_no','=',2]])->get();
         return view('frontend.landing_pages.index', compact('section2', 'item'));
     }
@@ -79,5 +83,14 @@ class HomePageController extends Controller
         ]);
 
         return redirect()->route('homepage.show', $lang)->with('success', 'Record saved successfully!');
+    }
+    
+    public function editSec2($lang, $id)
+    {
+      $language = Language::where('id','=',$lang)->first();
+      $lang_id = $lang;
+      $data = Home::where('id','=',$id)->first();
+      $languages = Language::all();
+      return view('backend.dashboard_pages.home-page.edit-sec2', compact('data', 'language', 'languages', 'lang_id'));
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\View\Components;
 
-use App\Models\Language;
+use App\Models\MainNav;
 use Illuminate\View\Component;
 
-class LanguageNav extends Component
+class FooterLinks extends Component
 {
     /**
      * Create a new component instance.
@@ -13,10 +13,11 @@ class LanguageNav extends Component
      * @return void
      */
 
-    public $id;
-    public function __construct($id)
+    public $language;
+
+    public function __construct($language)
     {
-      $this->id = $id;
+      $this->language = $language;
     }
 
     /**
@@ -26,7 +27,7 @@ class LanguageNav extends Component
      */
     public function render()
     {
-        $languages = Language::all();
-        return view('components.language-nav', compact('languages'));
+      $navs = MainNav::where('language_id','=',$this->language)->get();
+      return view('components.footer-links', compact('navs'));
     }
 }

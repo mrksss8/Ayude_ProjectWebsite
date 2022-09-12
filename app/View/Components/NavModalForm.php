@@ -2,10 +2,9 @@
 
 namespace App\View\Components;
 
-use App\Models\Language;
 use Illuminate\View\Component;
 
-class LanguageNav extends Component
+class NavModalForm extends Component
 {
     /**
      * Create a new component instance.
@@ -13,10 +12,11 @@ class LanguageNav extends Component
      * @return void
      */
 
-    public $id;
-    public function __construct($id)
+    public $action;
+
+    public function __construct($action)
     {
-      $this->id = $id;
+        $this->action = $action;
     }
 
     /**
@@ -26,7 +26,6 @@ class LanguageNav extends Component
      */
     public function render()
     {
-        $languages = Language::all();
-        return view('components.language-nav', compact('languages'));
+        return view('components.nav-modal-form');
     }
 }

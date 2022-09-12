@@ -2,21 +2,18 @@
 
 namespace App\View\Components;
 
-use App\Models\Language;
 use Illuminate\View\Component;
 
-class LanguageNav extends Component
+class NavigationsAlert extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
-    public $id;
-    public function __construct($id)
+    public function __construct()
     {
-      $this->id = $id;
+        //
     }
 
     /**
@@ -26,7 +23,6 @@ class LanguageNav extends Component
      */
     public function render()
     {
-        $languages = Language::all();
-        return view('components.language-nav', compact('languages'));
+        return view('components.navigations-alert');
     }
 }

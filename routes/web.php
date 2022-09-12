@@ -1,16 +1,23 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ContactusController;
+use App\Http\Controllers\AboutBoardController;
+use App\Http\Controllers\NavigationsController;
 use App\Http\Controllers\AboutHistoryController;
 use App\Http\Controllers\AboutMissionVisionController;
+
 use App\Http\Controllers\AboutBoardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\HelpUsController;
 use App\Http\Controllers\FinancingController;
 
 use App\Models\Language;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +32,20 @@ use App\Models\Language;
 Auth::routes();
 
     
+    // These routes are reserved for the frontend navigation of the follwing pages to be made
+    // Kindly add the proper Controller Name class the Controller Name class given are just a filler 
+    // Don't change the route name bevause these are the reserved routename that is present on the database
+    Route::get('/news/{lang}', [NewsController::class, 'frontend'])->name('news'); //News
+    Route::get('/news/blog/{lang}/{id}', [NewsController::class, 'blog'])->name('news.blog'); //News
+    Route::get('/help-us/{lang}', [HelpController::class, 'index'])->name('helpus'); //Help Us
+    Route::get('/financing/{lang}', [FinancingpController::class, 'index'])->name('financing'); //News
+    Route::get('/operation/{lang}', [FinancingpController::class, 'create'])->name('operation'); //News
+
+    //News Comments
+    Route::post('/comment/{id}', [NewsController::class, 'comment'])->name('news.blog.comment');
+    Route::post('/reply/{post_id}/{comment_id}', [NewsController::class, 'reply'])->name('news.blog.reply');
+
+
     Route::get('/homepage/{lang}', [App\Http\Controllers\HomePageController::class, 'index'])->name('frontend.home'); //Home
     Route::get('/contact-us/{lang}', [App\Http\Controllers\ContactusController::class, 'index'])->name('frontend.contact'); //Contact Us
     Route::get('/about-history/{lang}', [App\Http\Controllers\AboutHistoryController::class, 'index'])->name('frontend.about-history'); //About History
@@ -36,7 +57,7 @@ Auth::routes();
     Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('frontend.help_us'); 
     
     Route::get('/', function () {
-        return redirect()->route('frontend.home', ['lang' => 1]);
+        return redirect()->route('homepage', ['lang' => 1]);
     })->name('welcome');
 
 
@@ -47,7 +68,8 @@ Auth::routes();
     Route::middleware('auth')->group(function () {
 
         Route::get('/dashboard', function () {
-            return view('backend.dashboard_pages.home');
+          $news = Post::where('language_id','=',1)->get();
+          return view('backend.dashboard_pages.home', compact('news'));
         })->name('dashboard.home');
 
 
@@ -61,6 +83,7 @@ Auth::routes();
             Route::post('/home-page/store/{sec}/{lang}', 'store')->name('homepage.store');
             Route::get('/home-page/edit/{sec}/{lang}/{id}', 'edit')->name('homepage.edit');
             Route::put('/home-page/udpate/{sec}/{lang}/{id}', 'update')->name('homepage.udpate');
+            Route::get('home-page/edit-card/{lang}/{id}', 'editSec2')->name('homepage.sec2.edit');
         });
 
         Route::controller(ContactusController::class)->group(function () {
@@ -103,6 +126,28 @@ Auth::routes();
             Route::post('/project/store', 'store')->name('project.store');
         });
 
+
+        // Navigations
+        Route::controller(NavigationsController::class)->prefix('navigations')->group(function(){
+            Route::get('/index', 'index')->name('navigation.index');
+            Route::get('/create/{id}/{lang}/{type}', 'create')->name('navigation.create');
+            Route::post('/store/{mainnav}/{subnav}/{type}', 'translate')->name('navigation.translate');
+            Route::get('/show/{id}', 'show')->name('navigation.show');
+            Route::get('/edit/{id}/{type}', 'edit')->name('navigation.edit');
+            Route::put('/update/{id}/{type}', 'update')->name('navigation.udpate');
+        });
+
+        // News
+        Route::controller(NewsController::class)->prefix('news')->group(function(){
+          Route::get('/index/{lang}', 'index')->name('news.index');
+          Route::get('/crate/{lang}', 'create')->name('news.create');
+          Route::get('/translate/{lang}/{id}', 'translate')->name('news.translate');
+          Route::post('/store/{lang}/{id}', 'store')->name('news.store');
+          Route::get('/edit/{lang}/{id}', 'edit')->name('news.edit');
+          Route::put('/update/{lang}/{id}', 'update')->name('news.update');
+          Route::delete('/delete/{lang}/{id}', 'delete')->name('news.delete');
+          Route::get('/show/{lang}/{id}', 'show')->name('news.show');
+          
         Route::controller(HelpUsController::class)->group(function () {
             Route::get('/help-us/show/{lang_id}', 'show')->name('help-us.show');
             Route::get('/help-us/create/{lang_id}', 'create')->name('help-us.create');
@@ -126,7 +171,6 @@ Auth::routes();
         Route::get('/show-board-member', function () {
             return view('backend.dashboard_pages.show_board');
         })->name('dashboard.show_board');
-
 
         Route::get('/history-back', function () {
             return view('backend.dashboard_pages.history');

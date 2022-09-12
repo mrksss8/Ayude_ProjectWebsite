@@ -6,8 +6,8 @@
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-10 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-              <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->home[0]->header }}</h1>
-              <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->home[0]->content }}</p>
+              <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ !empty($item->home[0]->header) ? $item->home[0]->header : '' }}</h1>
+              <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ !empty($item->home[0]->content) ? $item->home[0]->content : '' }}</p>
               <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="https://vimeo.com/45830194" class="btn btn-white btn-outline-white px-4 py-3 popup-vimeo"><span class="icon-play mr-2"></span>Watch Video</a></p>
             </div>
             @foreach ($section2 as $data)
@@ -40,8 +40,8 @@
     <section class="ftco-section">
       <div class="container d-flex flex-column align-items-center">
         <div class="col-md-7 heading-section ftco-animate text-center mb-5">
-          <h2 class="mb-4">{{ $item->home[1]->header }}</h2>
-          <p>{{ $item->home[1]->content }}</p>
+          <h2 class="mb-4">{{ !empty($item->home[1]->header) ? $item->home[1]->header : '' }}</h2>
+          <p>{{ !empty($item->home[1]->content) ? $item->home[1]->content : '' }}</p>
           <p><a href="#" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
         </div>
         {{-- <div class="row">

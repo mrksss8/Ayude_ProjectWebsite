@@ -56,4 +56,34 @@ class Language extends Model
     {
         return $this->hasMany(GeneralSecretariat::class);
     }
+
+    public function mainNavs()
+    {
+        return $this->hasMany(MainNav::class, 'language_id')->orderBy('position');
+    }
+
+    public function subNavs()
+    {
+        return $this->hasMany(SubNav::class, 'language_id')->orderBy('position');
+    }
+
+    public function posts()
+    {
+      return $this->hasMany(Post::class, 'language_id');
+    }
+
+    public function translateTo($data)
+    {
+        // $data = $this->where('id','!=',$id)->get();
+        foreach($data as $item)
+        {
+            $translateTo = $this->where('id','!=',$item->language_id)->get();
+            dd($translateTo);
+        }
+    }
+
+    public function scopeWhereNot($query, $lang)
+    {
+      return $query->where('id','!=',$lang);
+    }
 }

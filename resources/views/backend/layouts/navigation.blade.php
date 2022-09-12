@@ -3,7 +3,6 @@
         <div class="navbar navbar-light">
             <div class="container-xl">
                 <ul class="navbar-nav">
-
                     <li class="nav-item @if (request()->routeIs('dashboard.home')) active @endif">
                         <a class="nav-link" href="{{ route('dashboard.home') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -134,8 +133,8 @@
 
 
                     <!-- news -->
-                    <li class="nav-item @if (request()->routeIs('about')) @endif">
-                        <a class="nav-link" href="">
+                    <li class="nav-item @if (request()->routeIs('news.index')) @endif">
+                        <a class="nav-link" href="{{ route('news.index', 1) }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                <!-- Download SVG icon from http://tabler-icons.io/i/news -->
 	                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -208,6 +207,22 @@
                             </span>
                             <span class="nav-link-title">
                                 {{ __('Users') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item @if (request()->routeIs('navigation.show')) active @endif">
+                        <a class="nav-link" href="{{ route('navigation.show', ['id'=>1]) }}">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="4" y1="6" x2="20" y2="6" />
+                                    <line x1="4" y1="12" x2="20" y2="12" />
+                                    <line x1="4" y1="18" x2="20" y2="18" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                {{ __('Navigations') }}
                             </span>
                         </a>
                     </li>

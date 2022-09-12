@@ -6,10 +6,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
                 <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span
-                            class="mr-2"><a href="{{ route('frontend.home', ['lang' => $item->id]) }}">Home</a></span> <span>Contact</span></p>
-                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact Us
-                    </h1>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact Us</h1>
                 </div>
             </div>
         </div>
@@ -25,41 +22,41 @@
                 <div class="col-6">
 
                     <div class="col-md-12 mb-4">
-                        <h2 class="h4">{{ $item->registeredOffice[0]->header }}</h2>
+                        <h2 class="h4">{{ !empty($item->registeredOffice[0]->header) ? $item->registeredOffice[0]->header : '' }}</h2>
                     </div>
                     <div class="w-100"></div>
                     <div class="col-md-12">
-                        <p><span>Address:</span>{{ $item->registeredOffice[0]->address }}</p>
+                        <p><span>Address:</span>{{ !empty($item->registeredOffice[0]->address) ? $item->registeredOffice[0]->address : '' }}</p>
                     </div>
                     <div class="col-md-12">
-                        <p><span>Company No.:</span> {{ $item->registeredOffice[0]->companyNumber }}</p>
+                        <p><span>Company No.:</span> {{ !empty($item->registeredOffice[0]->companyNumber) ? $item->registeredOffice[0]->companyNumber : '' }}</p>
                     </div>
                     <div class="col-md-12">
-                        <p><span>Tel:</span> {{ $item->registeredOffice[0]->tel }}</p>
+                        <p><span>Tel:</span> {{ !empty($item->registeredOffice[0]->tel) ? $item->registeredOffice[0]->tel : '' }}</p>
                     </div>
                     <div class="col-md-12">
-                        <p><span>Email:</span> <a href="{{ "mailto:".$item->registeredOffice[0]->email }}">{{ $item->registeredOffice[0]->email }}</a></p>
+                        <p><span>Email:</span> <a href="{{ !empty($item->registeredOffice[0]->email) ? "mailto:".$item->registeredOffice[0]->email : '' }}">{{ !empty($item->registeredOffice[0]->email) ? $item->registeredOffice[0]->email : '' }}</a></p>
                     </div>
                     <div class="col-md-12">
-                        <p>{{ $item->registeredOffice[0]->bank }}</p>
+                        <p>{{ !empty($item->registeredOffice[0]->bank) ? $item->registeredOffice[0]->bank : '' }}</p>
                     </div>
                 </div>
                 <div class="col-6">
 
 
                     <div class="col-md-12 mb-4">
-                        <h2 class="h4">{{ $item->generalSecretariat[0]->header }}</h2>
+                        <h2 class="h4">{{ !empty($item->generalSecretariat[0]->header) ? $item->generalSecretariat[0]->header : '' }}</h2>
                     </div>
                     <div class="w-100"></div>
                     <div class="col-md-12">
-                        <p> {{ $item->generalSecretariat[0]->name }}</p>
+                        <p> {{ !empty($item->generalSecretariat[0]->name) ? $item->generalSecretariat[0]->name : '' }}</p>
                     </div>
                     <div class="col-md-12">
-                        <p>{{ $item->generalSecretariat[0]->address }}</p>
+                        <p>{{ !empty($item->generalSecretariat[0]->address) ? $item->generalSecretariat[0]->address : '' }}</p>
                     </div>
 
                     <div class="col-md-12">
-                        <p>GSM: {{ $item->generalSecretariat[0]->gsm }}</p>
+                        <p>GSM: {{ !empty($item->generalSecretariat[0]->gsm) ? $item->generalSecretariat[0]->gsm : '' }}</p>
                     </div>
 
                 </div>
