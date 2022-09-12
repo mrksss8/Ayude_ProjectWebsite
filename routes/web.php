@@ -32,26 +32,26 @@ Auth::routes();
     // These routes are reserved for the frontend navigation of the follwing pages to be made
     // Kindly add the proper Controller Name class the Controller Name class given are just a filler 
     // Don't change the route name bevause these are the reserved routename that is present on the database
-    Route::get('/news/{lang}', [NewsController::class, 'frontend'])->name('news'); //News
     Route::get('/news/blog/{lang}/{id}', [NewsController::class, 'blog'])->name('news.blog'); //News
-    Route::get('/help-us/{lang}', [HelpController::class, 'index'])->name('helpus'); //Help Us
+    // Route::get('/help-us/{lang}', [HelpController::class, 'index'])->name('helpus'); //Help Us
     Route::get('/financing/{lang}', [FinancingpController::class, 'index'])->name('financing'); //News
     Route::get('/operation/{lang}', [FinancingpController::class, 'create'])->name('operation'); //News
-
+    
     //News Comments
     Route::post('/comment/{id}', [NewsController::class, 'comment'])->name('news.blog.comment');
     Route::post('/reply/{post_id}/{comment_id}', [NewsController::class, 'reply'])->name('news.blog.reply');
-
-
-    Route::get('/homepage/{lang}', [App\Http\Controllers\HomePageController::class, 'index'])->name('frontend.home'); //Home
-    Route::get('/contact-us/{lang}', [App\Http\Controllers\ContactusController::class, 'index'])->name('frontend.contact'); //Contact Us
-    Route::get('/about-history/{lang}', [App\Http\Controllers\AboutHistoryController::class, 'index'])->name('frontend.about-history'); //About History
-    Route::get('/about-mission-vision/{lang}', [App\Http\Controllers\AboutMissionVisionController::class, 'index'])->name('frontend.about-mision-vision'); //About Mission Vision
-    Route::get('/about-board/{lang}', [App\Http\Controllers\AboutBoardController::class, 'index'])->name('frontend.about-board'); //About Mission Vision
-    Route::get('/project/{lang}', [App\Http\Controllers\ProjectController::class, 'index'])->name('frontend.Project'); //About Mission Vision
-    // Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('frontend.help-us'); //Help Us
-    Route::get('/financing/{lang}', [App\Http\Controllers\FinancingController::class, 'index'])->name('frontend.financing'); 
-    Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('frontend.help_us'); 
+    
+    
+    Route::get('/homepage/{lang}', [App\Http\Controllers\HomePageController::class, 'index'])->name('homepage'); //Home
+    Route::get('/about-history/{lang}', [App\Http\Controllers\AboutHistoryController::class, 'index'])->name('history'); //About History
+    Route::get('/project/{lang}', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects'); //About Mission Vision
+    Route::get('/news/{lang}', [NewsController::class, 'frontend'])->name('news'); //News
+    Route::get('/help-us/{lang}', [App\Http\Controllers\HelpUsController::class, 'index'])->name('helpus'); 
+    Route::get('/contact-us/{lang}', [App\Http\Controllers\ContactusController::class, 'index'])->name('contactus'); //Contact Us
+    Route::get('/about-mission-vision/{lang}', [App\Http\Controllers\AboutMissionVisionController::class, 'index'])->name('missionvision'); //About Mission Vision
+    Route::get('/about-board/{lang}', [App\Http\Controllers\AboutBoardController::class, 'index'])->name('board'); //About Mission Vision
+    Route::get('/financing/{lang}', [App\Http\Controllers\FinancingController::class, 'index'])->name('financing'); 
+    Route::get('/gallery/{lang}', [App\Http\Controllers\GalleryController::class, 'index'])->name('gellery'); //Gallery
     
     Route::get('/', function () {
         return redirect()->route('homepage', ['lang' => 1]);

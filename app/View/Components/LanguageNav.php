@@ -13,10 +13,8 @@ class LanguageNav extends Component
      * @return void
      */
 
-    public $id;
-    public function __construct($id)
+    public function __construct()
     {
-      $this->id = $id;
     }
 
     /**

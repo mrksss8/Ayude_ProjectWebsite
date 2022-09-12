@@ -34,46 +34,6 @@
                   <x-language-nav id="{{ \Request::route()->getName() == 'news.blog' ? $item->posts[0]->id : '' }}"/>
                 @endif
 
-                 <li class="nav-item"><a href="{{ route('frontend.home', ['lang' => $item->id]) }}" class="nav-link">Home</a>
-                </li>
-
-                {{-- <li class="nav-item"><a href="{{ route('navigate', 'landing_page_about') }}" class="nav-link">About</a></li> --}}
-
-
-                <li class="nav-item btn-group">
-                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-expanded="false">About</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ route('frontend.about-mision-vision', $item->id) }}">Mission &
-                            Vision</a>
-                        <a class="dropdown-item" href="{{ route('frontend.about-history', $item->id) }}">History</a>
-                        <a class="dropdown-item" href="{{ route('frontend.about-board', $item->id) }}">Board</a>
-                    </div>
-                </li>
-
-
-                <li class="nav-item btn-group">
-                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-expanded="false">Project Operation</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ route('frontend.financing',$item->id) }}">Financing & Targeted Areas</a>
-                        <a class="dropdown-item" href="{{ route('frontend.Project', $item->id) }}">Projects</a>
-                    </div>
-                </li>
-                
-                <li class="nav-item"><a href="" class="nav-link">Gallery</a></li>
-                <li class="nav-item"><a href="" class="nav-link">News</a>
-                </li>
-                <li class="nav-item"><a href="{{ route('frontend.help_us', ['lang' => $item->id]) }}" class="nav-link">Help
-                        Us</a></li>
-
-                        
-                <li class="nav-item">
-                    <a href="{{ route('frontend.contact', ['lang' => $item->id]) }}" class="nav-link">
-                        Contact Us
-                    </a>
-                </li>
-
                 <x-language-nav />
 
 
