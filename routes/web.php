@@ -10,9 +10,6 @@ use App\Http\Controllers\AboutBoardController;
 use App\Http\Controllers\NavigationsController;
 use App\Http\Controllers\AboutHistoryController;
 use App\Http\Controllers\AboutMissionVisionController;
-
-use App\Http\Controllers\AboutBoardController;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\HelpUsController;
 use App\Http\Controllers\FinancingController;
 
@@ -148,6 +145,7 @@ Auth::routes();
           Route::delete('/delete/{lang}/{id}', 'delete')->name('news.delete');
           Route::get('/show/{lang}/{id}', 'show')->name('news.show');
           
+        });
         Route::controller(HelpUsController::class)->group(function () {
             Route::get('/help-us/show/{lang_id}', 'show')->name('help-us.show');
             Route::get('/help-us/create/{lang_id}', 'create')->name('help-us.create');
