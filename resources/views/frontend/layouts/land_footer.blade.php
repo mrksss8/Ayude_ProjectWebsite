@@ -5,11 +5,12 @@
       <div class="col-md-3">
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">About Us</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <p>Ayude has as its vision to show as much as
+            possible to underprivileged and less fortunate
+            street children in this world that they too are important</p>
           <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+            <li class="ftco-animate"><a href="https://www.facebook.com/ayudeforanewday?fref=ts"><span class="icon-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="https://www.youtube.com/channel/UC2xPAGhiQj8JuybpXDic51g/feed"><span class="icon-youtube"></span></a></li>
           </ul>
         </div>
       </div>
