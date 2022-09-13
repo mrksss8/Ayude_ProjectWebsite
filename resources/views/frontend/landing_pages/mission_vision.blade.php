@@ -2,28 +2,29 @@
 
 @section('content')
     <div class="hero-wrap" style="background-image: url({{ asset('images/bg_7.jpg') }});" data-stellar-background-ratio="0.5">
-        
+
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-10 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-                <h1 class = "text-danger">{{ $item->aboutMissionVision->page_title }}</h1>
+                <h1 class = "text-warning">{{ $item->aboutMissionVision->page_title }}</h1>
                {{-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p> --}}
-              <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutMissionVision->page_title }}</h1>
+              {{-- <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutMissionVision->page_title }}</h1> --}}
               <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutMissionVision->page_des}}</p>
             </div>
           </div>
         </div>
     </div>
 
-  
+
     <section class="ftco-section">
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 d-flex ftco-animate">
 
-                    <div class="img img-about align-self-stretch" style="background-image: url(https://www.ayude.be/wp-content/uploads/2021/05/FB_IMG_1620086337227_edit_349678056188307-1.jpg); width: 100%;"></div>
-
+                    <div class="img img-about align-self-stretch" style="background-image: url({{ url('storage/'.$item->aboutMissionVision->mission_image_path) }}); width: 100%;"></div>
+                    {{-- <img src="{{ url('storage/'.$item->aboutMissionVision->mission_image_path) }}" alt=""> --}}
+                    {{-- <div class="img img-about align-self-stretch" style="background-image: url({{ url('storage/'.$item->aboutMissionVision->vision_image_path) }}); width: 100%;"></div> --}}
                 </div>
                 <div class="col-md-6 pl-md-5 ftco-animate">
                     <h2 class="mb-4">{{ $item->aboutMissionVision->header_one }}</h2>
@@ -49,16 +50,16 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 pl-md-5 ftco-animate">
-                    <h2 class="mb-4">{{ $item->aboutMissionVision->two }}</h2>
+                    <h2 class="mb-4">{{ $item->aboutMissionVision->header_two }}</h2>
                     <p>
-                        {{ $item->aboutMissionVision->header_one_des1 }}                     
+                        {{ $item->aboutMissionVision->header_two_des1 }}
                         <br>
                         <br>
-                        {{ $item->aboutMissionVision->header_one_des2 }}    
+                        {{ $item->aboutMissionVision->header_two_des2 }}
                     </p>
                 </div>
                 <div class="col-md-6 d-flex ftco-animate">
-                    <div class="img img-about align-self-stretch" style="background-image: url(https://www.ayude.be/wp-content/uploads/2021/02/FB_IMG_1613202447687_edit_89341461518658-2-450x600.jpg); width: 100%;"></div>
+                    <div class="img img-about align-self-stretch" style="background-image: url({{ url('storage/'.$item->aboutMissionVision->vision_image_path) }}); width: 100%;"></div>
                 </div>
             </div>
         </div>
@@ -71,7 +72,7 @@
                   <p>{{ $item->aboutMissionVision->community_des }}    </p>
                 </div>
             </div>
-            
+
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
                     <div class="staff p-5">
@@ -81,7 +82,7 @@
                                 <h3>Baltazar Mangaliman</h3>
                                 <span class="position text-center">Senior Audit Manager at KPMG UK</span>
 
-     
+
                             </div>
                         </div>
                     </div>

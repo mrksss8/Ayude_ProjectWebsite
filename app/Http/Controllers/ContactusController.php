@@ -12,7 +12,10 @@ class ContactusController extends Controller
 {
     public function index($lang)
     {
-        $item = Language::where('id','=',$lang)->with('registeredOffice','generalSecretariat')->first();
+        $item = Language::where('id','=',$lang)->with(['mainNavs.subNavs' => function($query) use($lang) {
+            $query->where('language_id','=',$lang);
+        }, 'registeredOffice','generalSecretariat'])->first();
+        
         return view('frontend.landing_pages.contact', compact('item'));
     }
 

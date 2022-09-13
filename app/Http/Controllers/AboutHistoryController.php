@@ -47,10 +47,14 @@ class AboutHistoryController extends Controller
           
         ]);
         
+        $image = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('history',  $image, 'public');    
+        
         AboutHistory::where('language_id', $lang_id)->update([
             'page_title'       => $request->page_title,
             'page_des'         => $request->page_des,
             'header'           => $request->header,
+            'image'            => $image,
             'paragraph'        => $request->paragraph,
         ]);
 
@@ -76,12 +80,16 @@ class AboutHistoryController extends Controller
             'page_des' => 'required',
           
         ]);
-        
+
+        $image = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('history',  $image, 'public');     
+
         AboutHistory::create([
             'page_title'       => $request->page_title,
             'page_des'         => $request->page_des,
             'header'           => $request->header,
             'paragraph'        => $request->paragraph,
+            'image'            => $image,
             'language_id'      => $request->lang_id,
 
         ]);

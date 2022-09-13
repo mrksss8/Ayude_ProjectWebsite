@@ -76,11 +76,13 @@
             @endcomponent
           
             <div class="card card-lg">
-                <div class="card-header d-flex align-items-center justify-content-center">
-                    {{-- <span><img src="https://flagcdn.com/16x12/{{ $boardTitle->language->symbol }}.png" alt=""
-                        class="m-2">{{ $boardTitle->language->language }}</span> --}}
-                        <h2>Registered Office</h2>
-                   
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h1 class="page-title">
+                        {{ __('Contact Us') }}
+                    </h1>
+                    <span><img src="https://flagcdn.com/16x12/{{ $language->symbol }}.png" alt=""
+                        class="m-2">{{  $language->language }}</span>
+                    
                 </div>
             <div class="card-body">
                 <!-- Registered Office -->

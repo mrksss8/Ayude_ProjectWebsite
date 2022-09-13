@@ -12,7 +12,7 @@
                 <div class="col-auto">
                     <div class="btn-list">
                         @if ($financing != null)
-                            <a href="{{ route('about_history.edit', $financing->language_id) }}"
+                            <a href="#"
                                 class="btn d-none d-md-inline-flex btn-primary">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                                 <!-- SVG icon code -->
@@ -81,9 +81,12 @@
                 @component('backend.components.alert')
                 @endcomponent
                 <div class="card card-lg">
-                    <div class="card-header d-flex align-items-center justify-content-center">
-                        <span><img src="https://flagcdn.com/16x12/{{ $financing->language->symbol }}.png" alt=""
-                                class="m-2">{{ $financing->language->language }}</span>
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h1 class="page-title">
+                            {{ __('Financing and Target Areas') }}
+                        </h1>
+                        <span><img src="https://flagcdn.com/16x12/{{ $current_language->symbol }}.png" alt=""
+                                class="m-2">{{ $current_language->language }}</span>
 
                     </div>
                     <div class="card-body ">
@@ -114,8 +117,10 @@
                                         <div class="card">
                                             <!-- For each here -->
                                             <div class="card-img-top img-responsive img-responsive-21x9"
-                                                style="background-image: url(...)">
+                                                style="background-image: url({{ url('storage/financing/' . $card->page_title_2_sub_header1_card_image) }})">
                                             </div>
+
+
                                             <div class="card-body">
                                                 <h4 class="card-title">{{$card->page_title_2_sub_header1_card_head }}
                                                 </h4>
@@ -128,11 +133,12 @@
                             </div>
 
                             <div class="col-12 markdown">
+
                                 <h3 class="mt-4">{{ $financing->page_title_2_sub_header2 }}</h3>
                                 <p class="mt-4">{{ $financing->page_title_2_sub_header2_description }}</p>
 
                                 <h3 class="mt-4">{{ $financing->page_title_2_sub_header3 }}</h3>
-                                <p class="mt-4">{{ $financing->page_title_2_sub_header3 }}</p>
+                                <p class="mt-4">{{ $financing->page_title_2_sub_header3_description }}</p>
 
                                 <h3 class="mt-4">{{ $financing->page_title_2_sub_header4 }}</h3>
                                 <p class="mt-4">{{ $financing->page_title_2_sub_header4_description }}</p>
