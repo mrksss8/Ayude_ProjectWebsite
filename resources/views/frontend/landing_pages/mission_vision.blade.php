@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="hero-wrap" style="background-image: url({{ asset('images/bg_7.jpg') }});" data-stellar-background-ratio="0.5">
-        
+
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-  
+
     <section class="ftco-section">
         <div class="container">
             <div class="row d-flex">
@@ -50,12 +50,12 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 pl-md-5 ftco-animate">
-                    <h2 class="mb-4">{{ $item->aboutMissionVision->two }}</h2>
+                    <h2 class="mb-4">{{ $item->aboutMissionVision->header_two }}</h2>
                     <p>
-                        {{ $item->aboutMissionVision->header_one_des1 }}                     
+                        {{ $item->aboutMissionVision->header_two_des1 }}
                         <br>
                         <br>
-                        {{ $item->aboutMissionVision->header_one_des2 }}    
+                        {{ $item->aboutMissionVision->header_two_des2 }}
                     </p>
                 </div>
                 <div class="col-md-6 d-flex ftco-animate">
@@ -72,7 +72,7 @@
                   <p>{{ $item->aboutMissionVision->community_des }}    </p>
                 </div>
             </div>
-            
+
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
                     <div class="staff p-5">
@@ -82,7 +82,7 @@
                                 <h3>Baltazar Mangaliman</h3>
                                 <span class="position text-center">Senior Audit Manager at KPMG UK</span>
 
-     
+
                             </div>
                         </div>
                     </div>
