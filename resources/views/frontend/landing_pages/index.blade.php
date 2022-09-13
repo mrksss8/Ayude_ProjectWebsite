@@ -1,17 +1,4 @@
-<?php
-require_once __DIR__. '/../../../vendor/autoload.php';
-\Stripe\Stripe::setApiKey(env('STRIPE_API_KEY'));
-$session = \Stripe\Checkout\Session::create([
-    'submit_type' => 'donate',
-    'line_items' => [[
-    'price' => 'price_1LeJECCx5e49mrnBUEn4CZqc',
-    'quantity' => 1,
-  ]],
-    'mode' => 'payment',
-    'success_url' => 'https://httplocalhost.sharedwithexpose.com/success',
-    'cancel_url' => 'https://httplocalhost.sharedwithexpose.com/cancel',
-  ]);
-?>
+
 
 
 @extends('frontend.layouts.main_land_page')
@@ -60,25 +47,12 @@ $session = \Stripe\Checkout\Session::create([
           <h2 class="mb-4">{{ !empty($item->home[1]->header) ? $item->home[1]->header : '' }}</h2>
           <p>{{ !empty($item->home[1]->content) ? $item->home[1]->content : '' }}</p>
           <p>Or</p>
-          <button type="button" class="btn btn-success" id="donation-btn">Donate Now</button>
+          {{-- <button type="button" class="btn btn-success" id="donation-btn">Donate Now</button> --}}
+          <p><a href="{{ route('helpus', $item->id) }}" class="btn btn-secondary px-3 py-2 mt-2" style="border-radius: 5px">Donate Now</a></p>
 
         </div>
       </div>
     </section>
 
-@section('scripts')
 
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-const stripe = Stripe('pk_test_51LM11DCx5e49mrnBSS6rIt308P5hNxK2xdgj2wK87a4HKZW9a0gtbZ51kYLgWbwFchBRTs9oNATcs1gG3h9yVbKn009txQs5J8')
- const btn = document.getElementById('donation-btn')
- btn.addEventListener('click', function(e){
-    e.preventDefault();
-    stripe.redirectToCheckout({
-        sessionId: '<?php echo $session->id ?>'
-    })
- })
-</script>
-
-@endsection
 
