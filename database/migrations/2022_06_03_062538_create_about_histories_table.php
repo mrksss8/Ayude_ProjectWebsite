@@ -19,7 +19,7 @@ class CreateAboutHistoriesTable extends Migration
             $table->string('page_des');
             $table->string('header');
             $table->longtext('paragraph', );
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('language_id');
             $table->foreign('language_id')->references('id')->on('languages');
             $table->timestamps();

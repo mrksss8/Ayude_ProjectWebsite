@@ -21,10 +21,10 @@ class CreateHelpUsTable extends Migration
             $table->string('paragraph1');
 
             $table->string('card_header');
-            $table->string('card_des');
+            $table->longText('card_des');
 
             $table->string('card_header2');
-            $table->string('card_des2');
+            $table->longText('card_des2');
             $table->string('card2_list1');
             $table->string('card2_list2');
 

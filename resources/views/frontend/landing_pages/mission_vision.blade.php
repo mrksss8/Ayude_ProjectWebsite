@@ -77,7 +77,7 @@
                 <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
                     <div class="staff p-5">
                         <div class="container d-flex flex-column align-items-center">
-                            <div class="img" style="background-image: url({{ asset('images/person_1.jpg') }});"></div>
+                            <div class="img" style="background-image: url({{ asset('images/Baltazar.png') }});"></div>
                             <div class="d-flex flex-column align-items-center">
                                 <h3>Baltazar Mangaliman</h3>
                                 <span class="position text-center">Senior Audit Manager at KPMG UK</span>
@@ -91,7 +91,7 @@
                 <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
                     <div class="staff p-5">
                         <div class="container d-flex flex-column align-items-center">
-                            <div class="img" style="background-image: url({{ asset('images/person_2.jpg') }});"></div>
+                            <div class="img" style="background-image: url({{ asset('images/Lyza.png') }});"></div>
                             <div class="d-flex flex-column align-items-center">
                                 <h3>Lyza Pagapulan</h3>
                                 <span class="position text-center">Faculty Designated as Research Extension Program Coordinator and Administrative Officer at Polytechnic University of the Philippines Calauan Campus</span>
@@ -102,7 +102,7 @@
                 <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
                     <div class="staff p-5">
                         <div class="container d-flex flex-column align-items-center">
-                            <div class="img" style="background-image: url({{ asset('images/person_3.jpg') }});"></div>
+                            <div class="img" style="background-image: url({{ asset('images/Leones.png') }});"></div>
                             <div class="d-flex flex-column align-items-center">
                                 <h3>Mark Elson Leones</h3>
                                 <span class="position text-center">Inventory Supervisor at Chemical Research Products Industrial Sales Inc. Water Treatment Facility</span>
@@ -116,7 +116,7 @@
                 <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
                     <div class="staff p-5">
                         <div class="container d-flex flex-column align-items-center">
-                            <div class="img" style="background-image: url({{ asset('images/person_4.jpg') }});"></div>
+                            <div class="img" style="background-image: url({{ asset('images/Liesel.png') }});"></div>
                             <div class="d-flex flex-column align-items-center">
                                 <h3>Liesel Pagapulan</h3>
                                 <span class="position text-center">HR Manager at Care Techniques Saudi Arabia</span>
@@ -127,7 +127,7 @@
                 <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
                     <div class="staff p-5">
                         <div class="container d-flex flex-column align-items-center">
-                            <div class="img" style="background-image: url({{ asset('images/person_5.jpg') }});"></div>
+                            <div class="img" style="background-image: url({{ asset('images/Makinano.png') }});"></div>
                             <div class="d-flex flex-column align-items-center">
                                 <h3>Michelle Makinano</h3>
                                 <span class="position text-center">Administration and Human Resource Officer as SMSG Communication Ltd. Software Development</span>
