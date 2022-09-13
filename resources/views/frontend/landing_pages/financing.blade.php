@@ -8,7 +8,7 @@
                 <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                     {{-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Financing & Targeted Areas</span></p> --}}
                     <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-                        {{ $item->financing->page_title_1 }}</h1>
+                        {{ !empty($item->financing->page_title_1) ? $item->financing->page_title_1 : '' }}</h1>
                 </div>
             </div>
         </div>
@@ -19,17 +19,17 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-12 pl-md-5 ftco-animate">
-                    <p>{{ $item->financing->page_title_1_paragraph1 }}</p>
+                    <p>{{ !empty($item->financing->page_title_1_paragraph1) ? $item->financing->page_title_1_paragraph1 : '' }}</p>
 
-                    <h3>{{ $item->financing->page_title_1_sub_header1 }}</h3>
+                    <h3>{{ !empty($item->financing->page_title_1_sub_header1) ? $item->financing->page_title_1_sub_header1 : '' }}</h3>
                     <ul>
                         @foreach ($lists as $list)
-                            <li>{{ $list->page_title_1_sub_header1_list1 }}</li>
+                            <li>{{ !empty($list->page_title_1_sub_header1_list1) ? $list->page_title_1_sub_header1_list1 : '' }}</li>
                         @endforeach
                     </ul>
 
                     <p>
-                        {{ $item->financing->page_title_1_paragraph2 }}
+                        {{ !empty($item->financing->page_title_1_paragraph2) ? $item->financing->page_title_1_paragraph2 : '' }}
                     </p>
                 </div>
             </div>
@@ -42,9 +42,9 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
                 <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span <h1
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span><h1
                             class="text-primary mb-3 bread" style="font-size: 32px;"
-                            data-scrollax="properties: { translateY: '30%',}">{{ $item->financing->page_title2 }}</h1>
+                            data-scrollax="properties: { translateY: '30%',}">{{ !empty($item->financing->page_title2) ? $item->financing->page_title2 : '' }}</h1>
 
                 </div>
             </div>
@@ -55,12 +55,12 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-12 pl-md-5 ftco-animate">
-                    <p>{{ $item->financing->page_title_2_paragraph }}</p>
+                    <p>{{ !empty($item->financing->page_title_2_paragraph) ? $item->financing->page_title_2_paragraph : '' }}</p>
 
-                    <h3>{{ $item->financing->page_title_2_sub_header1 }}</h3>
+                    <h3>{{ !empty($item->financing->page_title_2_sub_header1) ? $item->financing->page_title_2_sub_header1 : '' }}</h3>
 
                     <p>
-                        {{ $item->financing->page_title_2_sub_header1_description }}
+                        {{ !empty($item->financing->page_title_2_sub_header1_description) ? $item->financing->page_title_2_sub_header1_description : '' }}
                     </p>
                 </div>
             </div>
@@ -73,7 +73,7 @@
             <div class="col-md-12 pl-md-5 ftco-animate">
                 <div class="card-deck">
 
-                    @foreach ($cards as $card)
+                    @forelse ($cards as $card)
                     <div class="card">
                         <img class="card-img-top"
                             src="{{ url('storage/financing/' . $card->page_title_2_sub_header1_card_image) }}"
@@ -84,7 +84,8 @@
 
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                    @endforelse
                     {{-- <div class="card">
                         <img class="card-img-top"
                             src="https://www.ayude.be/wp-content/uploads/2021/02/WhatsApp-Image-2021-02-14-at-10.51.03-AM-6-1-1024x768.jpeg"
@@ -131,18 +132,18 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-12 pl-md-5 ftco-animate">
-                    <h3>{{ $item->financing->page_title_2_sub_header2 }}</h3>
+                    <h3>{{ !empty($item->financing->page_title_2_sub_header2) ? $item->financing->page_title_2_sub_header2 :'' }}</h3>
                     <p>
-                       {{ $item->financing->page_title_2_sub_header2_description }}
+                       {{ !empty($item->financing->page_title_2_sub_header2_description) ? $item->financing->page_title_2_sub_header2_description :'' }}
                     </p>
 
-                    <h3>{{ $item->financing->page_title_2_sub_header3 }}</h3>
+                    <h3>{{ !empty($item->financing->page_title_2_sub_header3) ? $item->financing->page_title_2_sub_header3 :'' }}</h3>
 
-                    <p>{{ $item->financing->page_title_2_sub_header3_description }}
+                    <p>{{ !empty($item->financing->page_title_2_sub_header3_description) ? $item->financing->page_title_2_sub_header3_description :'' }}
 
-                    <h3>{{ $item->financing->page_title_2_sub_header4 }}</h3>
+                    <h3>{{ !empty($item->financing->page_title_2_sub_header4) ? $item->financing->page_title_2_sub_header4 :'' }}</h3>
 
-                    <p>{{ $item->financing->page_title_2_sub_header4_description }}
+                    <p>{{ !empty($item->financing->page_title_2_sub_header4_description) ? $item->financing->page_title_2_sub_header4_description :'' }}
 
                     {{-- <h3>3. Emergency Aid and Reconstruction <button onclick="myFunction()" id="myBtn"
                             class="btn btn-primary">Read more</button></h3>

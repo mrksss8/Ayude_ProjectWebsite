@@ -7,10 +7,10 @@
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-10 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-                <h1 class = "text-warning">{{ $item->aboutMissionVision->page_title }}</h1>
-               {{-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p> --}}
+                <h1 class = "text-warning">{{ !empty($item->aboutMissionVision->page_title) ? $item->aboutMissionVision->page_title : '' }}</h1>
+              {{-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p> --}}
               {{-- <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutMissionVision->page_title }}</h1> --}}
-              <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->aboutMissionVision->page_des}}</p>
+              <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ !empty($item->aboutMissionVision->page_des) ? $item->aboutMissionVision->page_des : ''}}</p>
             </div>
           </div>
         </div>
@@ -22,24 +22,24 @@
             <div class="row d-flex">
                 <div class="col-md-6 d-flex ftco-animate">
 
-                    <div class="img img-about align-self-stretch" style="background-image: url({{ url('storage/'.$item->aboutMissionVision->mission_image_path) }}); width: 100%;"></div>
+                    <div class="img img-about align-self-stretch" style="background-image: url({{ !empty($item->aboutMissionVision->mission_image_path) ? url('storage/'.$item->aboutMissionVision->mission_image_path) : asset('images/mission.jpg') }}); width: 100%;"></div>
                     {{-- <img src="{{ url('storage/'.$item->aboutMissionVision->mission_image_path) }}" alt=""> --}}
                     {{-- <div class="img img-about align-self-stretch" style="background-image: url({{ url('storage/'.$item->aboutMissionVision->vision_image_path) }}); width: 100%;"></div> --}}
                 </div>
                 <div class="col-md-6 pl-md-5 ftco-animate">
-                    <h2 class="mb-4">{{ $item->aboutMissionVision->header_one }}</h2>
+                    <h2 class="mb-4">{{ !empty($item->aboutMissionVision->header_one) ? $item->aboutMissionVision->header_one : '' }}</h2>
                     <p>
-                        {{ $item->aboutMissionVision->header_one_des1 }}
+                        {{ !empty($item->aboutMissionVision->header_one_des1) ? $item->aboutMissionVision->header_one_des1 : '' }}
                         <br>
                         <span>
                             <ul>
-                                <li>{{ $item->aboutMissionVision->list_1}}</li>
-                                <li>{{ $item->aboutMissionVision->list_2 }}</li>
-                                <li>{{ $item->aboutMissionVision->list_3 }}</li>
+                                <li>{{ !empty($item->aboutMissionVision->list_1) ? $item->aboutMissionVision->list_1 : ''}}</li>
+                                <li>{{ !empty($item->aboutMissionVision->list_2) ? $item->aboutMissionVision->list_2 : '' }}</li>
+                                <li>{{ !empty($item->aboutMissionVision->list_3) ? $item->aboutMissionVision->list_3 : '' }}</li>
                             </ul>
                         </span>
                         <br>
-                        {{ $item->aboutMissionVision->header_one_des2 }}
+                        {{ !empty($item->aboutMissionVision->header_one_des2) ? $item->aboutMissionVision->header_one_des2 : '' }}
                     </p>
                 </div>
             </div>
@@ -50,16 +50,16 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 pl-md-5 ftco-animate">
-                    <h2 class="mb-4">{{ $item->aboutMissionVision->header_two }}</h2>
+                    <h2 class="mb-4">{{ !empty($item->aboutMissionVision->header_two) ? $item->aboutMissionVision->header_two : '' }}</h2>
                     <p>
-                        {{ $item->aboutMissionVision->header_two_des1 }}
+                        {{ !empty($item->aboutMissionVision->header_two_des1) ? $item->aboutMissionVision->header_two_des1 : '' }}
                         <br>
                         <br>
-                        {{ $item->aboutMissionVision->header_two_des2 }}
+                        {{ !empty($item->aboutMissionVision->header_two_des2) ? $item->aboutMissionVision->header_two_des2 : '' }}
                     </p>
                 </div>
                 <div class="col-md-6 d-flex ftco-animate">
-                    <div class="img img-about align-self-stretch" style="background-image: url({{ url('storage/'.$item->aboutMissionVision->vision_image_path) }}); width: 100%;"></div>
+                    <div class="img img-about align-self-stretch" style="background-image: url({{ !empty($item->aboutMissionVision->vision_image_path) ? url('storage/'.$item->aboutMissionVision->vision_image_path) : asset('images/vision.jpg') }}); width: 100%;"></div>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-12 heading-section ftco-animate text-center">
-                  <p>{{ $item->aboutMissionVision->community_des }}    </p>
+                  <p>{{ !empty($item->aboutMissionVision->community_des) ? $item->aboutMissionVision->community_des : '' }}</p>
                 </div>
             </div>
 

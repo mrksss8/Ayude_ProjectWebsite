@@ -22,7 +22,7 @@ $session = \Stripe\Checkout\Session::create([
             <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
                 <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                     <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->helpUs->page_title}}</h1>
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ !empty($item->helpUs->page_title) ? $item->helpUs->page_title : '' }}</h1>
 
                 </div>
             </div>
@@ -33,10 +33,10 @@ $session = \Stripe\Checkout\Session::create([
     <section class="ftco-section">
         <div class="container">
             <div>
-                <button type="button" class="btn btn-lg btn-success mb-4" id="donation-btn" style="border-radius: 5px;"">Donate Now</button>
-                <h3>{{ $item->helpUs->sub_header1 }}</h3>
-                <h5 class="mt-4">{{ $item->helpUs->sub_header2 }}</h5>
-                <p class="mt-4">{{ $item->helpUs->paragraph1 }}</p>
+                <button type="button" class="btn btn-lg btn-success mb-4" id="donation-btn" style="border-radius: 5px;">Donate Now</button>
+                <h3>{{ !empty($item->helpUs->sub_header1) ? $item->helpUs->sub_header1 : '' }}</h3>
+                <h5 class="mt-4">{{ !empty($item->helpUs->sub_header2) ? $item->helpUs->sub_header2 : '' }}</h5>
+                <p class="mt-4">{{ !empty($item->helpUs->paragraph1) ? $item->helpUs->paragraph1 : '' }}</p>
             </div>
 
 
@@ -45,17 +45,17 @@ $session = \Stripe\Checkout\Session::create([
                 <div class="card">
 
                   <div class="card-body">
-                    <h4 class="card-title">{{ $item->helpUs->card_header }}</h4>
-                    <p class="card-text">{{ $item->helpUs->card_des }}</p>
+                    <h4 class="card-title">{{ !empty($item->helpUs->card_header) ? $item->helpUs->card_header : '' }}</h4>
+                    <p class="card-text">{{ !empty($item->helpUs->card_des) ? $item->helpUs->card_des : '' }}</p>
                   </div>
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">{{ $item->helpUs->card_header2 }}</h4>
-                    <p class="card-text">{{ $item->helpUs->card_des2 }}</p>
+                    <h4 class="card-title">{{ !empty($item->helpUs->card_header2) ? $item->helpUs->card_header2 : '' }}</h4>
+                    <p class="card-text">{{ !empty($item->helpUs->card_des2) ? $item->helpUs->card_des2 : '' }}</p>
                     <ul>
-                        <li>{{ $item->helpUs->card2_list1 }}</li>
-                        <li>{{ $item->helpUs->card2_list2 }}</li>
+                        <li>{{ !empty($item->helpUs->card2_list1) ? $item->helpUs->card2_list1 : '' }}</li>
+                        <li>{{ !empty($item->helpUs->card2_list2) ? $item->helpUs->card2_list2 : '' }}</li>
                     </ul>
                   </div>
                 </div>
@@ -72,7 +72,7 @@ $session = \Stripe\Checkout\Session::create([
             <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
                 <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                     <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $item->helpUs->page_second_title }}</h1>
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ !empty($item->helpUs->page_second_title) ? $item->helpUs->page_second_title : '' }}</h1>
 
                 </div>
             </div>
@@ -82,7 +82,7 @@ $session = \Stripe\Checkout\Session::create([
     <section class="ftco-section">
         <div class="container">
             <div class="row d-flex justify-content-center">
-            <p>{{ $item->helpUs->paragraph2}} </a></p>
+            <p>{{ !empty($item->helpUs->paragraph2) ? $item->helpUs->paragraph2 : '' }} </a></p>
             </div>
         </div>
     </section>

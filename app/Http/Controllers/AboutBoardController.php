@@ -14,8 +14,12 @@ class AboutBoardController extends Controller
         
         $item = Language::where('id',$lang)->with('aboutBoard')->first(); 
         $boardPersons = AboutBoard::where('language_id',$lang)->where('board_member','board_member')->with('language')->get();
-       
-        return view('frontend.landing_pages.board', compact('item','boardPersons'));
+        
+        if($item->aboutBoard){
+          return view('frontend.landing_pages.board', compact('item','boardPersons'));
+        } else {
+          return view('frontend.landing_pages.empty-page', compact('item','boardPersons'));
+        }
         
     }
 

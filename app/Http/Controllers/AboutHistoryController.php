@@ -11,19 +11,22 @@ class AboutHistoryController extends Controller
 
     public function index($lang)
     {
-        
-        $item = Language::where('id','=',$lang)->with('aboutHistory')->first();
+      $item = Language::where('id','=',$lang)->with('aboutHistory')->first();
+      if($item->aboutHistory){
         return view('frontend.landing_pages.history', compact('item'));
+      } else {
+        return view('frontend.landing_pages.empty-page', compact('item'));
+      }
     }
 
     public function show($lang_id)
     {
       
-        $abouthistory = AboutHistory::where('language_id',$lang_id)->with('language')->first();
-        $languages = language::all();
-        $current_language = language::where('id',$lang_id)->first();
-        
-        return view('backend.dashboard_pages.about.history.show',compact('abouthistory','languages', 'current_language'));
+      $abouthistory = AboutHistory::where('language_id',$lang_id)->with('language')->first();
+      $languages = language::all();
+      $current_language = language::where('id',$lang_id)->first();
+      
+      return view('backend.dashboard_pages.about.history.show',compact('abouthistory','languages', 'current_language'));
 
     }
 

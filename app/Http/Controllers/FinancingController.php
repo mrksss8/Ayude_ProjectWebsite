@@ -15,8 +15,11 @@ class FinancingController extends Controller
         $item = Language::where('id',$lang)->with('financing')->first();
         $lists = Financing::where('language_id',$lang)->where('page_title_1_list','list')->with('language')->get('page_title_1_sub_header1_list1');
         $cards = Financing::where('language_id',$lang)->where('page_title_2_sub_header1_card','card')->with('language')->get(['page_title_2_sub_header1_card_head','page_title_2_sub_header1_card_description','page_title_2_sub_header1_card_image']);
-        return view('frontend.landing_pages.financing',compact('item','lists','cards'));
-
+        if($item->financing){
+          return view('frontend.landing_pages.financing',compact('item','lists','cards'));
+        } else {
+          return view('frontend.landing_pages.empty-page',compact('item','lists','cards'));
+        }
     }
     
     public function show($lang_id){

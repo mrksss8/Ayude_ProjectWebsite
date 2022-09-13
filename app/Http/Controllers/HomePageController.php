@@ -17,9 +17,14 @@ class HomePageController extends Controller
         }, 'mainNavs.subNavs' => function($query) use($lang) {
             $query->where('language_id','=',$lang);
         }])->first();
-        // dd($item);
+
         $section2 = Home::where([['language_id','=',$lang],['section_no','=',2]])->get();
-        return view('frontend.landing_pages.index', compact('section2', 'item'));
+        
+        if($item->home->isEmpty()){
+          return view('frontend.landing_pages.empty-page', compact('section2', 'item'));
+        } else {
+          return view('frontend.landing_pages.index', compact('section2', 'item'));
+        }
     }
 
     public function create($sec, $lang)

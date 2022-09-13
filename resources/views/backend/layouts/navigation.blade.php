@@ -81,6 +81,9 @@
                             <a class="dropdown-item" href="{{ route('about_history.show', 1) }}">
                                 {{ __('History') }}
                             </a>
+                            <a class="dropdown-item" href="{{ route('gallery.show') }}">
+                                {{ __('Gallery') }}
+                            </a>
                             <a class="dropdown-item" href="{{ route('about_board.show', 1) }}">
                                 {{ __('Board') }}
                             </a>

@@ -11,8 +11,11 @@ class HelpUsController extends Controller
 
     public function index($lang){
         $item = Language::where('id',$lang)->with('helpUs')->first(); 
-
-        return view('frontend.landing_pages.help_us', compact('item'));
+        if($item->helpUs){
+          return view('frontend.landing_pages.help_us', compact('item'));
+        } else {
+          return view('frontend.landing_pages.empty-page', compact('item'));
+        }
     }
     public function show($lang_id){
 

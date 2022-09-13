@@ -13,8 +13,13 @@ class AboutMissionVisionController extends Controller
     {
         
         $item = Language::where('id','=',$lang)->with('aboutMissionVision')->first(); 
+        // dd($item->aboutMissionVision);
+        if($item->aboutMissionVision){
+          return view('frontend.landing_pages.mission_vision', compact('item'));
+        } else {
+          return view('frontend.landing_pages.empty-page', compact('item'));
+        }
 
-        return view('frontend.landing_pages.mission_vision', compact('item'));
     }
 
     public function show($lang_id)

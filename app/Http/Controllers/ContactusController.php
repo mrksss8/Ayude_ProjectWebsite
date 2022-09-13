@@ -15,8 +15,11 @@ class ContactusController extends Controller
         $item = Language::where('id','=',$lang)->with(['mainNavs.subNavs' => function($query) use($lang) {
             $query->where('language_id','=',$lang);
         }, 'registeredOffice','generalSecretariat'])->first();
-        
-        return view('frontend.landing_pages.contact', compact('item'));
+        if($item->registeredOffice->isEmpty()){
+          return view('frontend.landing_pages.empty-page', compact('item'));
+        } else {
+          return view('frontend.landing_pages.contact', compact('item'));
+        }
     }
 
     public function create($lang)
