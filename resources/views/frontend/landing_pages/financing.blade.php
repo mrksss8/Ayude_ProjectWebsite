@@ -25,7 +25,7 @@
                     <ul>
                         @foreach ($lists as $list)
                             <li>{{ $list->page_title_1_sub_header1_list1 }}</li>
-                        @endforeach 
+                        @endforeach
                     </ul>
 
                     <p>
@@ -133,17 +133,17 @@
                 <div class="col-md-12 pl-md-5 ftco-animate">
                     <h3>{{ $item->financing->page_title_2_sub_header2 }}</h3>
                     <p>
-                       {{ $item->financing->page_title_2_sub_header2 }}
+                       {{ $item->financing->page_title_2_sub_header2_description }}
                     </p>
 
                     <h3>{{ $item->financing->page_title_2_sub_header3 }}</h3>
 
-                    <p>{{ $item->financing->page_title_2_sub_header3 }}
+                    <p>{{ $item->financing->page_title_2_sub_header3_description }}
 
                     <h3>{{ $item->financing->page_title_2_sub_header4 }}</h3>
 
-                    <p>{{ $item->financing->page_title_2_sub_header4 }}
-                   
+                    <p>{{ $item->financing->page_title_2_sub_header4_description }}
+
                     {{-- <h3>3. Emergency Aid and Reconstruction <button onclick="myFunction()" id="myBtn"
                             class="btn btn-primary">Read more</button></h3>
 
