@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-6 pl-md-5 ftco-animate">
                 <p> {{ $item->project->paragraph }}</p>
-                <p>When you click on one of the countries, you will learn more about our project in that country.</p>
+                <p></p>
                 <ul>
                     <li><a href="#">Philippines</a></li>
                     <li><a href="#">India</a></li>

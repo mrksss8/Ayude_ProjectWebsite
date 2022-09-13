@@ -19,7 +19,7 @@
         <div class="container">
             <div>
                 <h3>{{ $item->helpUs->sub_header1 }}</h3>
-                <h5 class="mt-4">{{ $item->helpUs->sub_header1 }}</h5>
+                <h5 class="mt-4">{{ $item->helpUs->sub_header2 }}</h5>
                 <p class="mt-4">{{ $item->helpUs->paragraph1 }}</p>
             </div>
 
