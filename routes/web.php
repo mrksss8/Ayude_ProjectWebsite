@@ -66,10 +66,10 @@ Auth::routes();
     Route::middleware('auth')->group(function () {
 
 
-        Route::get('/dashboard', function () {
-          $news = Post::where('language_id','=',1)->get();
-          return view('backend.dashboard_pages.home', compact('news'));
-        })->name('dashboard.home');
+        // Route::get('/dashboard', function () {
+        //   $news = Post::where('language_id','=',1)->get();
+        //   return view('backend.dashboard_pages.home', compact('news', 'daily'));
+        // })->name('dashboard.home');
 
 
 
