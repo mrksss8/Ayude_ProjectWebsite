@@ -29,6 +29,7 @@ use App\Models\Language;
 Auth::routes();
 
 
+
     // These routes are reserved for the frontend navigation of the follwing pages to be made
     // Kindly add the proper Controller Name class the Controller Name class given are just a filler
     // Don't change the route name bevause these are the reserved routename that is present on the database
@@ -58,16 +59,18 @@ Auth::routes();
     })->name('welcome');
 
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard.home');
 
 
     //dahboard
     Route::middleware('auth')->group(function () {
 
+
         Route::get('/dashboard', function () {
           $news = Post::where('language_id','=',1)->get();
           return view('backend.dashboard_pages.home', compact('news'));
         })->name('dashboard.home');
+
 
 
         Route::get('/about', function () {
@@ -192,7 +195,7 @@ Auth::routes();
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    Route::post('donation', [App\Http\Controllers\DonationController::class, 'stripePost']);
 
     Route::middleware('auth')->group(function () {
     // Route::view('about', 'backend.dashboard_pages.about')->name('about');
@@ -200,3 +203,12 @@ Auth::routes();
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     });
+
+
+    Route::get('/success', function () {
+        return redirect()->route('frontend.home', ['lang' => 1]);
+     })->name('welcome');
+
+    Route::get('/cancel', function () {
+        return redirect()->route('frontend.home', ['lang' => 1]);
+    })->name('welcome');

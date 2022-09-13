@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\Donation;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+
       $news = Post::where('language_id','=',1)->get();
-      return view('backend.dashboard_pages.home', compact('news'));
+      $daily = Donation::whereDate('created_at', Carbon::today())->sum('amount');
+      $weekly = Donation::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('amount');
+      $monthly = Donation::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->sum('amount');
+      $total = Donation::sum('amount');
+      return view('backend.dashboard_pages.home', compact('news', 'daily','weekly', 'monthly', 'total'));
+
     }
 }
