@@ -171,7 +171,7 @@
                                         <textarea class="form-control" name="community_des" data-bs-toggle="autosize"
                                             style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 56px;">{{ old('header_two', $about_mission_vision->community_des) }}</textarea>
                                     </div>
-                                    <div class="row-cards row">
+                                    {{-- <div class="row-cards row">
                                         <div class="col-md-6 col-xl-3">
                                             <div class="card">
                                                 <div class="card-body text-center">
@@ -226,7 +226,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
