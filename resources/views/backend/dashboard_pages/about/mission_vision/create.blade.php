@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
++@extends('backend.layouts.app')
 
 @section('content')
     <div class="container-xl">
@@ -180,7 +180,7 @@
                                             style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 56px;"></textarea>
                                     </div>
                                     <div class="row-cards row">
-                                        <div class="col-md-6 col-xl-3">
+                                        {{-- <div class="col-md-6 col-xl-3">
                                             <div class="card">
                                                 <div class="card-body text-center">
                                                     <div class="mb-4">
@@ -233,7 +233,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

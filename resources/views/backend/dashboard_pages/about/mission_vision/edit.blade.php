@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <div class="form-label">Picture / Image</div>
-                                                <input type="file" class="form-control" name = "mission_image">
+                                                <input type="file" class="form-control" name = "mission_image"">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Paragraph</label>
