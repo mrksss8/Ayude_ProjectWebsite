@@ -49,17 +49,25 @@ class AboutHistoryController extends Controller
             'page_des' => 'required',
           
         ]);
-        
-        $image = $request->file('image')->getClientOriginalName();
-        $path = $request->file('image')->storeAs('history',  $image, 'public');    
-        
+          
         AboutHistory::where('language_id', $lang_id)->update([
             'page_title'       => $request->page_title,
             'page_des'         => $request->page_des,
             'header'           => $request->header,
-            'image'            => $image,
             'paragraph'        => $request->paragraph,
         ]);
+
+        if ($request->hasfile('image')) {
+
+            $image = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('history',  $image, 'public');    
+            
+            AboutHistory::where('language_id', $lang_id)->update([
+                
+                'image'=> $image,
+    
+            ]);
+        }   
 
         return redirect()->route('about_history.show', $lang_id)->with('update', 'Record updated successfully!');
 

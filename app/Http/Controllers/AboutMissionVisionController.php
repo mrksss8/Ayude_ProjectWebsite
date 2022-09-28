@@ -45,10 +45,17 @@ class AboutMissionVisionController extends Controller
     public function store(Request $request){
          // AboutMissionVision::create([$request->all()]);
 
-        $mission_image = $request->file('mission_image')->getClientOriginalName();
-        $mission_path = $request->file('mission_image')->storeAs('mission_vision',  $mission_image, 'public');    
-        $vision_image = $request->file('vision_image')->getClientOriginalName();
-        $vision_path = $request->file('vision_image')->storeAs('vision_vision',  $vision_image, 'public');    
+        if ($request->hasfile('mission_image')) {
+            $mission_image = $request->file('mission_image')->getClientOriginalName();
+            $mission_path = $request->file('mission_image')->storeAs('mission_vision',  $mission_image, 'public');    
+        }
+
+
+        if ($request->hasfile('vision_image')) {
+           
+            $vision_image = $request->file('vision_image')->getClientOriginalName();
+            $vision_path = $request->file('vision_image')->storeAs('mission_vision',  $vision_image, 'public');    
+        }
 
         AboutMissionVision::create([
             'language_id'       => $request->language_id,
@@ -89,10 +96,30 @@ class AboutMissionVisionController extends Controller
     public function update(Request $request, $lang_id)
     {   
 
-        $mission_image = $request->file('mission_image')->getClientOriginalName();
-        $mission_path = $request->file('mission_image')->storeAs('mission_vision',  $mission_image, 'public');    
-        $vision_image = $request->file('vision_image')->getClientOriginalName();
-        $vision_path = $request->file('vision_image')->storeAs('mission_vision',  $vision_image, 'public');    
+
+        if ($request->hasfile('mission_image')) {
+
+            $mission_image = $request->file('mission_image')->getClientOriginalName();
+            $mission_path = $request->file('mission_image')->storeAs('mission_vision',  $mission_image, 'public');  
+            
+            AboutMissionVision::where('language_id', $lang_id)->update([
+                'mission_image' => $mission_image,
+                'mission_image_path' => $mission_path,
+            ]);
+        }
+
+
+        if ($request->hasfile('vision_image')) {
+           
+            $vision_image = $request->file('vision_image')->getClientOriginalName();
+            $vision_path = $request->file('vision_image')->storeAs('mission_vision',  $vision_image, 'public');  
+            
+            AboutMissionVision::where('language_id', $lang_id)->update([
+                'vision_image' => $vision_image,
+                'vision_image_path' => $vision_path,
+            ]);
+        }
+        
 
         AboutMissionVision::where('language_id', $lang_id)->update([
             'page_title'       => $request->page_title,
@@ -111,12 +138,6 @@ class AboutMissionVisionController extends Controller
             'company'       => $request->company,
             'position'       => $request->position,
             'email'       => $request->email,
-
-
-            'mission_image' => $mission_image,
-            'mission_image_path' => $mission_path,
-            'vision_image' => $vision_image,
-            'vision_image_path' => $vision_path,
         ]);
 
         return redirect()->route('about_mission_vision.show', $lang_id)->with('update', 'Record updated successfully!');

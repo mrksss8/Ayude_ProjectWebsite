@@ -39,10 +39,10 @@ class CreateAboutMissionVisionsTable extends Migration
             $table->string('position');
             $table->string('email');
             $table->string('image')->nullable();
-            $table->string('mission_image');
-            $table->string('mission_image_path');
-            $table->string('vision_image');
-            $table->string('vision_image_path');
+            $table->string('mission_image')->nullable();
+            $table->string('mission_image_path')->nullable();
+            $table->string('vision_image')->nullable();
+            $table->string('vision_image_path')->nullable();
 
             $table->unsignedBigInteger('language_id');
             $table->foreign('language_id')->references('id')->on('languages');
