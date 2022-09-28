@@ -174,7 +174,7 @@ Auth::routes();
           Route::delete('/gallery/delete/{id}', 'delete')->name('gallery.delete');
         });
 
-        // Gallery
+        // Language
         Route::controller(LanguageController::class)->group(function () {
           Route::get('/languages', 'index')->name('lang.index');
           Route::post('/languages/store', 'store')->name('lang.store');
