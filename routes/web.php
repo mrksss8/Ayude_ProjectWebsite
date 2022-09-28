@@ -8,11 +8,12 @@ use App\Http\Controllers\HelpUsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\FinancingController;
 use App\Http\Controllers\AboutBoardController;
-use App\Http\Controllers\NavigationsController;
 
+use App\Http\Controllers\NavigationsController;
 use App\Http\Controllers\AboutHistoryController;
 use App\Http\Controllers\AboutMissionVisionController;
 
@@ -171,7 +172,14 @@ Auth::routes();
           Route::get('/gallery', 'show')->name('gallery.show');
           Route::post('/gallery/store', 'store')->name('gallery.store');
           Route::delete('/gallery/delete/{id}', 'delete')->name('gallery.delete');
-      });
+        });
+
+        // Gallery
+        Route::controller(LanguageController::class)->group(function () {
+          Route::get('/languages', 'index')->name('lang.index');
+          Route::post('/languages/store', 'store')->name('lang.store');
+          Route::delete('/languages/delete/{id}', 'delete')->name('lang.delete');
+        });
 
         Route::get('/board-member', function () {
             return view('backend.dashboard_pages.board');

@@ -27,7 +27,7 @@
                         @endif
                     </li>
                 @endforeach
-
+                
                 @if($item->id != 1)
                   <x-language-nav id="{{ \Request::route()->getName() == 'news.blog' ? $item->posts[0]->post_id : '' }}"/>
                 @else

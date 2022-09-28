@@ -17,7 +17,7 @@ class GalleryController extends Controller
 
     public function show()
     {
-      $photos = Gallery::all();
+      $photos = Gallery::paginate(6);
       return view('backend.dashboard_pages.gallery.index', compact('photos'));
     }
 

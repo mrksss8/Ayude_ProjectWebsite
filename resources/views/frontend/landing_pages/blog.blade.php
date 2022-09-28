@@ -27,7 +27,7 @@
                   <div><a href="#">Admin</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> {{ $post->commentsCount($post->id) }}</a></div>
                 </div>
-                <h3 class="heading mt-3"><a href="#">{{ $post->title }}</a></h3>
+                <h3 class="heading mt-3"><a href="{{ route('news.blog', ['lang' => $lang, 'id' => $post->id]) }}">{{ $post->title }}</a></h3>
                 <p class="text-truncate">{{ $post->body }}</p>
               </div>
             </div>
