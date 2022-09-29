@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Comment extends Model
 {
@@ -38,5 +38,11 @@ class Comment extends Model
     {
       $date = \Carbon\Carbon::parse($this->created_at)->format('F d, Y');
       return $date;
+    }
+
+    public function getAutomaticMessage()
+    {
+      $adminReply = "Thank you for your message!";
+      return $adminReply;
     }
 }

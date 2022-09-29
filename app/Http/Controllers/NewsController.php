@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Guest;
 use App\Models\Comment;
 use App\Models\Language;
+use App\Models\AdminReply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;

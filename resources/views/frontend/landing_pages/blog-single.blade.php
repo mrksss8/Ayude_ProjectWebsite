@@ -38,7 +38,14 @@
                       <div class="comment">
                         <h4>{{ $comment->getCommenter($comment->guest_id) }}</h4>
                         <div class="meta">{{ $comment->updated_at }}</div>
-                        <p>{{ $comment->comment }}</p>
+                        <p style="font-size: 1.2rem">{{ $comment->comment }}</p>
+                      </div>
+                    </li>
+                     <li style="margin-left: 2rem">
+                      <div>
+                        <h4 style="font-size: 1rem">{{ "Admin" }}</h4>
+                        <div style="font-size: .7rem">{{ $comment->updated_at }}</div>
+                        <p style="font-size: 1.1rem">{{ $comment->getAutomaticMessage() }}</p>
                       </div>
                     </li>
                   @empty
