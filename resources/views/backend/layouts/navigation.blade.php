@@ -192,26 +192,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item @if (request()->routeIs('users.index')) active @endif">
-                        <a class="nav-link" href="{{ route('users.index') }}">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
-                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                {{ __('Users') }}
-                            </span>
-                        </a>
-                    </li>
-
                     <li class="nav-item @if (request()->routeIs('navigation.show')) active @endif">
                         <a class="nav-link" href="{{ route('navigation.show', ['id'=>1]) }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -246,6 +226,26 @@
                           </span>
                       </a>
                   </li>
+
+
+                  {{-- Other Options --}}
+                  <li class="nav-item @if (request()->routeIs('success.show')) active @endif">
+                    <a class="nav-link" href="{{ route('success.show', 1) }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-chatbot" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4"></path>
+                                <path d="M9.5 9h.01"></path>
+                                <path d="M14.5 9h.01"></path>
+                                <path d="M9.5 13a3.5 3.5 0 0 0 5 0"></path>
+                             </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            {{ __('Others') }}
+                        </span>
+                    </a>
+                </li>
 
                 </ul>
             </div>
