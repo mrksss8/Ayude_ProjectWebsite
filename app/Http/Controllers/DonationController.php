@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Donation;
+use App\Models\SuccessMessage;
 use Stripe;
 use App\Models\Home;
 use App\Models\Language;
@@ -31,27 +32,48 @@ class DonationController extends Controller
             }
 
         }
+    }
 
-        // $endpoint_secret = env('WEBHOOK_KEY');
+    public function success($lang)
+    {
+        $item = Language::where('id','=',$lang)->with(['home' => function ($query) {
+            $query->where('section_no','=',1)->orWhere('section_no','=',3);
+        }, 'mainNavs.subNavs' => function($query) use($lang) {
+            $query->where('language_id','=',$lang);
+        }])->first();
 
-        // $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
-        // $payload = @file_get_contents('php://input');
+        $section2 = Home::where([['language_id','=',$lang],['section_no','=',2]])->get();
 
-        // try {
-        //     $event = \Stripe\Webhook::constructEvent(
-        //         $payload, $sig_header, $endpoint_secret
-        //     );
-        // } catch(\UnexpectedValueException $e) {
-        //     // Invalid payload
-        //     http_response_code(400);
-        //     exit();
-        // } catch(\Stripe\Exception\SignatureVerificationException $e) {
-        //     // Invalid signature
-        //     http_response_code(400);
-        //     exit();
-        // }
+        $success_msg = SuccessMessage::where('id', $lang)->first();
+
+          return view('frontend.landing_pages.success-page', compact('section2', 'item', 'success_msg'));
 
     }
+
+    public function show($lang){
+
+        $success_msg = SuccessMessage::where('id', $lang)->first();
+        return view('backend.dashboard_pages.success.show', compact('success_msg'));
+
+    }
+
+
+    public function edit($id){
+
+        $success_msg = SuccessMessage::where('id', $id)->first();
+        return view('backend.dashboard_pages.success.edit', compact('success_msg'));
+
+    }
+
+    public function update(Request $request, $id){
+
+        SuccessMessage::where('id', $id)->update($request->except([
+            '_token', '_method'
+        ]));
+
+        return redirect()->route('success.show', $id);
+    }
+
 
 
 }
