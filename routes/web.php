@@ -12,10 +12,10 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\FinancingController;
 use App\Http\Controllers\AboutBoardController;
-
 use App\Http\Controllers\NavigationsController;
 use App\Http\Controllers\AboutHistoryController;
 use App\Http\Controllers\AboutMissionVisionController;
+use App\Http\Controllers\DonationController;
 
 
 /*
@@ -62,7 +62,6 @@ Auth::routes();
 
 
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard.home');
-
 
     //dahboard
     Route::middleware('auth')->group(function () {
@@ -210,8 +209,6 @@ Auth::routes();
 
 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Route::post('donation', [App\Http\Controllers\DonationController::class, 'stripePost']);
 
     Route::middleware('auth')->group(function () {
     // Route::view('about', 'backend.dashboard_pages.about')->name('about');
@@ -221,10 +218,20 @@ Auth::routes();
     });
 
 
-    Route::get('/success', function () {
-        return redirect()->route('frontend.home', ['lang' => 1]);
-     })->name('welcome');
+    // Donation
+    Route::post('donation', [App\Http\Controllers\DonationController::class, 'stripePost']);
+    Route::get('/success/{lang}', [App\Http\Controllers\DonationController::class, 'success'])->name('donation.success');
 
-    Route::get('/cancel', function () {
-        return redirect()->route('frontend.home', ['lang' => 1]);
-    })->name('welcome');
+    Route::get('/cancel', function () {return redirect()->route('frontend.home', ['lang' => 1]);})->name('welcome');
+
+
+    Route::get('/success/show/{lang}', [App\Http\Controllers\DonationController::class, 'show'])->name('success.show');
+    Route::get('/success/edit/{id}', [App\Http\Controllers\DonationController::class, 'edit'])->name('success.edit');
+    Route::put('/success/{id}', [App\Http\Controllers\DonationController::class, 'update'])->name('success.update');
+
+
+    // Privacy Policy
+    Route::get('/privacy-policy', function () {
+        return view('frontend.landing_pages.privacy-policy');
+    })->name('frontend.privacy-policy');
+

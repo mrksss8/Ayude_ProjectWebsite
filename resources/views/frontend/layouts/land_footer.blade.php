@@ -24,6 +24,7 @@
                 <li><span class="icon icon-map-marker"></span><span class="text">Daalstraat 71 1790 Affligem, Belgium</span></li>
                 <li><a href="#"><span class="icon icon-phone"></span><span class="text">053 68 21 50</span></a></li>
                 <li><a href="#"><span class="icon icon-envelope"></span><span class="text">ayude4anewday@gmail.com</span></a></li>
+                <li><a href="{{ route('frontend.privacy-policy') }}"><span class="icon icon-file"></span><span class="text">Privacy Policy</span></a></li>
               </ul>
             </div>
         </div>
@@ -33,7 +34,7 @@
       <div class="col-md-12 text-center">
 
         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://colorlib.com" target="_blank">Colorlib</a>
         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
       </div>
     </div>
