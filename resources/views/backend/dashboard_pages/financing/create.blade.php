@@ -215,7 +215,7 @@
                                             <label class="form-label">Card Image:</label>
                                             <input type="file"
                                                 class="form-control  @error('page_des') is-invalid @enderror"
-                                                name="page_title_2_sub_header1_card_image[]">
+                                                name="page_title_2_sub_header1_card_image[]" required>
                                         </div>
                                     </div>
                                 </div>

@@ -162,8 +162,8 @@ Auth::routes();
             Route::get('/financing/show/{lang_id}', 'show')->name('financing.show');
             Route::get('/financing/create/{lang_id}', 'create')->name('financing.create');
             Route::post('/financing/store', 'store')->name('financing.store');
-            // Route::get('/financing/edit/{lang_id}', 'edit')->name('financing.edit');
-            // Route::put('/financing/update/{lang_id}', 'update')->name('financing.update');
+            Route::get('/financing/edit/{lang_id}', 'edit')->name('financing.edit');
+            Route::put('/financing/update/{lang_id}', 'update')->name('financing.update');
         });
 
         // Gallery

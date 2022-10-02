@@ -12,7 +12,7 @@
                 <div class="col-auto">
                     <div class="btn-list">
                         @if ($financing != null)
-                            <a href="#"
+                            <a href="{{ route('financing.edit', $current_language->id) }}"
                                 class="btn d-none d-md-inline-flex btn-primary">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                                 <!-- SVG icon code -->
@@ -117,7 +117,7 @@
                                         <div class="card">
                                             <!-- For each here -->
                                             <div class="card-img-top img-responsive img-responsive-21x9"
-                                                style="background-image: url({{ url('storage/financing/' . $card->page_title_2_sub_header1_card_image) }})">
+                                                style="background-image: url('{{ Storage::url('financing/'."{$card->page_title_2_sub_header1_card_image}") }}')">
                                             </div>
 
 

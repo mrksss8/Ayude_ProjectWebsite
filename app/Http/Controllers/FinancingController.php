@@ -104,6 +104,7 @@ class FinancingController extends Controller
 
          foreach($request->page_title_2_sub_header1_card_head as $key => $page_title_2_sub_header1_card_headdd){
 
+
             $image = $request->file('page_title_2_sub_header1_card_image')[$key]->getClientOriginalName();
             $path = $request->file('page_title_2_sub_header1_card_image')[$key]->storeAs('financing',  $image, 'public');      
     
@@ -115,7 +116,73 @@ class FinancingController extends Controller
                 'language_id' => $request->language_id,
             ]);
 
+            }
+            return redirect()->route('financing.show', $request->language_id);
         }
-        return redirect()->route('financing.show', $request->language_id);
-}
+        public function edit($lang_id)
+            {
+
+                $financing = Financing::where('language_id',$lang_id)->with('language')->first();
+                $financing_lists = Financing::where('language_id',$lang_id)->where('page_title_1_list','list')->with('language')->get();
+                $financing_cards = Financing::where('language_id',$lang_id)->where('page_title_2_sub_header1_card','card')->with('language')->get();
+                return view('backend.dashboard_pages.financing.edit',compact('financing','financing_lists','financing_cards'));
+
+        }
+
+        public function update(Request $request, $lang_id)
+        {   
+
+            // dd($request->page_title_1_sub_header1_list1);
+        financing::where('language_id', $lang_id)->update([
+            "language_id" => $request->language_id, 
+            "page_title_1" => $request->page_title_1,  
+            "page_title_1_paragraph1" => $request->page_title_1_paragraph1,  
+            "page_title_1_sub_header1" => $request->page_title_1_sub_header1, 
+            "page_title_1_paragraph2" => $request->page_title_1_paragraph2,  
+            "page_title2" => $request->page_title2,  
+            "page_title_2_paragraph" => $request->page_title_2_paragraph,  
+            "page_title_2_sub_header1" => $request->page_title_2_sub_header1,  
+            "page_title_2_sub_header1_description" => $request->page_title_2_sub_header1_description,  
+            "page_title_2_sub_header2" => $request->page_title_2_sub_header2,  
+            "page_title_2_sub_header2_description" => $request->page_title_2_sub_header2_description,  
+            "page_title_2_sub_header3" => $request->page_title_2_sub_header3,  
+            "page_title_2_sub_header3_description" => $request->page_title_2_sub_header3_description,
+            "page_title_2_sub_header4" => $request->page_title_2_sub_header4,  
+            "page_title_2_sub_header4_description" => $request->page_title_2_sub_header4_description,
+        ]);
+
+        foreach($request->financing_list_id as $key => $financing_list_id){
+        
+            Financing::findorfail($financing_list_id)->update([
+                    'page_title_1_sub_header1_list1' => $request->page_title_1_sub_header1_list1[$key],
+                ]);  
+
+        }
+
+        foreach($request->financing_card_ids as $key => $financing_card_id){
+
+            if($request->hasFile('page_title_2_sub_header1_card_image.'.$key)){
+                $image = $request->file('page_title_2_sub_header1_card_image.'.$key)->getClientOriginalName();
+                $path = $request->file('page_title_2_sub_header1_card_image.'.$key)->storeAs('financing',  $image, 'public');      
+            
+                Financing::findorfail($financing_card_id)->update([
+                    // 'page_title_2_sub_header1_card' => 'card',             
+                    'page_title_2_sub_header1_card_image' => $image,  
+                ]);
+            }
+            else{
+                $image = null;
+                $path = null;
+            }
+            Financing::findorfail($financing_card_id)->update([
+                // 'page_title_2_sub_header1_card' => 'card',
+                'page_title_2_sub_header1_card_head' => $request->page_title_2_sub_header1_card_head[$key],  
+                'page_title_2_sub_header1_card_description' => $request->page_title_2_sub_header1_card_head[$key],   
+                'language_id' => $request->language_id,
+            ]);
+
+            }
+            return redirect()->route('financing.show', $request->language_id);
+
+    }
 }
